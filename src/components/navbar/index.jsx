@@ -146,7 +146,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      <div className={isNavbarOpen ? "block" : "hidden"}>
+      <div className={isNavbarOpen ? "block xl:hidden" : "hidden"}>
         <MobilMenu></MobilMenu>
       </div>
     </>
