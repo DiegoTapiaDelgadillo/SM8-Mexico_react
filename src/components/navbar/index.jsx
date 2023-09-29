@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full h-auto bg-transparent fixed z-50 shadow-md">
+      <nav className="w-full h-auto bg-neutral-900 fixed z-50 shadow-md">
         <div className="hidden xl:block">
           <div className="flex justify-between pt-4 pb-4 pr-20 pl-20">
             <div>
