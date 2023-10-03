@@ -1,0 +1,10 @@
+export default function CardText({ titulo, cuerpo }) {
+  return (
+    <div className="border-4 border-neutral-900/80 w-full rounded-3xl shadow-2xl cursor-pointer hover:border-yellow-300 ease-in-out duration-300 p-8 flex justify-center items-center">
+      <div>
+        <h1 className="text-center text-yellow-300 text-3xl">{titulo}</h1>
+        <h2 className="text-white text-xl text-center pt-2">{cuerpo}</h2>
+      </div>
+    </div>
+  );
+}

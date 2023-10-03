@@ -1,5 +1,5 @@
 import BotonPrincipal from "../botonPrincipal";
-export default function Mural({ title, body, rutaFondo }) {
+export default function Mural({ title, body, rutaFondo, buttonText }) {
   return (
     <div
       className="flex bg-cover bg-center h-screen pt-24 justify-center items-center"
@@ -10,7 +10,7 @@ export default function Mural({ title, body, rutaFondo }) {
           {title}
         </h1>
         <h1 className="text-white pb-4">{body}</h1>
-        <BotonPrincipal text={"Hola"}></BotonPrincipal>
+        <BotonPrincipal text={buttonText}></BotonPrincipal>
       </div>
     </div>
   );

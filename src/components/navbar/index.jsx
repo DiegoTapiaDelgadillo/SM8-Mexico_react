@@ -6,6 +6,7 @@ import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
 import MobilMenu from "./mobil";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export default function Navbar() {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [isShow, setShow] = useState(false);
@@ -25,19 +26,21 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-full h-auto bg-neutral-900 fixed z-50 shadow-md">
+      <nav className="w-full h-auto bg-transparent fixed z-50 shadow-md">
         <div className="hidden xl:block">
           <div className="flex justify-between pt-4 pb-4 pr-20 pl-20">
             <div>
-              <img src={SM8Logo} alt="" className="w-24" />
+              <Link to="/">
+                <img src={SM8Logo} alt="" className="w-24 cursor-pointer" />
+              </Link>
             </div>
             <div>
               <ul className="list-none flex flex-wrap nowrap">
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Inicio
+                  <Link to="/">Inicio</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Servicios
+                  <Link to="/Servicios">Servicios</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
                   Sucursales
