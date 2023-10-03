@@ -6,6 +6,10 @@ import Footer from "./components/footer";
 export default function App() {
   const Home = lazy(() => import("./pages/homePage/index"));
   const Servicios = lazy(() => import("./pages/serviciosPage/index"));
+  const Sucursales = lazy(() => import("./pages/sucursalesPage/index"));
+  const Vacantes = lazy(() => import("./pages/vacantesPage/index"));
+  const Contacto = lazy(() => import("./pages/contactoPage/index"));
+  const NotFound = lazy(() => import("./pages/404Page/index"));
 
   return (
     <BrowserRouter>
@@ -14,6 +18,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Servicios" element={<Servicios />}></Route>
+          <Route path="/Sucursales" element={<Sucursales />}></Route>
+          <Route path="/Vacantes" element={<Vacantes />}></Route>
+          <Route path="/Contacto" element={<Contacto />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Suspense>
       <Footer></Footer>

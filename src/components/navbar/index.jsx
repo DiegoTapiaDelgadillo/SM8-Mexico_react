@@ -43,13 +43,13 @@ export default function Navbar() {
                   <Link to="/Servicios">Servicios</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Sucursales
+                  <Link to="/Sucursales">Sucursales</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Vacantes
+                  <Link to="/Vacantes">Vacantes</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Contacto
+                  <Link to="/Contacto">Contacto</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
                   Nosotros
