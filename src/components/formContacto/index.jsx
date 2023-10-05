@@ -1,26 +1,14 @@
-import Andamio from "./img/hayley-murray-We8KjFpFNR4-unsplash.jpg";
 import BotonPrincipal from "../botonPrincipal";
 export default function FormContacto() {
   return (
-    <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4 w-full 2xl:px-60">
-      <div className="hidden relative h-full 2xl:block">
-        <img
-          src={Andamio}
-          alt=""
-          className="w-full h-auto rounded-3xl shadow-2xl brightness-50"
-        />
-        <div class="absolute bottom-0 left-0 p-4">
-          <h2 className="text-white text-4xl shadow-2xl">
-            "Con andamios firmes, alcanzamos nuevas alturas en la construcción
-            de sueños."
-          </h2>
-          <h3 className="text-white pt-1">Grupo SM8</h3>
-        </div>
-      </div>
-      <div className="flex justify-center items-center bg-neutral-900 rounded-3xl shadow-2xl p-8">
-        <div>
-          <h1 className="text-5xl text-yellow-300">
-            ¿Tienes algún proyecto? Nos encantaría trabajar contigo.
+    <div className="grid grid-cols-1 w-full bg-transparent p-8 xl:p-16">
+      <div className="flex justify-center items-center bg-transparent">
+        <div className="w-full">
+          <h1 className="text-3xl xl:text-5xl text-yellow-300">
+            ¿Tienes algún proyecto?
+          </h1>
+          <h1 className="text-3xl xl:text-5xl text-yellow-300 pt-2">
+            Nos encantaría trabajar contigo.
           </h1>
           <h2 className="text-white py-4">
             Escribe tus datos y nosotros nos pondremos en contacto contigo.

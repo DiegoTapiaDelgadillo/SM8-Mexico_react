@@ -5,11 +5,13 @@ import Instagram from "./img/instagram.png";
 import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
 import MobilMenu from "./mobil";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 export default function Navbar() {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [isShow, setShow] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
 
   const NavbarOpen = () => {
     setNavbarOpen(!isNavbarOpen);
@@ -24,9 +26,30 @@ export default function Navbar() {
     setShow(false);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className="w-full h-auto bg-transparent fixed z-50 shadow-md">
+      <nav
+        className={`w-full h-auto fixed z-50 shadow-md ${
+          scrolling
+            ? "bg-neutral-950 ease-in-out duration-300"
+            : "bg-transparent ease-in-out duration-300"
+        }`}
+      >
         <div className="hidden xl:block">
           <div className="flex justify-between pt-4 pb-4 pr-20 pl-20">
             <div>
@@ -52,7 +75,7 @@ export default function Navbar() {
                   <Link to="/Contacto">Contacto</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Nosotros
+                  <Link to="/Nosotros">Nosotros</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
                   Catálogo

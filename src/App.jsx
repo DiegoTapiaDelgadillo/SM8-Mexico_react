@@ -10,6 +10,7 @@ export default function App() {
   const Vacantes = lazy(() => import("./pages/vacantesPage/index"));
   const Contacto = lazy(() => import("./pages/contactoPage/index"));
   const NotFound = lazy(() => import("./pages/404Page/index"));
+  const Nosotros = lazy(() => import("./pages/nosotrosPage/index"));
 
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/Vacantes" element={<Vacantes />}></Route>
           <Route path="/Contacto" element={<Contacto />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/Nosotros" element={<Nosotros />}></Route>
         </Routes>
       </Suspense>
       <Footer></Footer>
