@@ -5,7 +5,7 @@ export default function Clientes() {
       <div className="absolute pb-96 hidden md:block">
         <ImgClients></ImgClients>
       </div>
-      <div className="w-5/6 md:w-4/6 h-auto bg-neutral-800 rounded-3xl shadow-2xl p-16 md:px-16 md:pt-48 md:pb-16">
+      <div className="w-5/6 md:w-4/6 h-auto bg-neutral-800 rounded-3xl shadow-2xl p-6 md:px-16 md:pt-48 md:pb-16">
         <div className="flex justify-center items-center pb-8 md:hidden">
           <ImgClients></ImgClients>
         </div>

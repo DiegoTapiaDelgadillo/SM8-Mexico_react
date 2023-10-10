@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BotonPrincipal from "../botonPrincipal";
 export default function Contacto({ titulo, cuerpo, rosetin }) {
   return (
@@ -5,8 +6,10 @@ export default function Contacto({ titulo, cuerpo, rosetin }) {
       <div className="md:flex md:justify-center md:items-center">
         <div className="w-full">
           <h1 className="text-yellow-300 text-5xl">{titulo}</h1>
-          <h1 className="text-white text-xl pt-8 pb-8">{cuerpo}</h1>{" "}
-          <BotonPrincipal text={"Contactanos"}></BotonPrincipal>
+          <h1 className="text-white text-xl pt-8 pb-8">{cuerpo}</h1>
+          <Link to={"/Contacto"}>
+            <BotonPrincipal text={"Contactanos"}></BotonPrincipal>
+          </Link>
         </div>
       </div>
       <div className="grid justify-items-center">

@@ -11,15 +11,20 @@ export default function HomePage() {
   return (
     <div>
       <Mural
-        title={"Hola mundo"}
-        body={"Soy un mural"}
+        title={"Versatilidad, Calidad y Seguridad"}
+        body={
+          "Renta y Venta de Andamio Multidireccional, Marco y Cruceta, Tubo-Junta, Cimbra, Apuntalamiento, Consumibles y más."
+        }
         rutaFondo={Fondo}
       ></Mural>
       <Contenedor></Contenedor>
-      <div className="h-screen w-full flex justify-center items-center bg-neutral-900">
+      <div className="h-auto xl:h-screen w-full flex justify-center items-center bg-neutral-900 py-24">
         <Clientes></Clientes>
       </div>
-      <div className="h-screen w-full flex justify-center items-center bg-neutral-800 p-12 md:p-48">
+      <div className="h-auto w-full flex justify-center items-center bg-neutral-800">
+        <Proyectos></Proyectos>
+      </div>
+      <div className="h-auto xl:h-screen w-full flex justify-center items-center bg-neutral-900 p-12 md:p-48">
         <div className="w-full h-auto">
           <h1 className="text-yellow-300 text-center text-5xl pb-12 md:pb-24">
             ¿Por qué escogernos?
@@ -46,7 +51,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="h-screen w-full flex justify-center items-center bg-neutral-900">
+      <div className="h-auo xl:h-screen w-full flex justify-center items-center bg-neutral-800">
         <Contacto
           titulo={"No lo pienses más y Contáctanos"}
           cuerpo={
@@ -54,9 +59,6 @@ export default function HomePage() {
           }
           rosetin={Rosetin}
         ></Contacto>
-      </div>
-      <div className="h-auto w-full flex justify-center items-center bg-neutral-800">
-        <Proyectos></Proyectos>
       </div>
     </div>
   );

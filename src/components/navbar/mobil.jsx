@@ -2,6 +2,7 @@ import Facebook from "./img/facebook.png";
 import Instagram from "./img/instagram.png";
 import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
+import { Link } from "react-router-dom";
 export default function MobilMenu() {
   return (
     <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed">
@@ -9,22 +10,22 @@ export default function MobilMenu() {
         <div className="grid w-full">
           <ul className="divide-y-2 divide-yellow-300/10">
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Inicio
+              <Link to={"/"}>Inicio</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Servicios
+              <Link to={"/Servicios"}>Servicios</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Sucursales
+              <Link to={"/Sucursales"}>Sucursales</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Vacantes
+              <Link to={"/Vacantes"}>Vacantes</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Contacto
+              <Link to={"/Contacto"}>Contacto</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Nosotros
+              <Link to={"/Nosotros"}>Nosotros</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
               Catálogo

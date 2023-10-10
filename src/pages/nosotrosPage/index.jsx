@@ -6,6 +6,8 @@ import Certificado from "./img/sm8-home-certificado.jpg";
 import Andamio from "./img/1.png";
 import Calidad from "./img/calidad.jpg";
 import CardCodigos from "../../components/cardCodigos";
+import Contacto from "../../components/contacto";
+import Rose from "./img/Character_Render_02.png";
 export default function NosotrosPage() {
   return (
     <div>
@@ -20,8 +22,10 @@ export default function NosotrosPage() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
           <div className="w-full flex justify-center items-center">
             <div>
-              <h1 className="text-yellow-300 text-6xl">¿Quiénes somos?</h1>
-              <h1 className="text-white text-xl text-justify py-8">
+              <h1 className="text-yellow-300 text-3xl xl:text-5xl">
+                ¿Quiénes somos?
+              </h1>
+              <h1 className="text-white text-md xl:text-xl text-justify py-8">
                 Empresa 100% mexicana dedicada a la renta y venta de estructuras
                 metálicas para la construcción, restauración, industria y
                 eventos. Somos líderes en el estudio y empleo de las estructuras
@@ -41,10 +45,10 @@ export default function NosotrosPage() {
         <div className="bg-neutral-900 p-24 rounded-3xl shadow-2xl w-full border-4 border-neutral-900 hover:border-yellow-300 ease-in-out duration-300 grid grid-cols-1 xl:grid-cols-2 gap-4">
           <div className="flex justify-center items-center">
             <div>
-              <h1 className="text-yellow-300 text-5xl">
+              <h1 className="text-yellow-300 text-3xl xl:text-5xl">
                 Conoce nuestras certificaciones
               </h1>
-              <h2 className="text-white py-8 text-xl text-justify">
+              <h2 className="text-white py-8 text-md xl:text-xl text-justify">
                 En SM8 mantenemos una política de calidad muy estricta la cual
                 nos permite mantener el equipo en perfecto estado, cuidando ante
                 todo la seguridad en nuestros andamios. Esto nos ha permitido
@@ -61,7 +65,7 @@ export default function NosotrosPage() {
             </div>
           </div>
           <div className="flex justify-center items-center pt-16 xl:p-0">
-            <img src={Certificado} alt="" className="w-5/6 xl:w-3/6" />
+            <img src={Certificado} alt="" className="w-full xl:w-3/6" />
           </div>
         </div>
       </div>
@@ -69,15 +73,17 @@ export default function NosotrosPage() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
           <div className="flex items-center w-full">
             <div>
-              <h1 className="text-yellow-300 text-6xl">Misión</h1>
-              <h1 className="text-white text-xl py-8 text-justify">
+              <h1 className="text-yellow-300 text-3xl xl:text-5xl">Misión</h1>
+              <h1 className="text-white text-md xl:text-xl py-8 text-justify">
                 Ofrecer y apoyar a nuestros clientes con soluciones de
                 ingeniería para la construcción, mantenimiento de instalaciones
                 e infraestructura de eventos, a través de la renta y venta de
                 estructuras metálicas.
               </h1>
-              <h1 className="text-yellow-300 text-6xl pt-8">Visión</h1>
-              <h1 className="text-white text-xl py-8 text-justify">
+              <h1 className="text-yellow-300 text-3xl xl:text-5xl pt-8">
+                Visión
+              </h1>
+              <h1 className="text-white text-md xl:text-xl py-8 text-justify">
                 Ser una empresa de clase mundial, líder nacional en el sector de
                 andamios, destacandonos por la satisfacción de nuestros
                 clientes, el desarrollo de nuestros colaboradores y las
@@ -96,10 +102,10 @@ export default function NosotrosPage() {
           style={{ backgroundImage: `url(${Calidad})` }}
         >
           <div>
-            <h1 className="text-yellow-300 text-4xl xl:text-6xl text-center">
+            <h1 className="text-yellow-300 text-2xl xl:text-6xl text-center">
               LA CALIDAD ES PRIMERO
             </h1>
-            <h1 className="text-white text-lg xl:text-xl text-justify py-8">
+            <h1 className="text-white text-md xl:text-xl text-justify py-8">
               "Nos enorgullecemos de ofrecer un servicio integral que abarca
               desde la planificación hasta la fase operativa de la obra. Como
               empresa altamente especializada y confiable, nos comprometemos a
@@ -114,12 +120,29 @@ export default function NosotrosPage() {
         </div>
       </div>
       <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24">
-        <div className="grid grid-cols-4 gap-4 w-full">
-          <CardCodigos titulo={"Código de conducta"}></CardCodigos>
-          <CardCodigos titulo={"Aviso de privacidad"}></CardCodigos>
-          <CardCodigos titulo={"Código de etica"}></CardCodigos>
-          <CardCodigos titulo={"Politica de calidad"}></CardCodigos>
+        <div className="w-full">
+          <h1 className="text-yellow-300 text-3xl xl:text-5xl pb-2">
+            Transparencia que Nos Define
+          </h1>
+          <h1 className="text-white text-md xl:text-xl pb-16">
+            Descubre Nuestras Políticas y Compromisos.
+          </h1>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 w-full">
+            <CardCodigos titulo={"Código de conducta"}></CardCodigos>
+            <CardCodigos titulo={"Aviso de privacidad"}></CardCodigos>
+            <CardCodigos titulo={"Código de etica"}></CardCodigos>
+            <CardCodigos titulo={"Politica de calidad"}></CardCodigos>
+          </div>
         </div>
+      </div>
+      <div className=" bg-neutral-800 flex justify-center items-center w-full xl:p-24">
+        <Contacto
+          titulo={"Confía en Nosotros"}
+          cuerpo={
+            "Andamios SM8, tu Socio de Confianza para Soluciones Inigualables"
+          }
+          rosetin={Rose}
+        ></Contacto>
       </div>
     </div>
   );
