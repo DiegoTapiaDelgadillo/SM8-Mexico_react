@@ -14,6 +14,7 @@ import Graderia from "./img/graderias.jpg";
 import Silleta from "./img/silleta.jpg";
 import Tirantes from "./img/tirantes.jpg";
 import Arco from "./img/arcotecho.jpg";
+import CatalogoPDF from "./pdf/Catаlogo SM8 2023.pdf";
 export default function ServiciosPage() {
   return (
     <div>
@@ -63,6 +64,7 @@ export default function ServiciosPage() {
             cuerpo={
               "Construida con madera de pino a los extremos y al centro madera de pino multicapa armado transversalmente, siendo las más ligeras del mercado."
             }
+            ruta={"/Servicios/Viga"}
           ></CardServicios>
           <CardServicios
             rutaImagen={Graderia}
@@ -70,6 +72,7 @@ export default function ServiciosPage() {
             cuerpo={
               "Instalación de gradas temporales con capacidad desde 25 personas hasta 10 mil. Además de renta e instalación de vallas metálicas que otorgaran la mayor comodidad y seguridad a tus eventos."
             }
+            ruta={"/Servicios/Graderias"}
           ></CardServicios>
           <CardServicios
             rutaImagen={Silleta}
@@ -77,6 +80,7 @@ export default function ServiciosPage() {
             cuerpo={
               "Proporcionar el espacio necesario para lograr el recubrimiento especificado al acero de refuerzo."
             }
+            ruta={"/Servicios/Silletas"}
           ></CardServicios>
           <CardServicios
             rutaImagen={Tirantes}
@@ -84,6 +88,7 @@ export default function ServiciosPage() {
             cuerpo={
               "Son elementos de acero de alto carbón que sirven para retener las paredes a la cimbra, antes, durante y después del vaciado de concreto."
             }
+            ruta={"/Servicios/Tirantes"}
           ></CardServicios>
           <CardServicios
             rutaImagen={Arco}
@@ -91,6 +96,7 @@ export default function ServiciosPage() {
             cuerpo={
               "Es un sistema constructivo autoportante a base de arcos de acero galvanizado y pintado, fabricados a pie de obra. "
             }
+            ruta={"/Servicios/Arcotechos"}
           ></CardServicios>
         </div>
       </div>
@@ -105,7 +111,9 @@ export default function ServiciosPage() {
                 En el siguiente catálogo, encontrarás todas las especificaciones
                 técnicas detalladas de nuestros materiales y servicios.
               </h2>
-              <BotonPrincipal text={"Conocer"}></BotonPrincipal>
+              <a href={CatalogoPDF} target="_blank">
+                <BotonPrincipal text={"Conocer"}></BotonPrincipal>
+              </a>
             </div>
           </div>
           <div className="h-full flex justify-center items-center">

@@ -4,6 +4,8 @@ import Foto from "./img/torres_de_servicio_2.jpg";
 import Rosetin from "./img/1.png";
 import Contacto from "../../components/contacto";
 import CardCatalogo from "../../components/cardCatalogo";
+import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
+import CatalogoTorre from "./pdf/digital-construccion.pdf";
 export default function TorresPage() {
   return (
     <div>
@@ -50,12 +52,14 @@ export default function TorresPage() {
           <CardCatalogo
             titulo={"Catálogo SM8"}
             cuerpo={"Explora Nuestro Catálogo SM8 para Proyectos Inigualables."}
+            catalogo={CatalogoSm8}
           ></CardCatalogo>
           <CardCatalogo
             titulo={"Catálogo Torre"}
             cuerpo={
               "Descubre nuestro catálogo exclusivo para soluciones innovadoras."
             }
+            catalogo={CatalogoTorre}
           ></CardCatalogo>
         </div>
       </div>

@@ -8,6 +8,7 @@ import Calidad from "./img/calidad.jpg";
 import CardCodigos from "../../components/cardCodigos";
 import Contacto from "../../components/contacto";
 import Rose from "./img/Character_Render_02.png";
+import Certi from "./pdf/certificado-sm8.pdf";
 export default function NosotrosPage() {
   return (
     <div>
@@ -55,11 +56,7 @@ export default function NosotrosPage() {
                 obtener diferentes certificaciones para estar a la altura del
                 mercado.
               </h2>
-              <a
-                href="./pdf/certificado-sm8.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={Certi} target="_blank" rel="noopener noreferrer">
                 <BotonPrincipal text={"Visitar"}></BotonPrincipal>
               </a>
             </div>
@@ -122,7 +119,7 @@ export default function NosotrosPage() {
       <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24">
         <div className="w-full">
           <h1 className="text-yellow-300 text-3xl xl:text-5xl pb-2">
-            Transparencia que Nos Define
+            Transparencia que nos define
           </h1>
           <h1 className="text-white text-md xl:text-xl pb-16">
             Descubre Nuestras Políticas y Compromisos.

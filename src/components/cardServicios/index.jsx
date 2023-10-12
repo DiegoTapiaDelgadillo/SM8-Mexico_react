@@ -8,10 +8,12 @@ export default function CardServicios({ titulo, cuerpo, ruta, rutaImagen }) {
       </div>
       <div className="xl:py-8 px-8 flex justify-center items-center">
         <div>
-          <h1 className="text-yellow-300 text-3xl text-center pb-4">
+          <h1 className="text-yellow-300 text-xl xl:text-3xl text-center pb-4">
             {titulo}
           </h1>
-          <h2 className="text-white text-justify pb-4">{cuerpo}</h2>
+          <h2 className="text-white text-md xl:text-xl text-justify pb-4">
+            {cuerpo}
+          </h2>
           <div className="grid w-full justify-items-center pb-8 md:p-0">
             <Link to={ruta}>
               <BotonPrincipal text={"Visitar"}></BotonPrincipal>

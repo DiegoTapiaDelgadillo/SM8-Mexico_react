@@ -4,6 +4,7 @@ import Foto from "./img/tuboJunta2.jpg";
 import CardCatalogo from "../../components/cardCatalogo";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import Tubo from "./pdf/CATALOGO_SM8_ligero.pdf";
 export default function TuboPage() {
   return (
     <div>
@@ -44,10 +45,11 @@ export default function TuboPage() {
       <div className="flex justify-center items-center w-full bg-neutral-800 h-auto  p-12 xl:p-24">
         <div className="grid grid-cols-1 w-full">
           <CardCatalogo
-            titulo={"Catálogo"}
+            titulo={"Catálogo SM8"}
             cuerpo={
               "Explora nuestro universo de posibilidades, descubre el catálogo completo"
             }
+            catalogo={Tubo}
           ></CardCatalogo>
         </div>
       </div>

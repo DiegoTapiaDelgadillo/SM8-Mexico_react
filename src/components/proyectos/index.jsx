@@ -5,8 +5,10 @@ import Industria from "./img/4.png";
 export default function Proyectos() {
   return (
     <div className="w-full p-12 md:p-40  h-auto">
-      <h1 className="text-5xl text-yellow-300 pb-2">Alcanza las Alturas</h1>
-      <h1 className="text-xl text-white pb-16">
+      <h1 className="text-3xl md:text-5xl text-yellow-300 pb-2">
+        Alcanza las Alturas
+      </h1>
+      <h1 className="text-md md:text-xl text-white pb-8 xl:pb-16">
         Explora el Potencial Infinito de Andamios SM8 en Tus Proyectos.
       </h1>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">

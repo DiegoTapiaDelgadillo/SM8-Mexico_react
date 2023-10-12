@@ -17,6 +17,11 @@ export default function App() {
   const Torres = lazy(() => import("./pages/serviciosPage/torresPage"));
   const Cimbra = lazy(() => import("./pages/serviciosPage/cimbraPage"));
   const Tubo = lazy(() => import("./pages/serviciosPage/tuboPage"));
+  const Viga = lazy(() => import("./pages/serviciosPage/vigaPage"));
+  const Graderias = lazy(() => import("./pages/serviciosPage/graderiasPage"));
+  const Silletas = lazy(() => import("./pages/serviciosPage/silletasPage"));
+  const Tirantes = lazy(() => import("./pages/serviciosPage/tirantesPage"));
+  const Arco = lazy(() => import("./pages/serviciosPage/arcotechosPage"));
 
   return (
     <BrowserRouter>
@@ -32,6 +37,11 @@ export default function App() {
           <Route path="/Servicios/Torres" element={<Torres />}></Route>
           <Route path="/Servicios/Cimbra" element={<Cimbra />}></Route>
           <Route path="/Servicios/TuboJunta" element={<Tubo />}></Route>
+          <Route path="/Servicios/Viga" element={<Viga />}></Route>
+          <Route path="/Servicios/Graderias" element={<Graderias />}></Route>
+          <Route path="/Servicios/Silletas" element={<Silletas />}></Route>
+          <Route path="/Servicios/Tirantes" element={<Tirantes />}></Route>
+          <Route path="/Servicios/Arcotechos" element={<Arco />}></Route>
           <Route path="/Sucursales" element={<Sucursales />}></Route>
           <Route path="/Vacantes" element={<Vacantes />}></Route>
           <Route path="/Contacto" element={<Contacto />}></Route>

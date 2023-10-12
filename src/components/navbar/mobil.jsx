@@ -3,6 +3,7 @@ import Instagram from "./img/instagram.png";
 import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
 import { Link } from "react-router-dom";
+
 export default function MobilMenu() {
   return (
     <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed">

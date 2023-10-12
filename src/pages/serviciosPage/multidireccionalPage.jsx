@@ -5,6 +5,8 @@ import Foto2 from "./img/multidireccional.jpg";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
 import CardCatalogo from "../../components/cardCatalogo";
+import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
+import Eventos from "./pdf/Catalogo Eventos digital.pdf";
 export default function MultidireccionalPage() {
   return (
     <div className="">
@@ -94,11 +96,13 @@ export default function MultidireccionalPage() {
           <CardCatalogo
             titulo={"Catálogo SM8"}
             cuerpo={"Explora Nuestro Catálogo SM8 para Proyectos Inigualables."}
+            catalogo={CatalogoSm8}
           ></CardCatalogo>
           <div>
             <CardCatalogo
-              titulo={"Catálogo Eventos"}
-              cuerpo={"Inspírate, Celebra y Crea Momentos Inolvidables."}
+              titulo={"Catálogo de eventos"}
+              cuerpo={"Conoce nuestro catálogo de eventos"}
+              catalogo={Eventos}
             ></CardCatalogo>
           </div>
         </div>

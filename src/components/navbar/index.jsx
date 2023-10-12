@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
-  const [isShow, setShow] = useState(false);
   const [scrolling, setScrolling] = useState(false);
 
   const NavbarOpen = () => {
@@ -20,10 +19,6 @@ export default function Navbar() {
 
   const ShowElement = () => {
     setShow(true);
-  };
-
-  const NotShowElement = () => {
-    setShow(false);
   };
 
   const handleScroll = () => {
@@ -82,13 +77,28 @@ export default function Navbar() {
                 </li>
                 <li className="px-4 py-4 text-yellow-300/50">|</li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
-                  <img src={Facebook} alt="" className="w-6" />
+                  <a
+                    href="https://www.facebook.com/sm8demexico"
+                    target="_blank"
+                  >
+                    <img src={Facebook} alt="" className="w-6" />
+                  </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
-                  <img src={Instagram} alt="" className="w-6" />
+                  <a
+                    href="https://www.instagram.com/sm8demexico/"
+                    target="_blank"
+                  >
+                    <img src={Instagram} alt="" className="w-6" />
+                  </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
-                  <img src={Linkedin} alt="" className="w-6" />
+                  <a
+                    href="https://www.linkedin.com/company/sm8/"
+                    target="_blank"
+                  >
+                    <img src={Linkedin} alt="" className="w-6" />
+                  </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
                   <img src={Whastapp} alt="" className="w-6" />
@@ -103,52 +113,26 @@ export default function Navbar() {
               <img src={SM8Icono} alt="" className="w-6" />
             </div>
             <div>
-              <div className={isNavbarOpen ? "hidden" : "block"}>
-                <div
-                  onMouseEnter={ShowElement}
-                  className={isShow ? "hidden" : "block"}
+              <div
+                className={isNavbarOpen ? "hidden" : "block"}
+                onClick={NavbarOpen}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-8 h-8 stroke-yellow-300 cursor-pointer"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-8 h-8 stroke-yellow-300 cursor-pointer"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                  </svg>
-                </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
               </div>
 
-              <div
-                onMouseLeave={NotShowElement}
-                className={isShow ? "block" : "hidden"}
-              >
-                <div
-                  onClick={NavbarOpen}
-                  className={isNavbarOpen ? "hidden" : "block"}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    className="w-8 h-8 stroke-yellow-300 cursor-pointer"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
-                    />
-                  </svg>
-                </div>
-              </div>
               <div
                 onClick={NavbarOpen}
                 className={isNavbarOpen ? "block" : "hidden"}

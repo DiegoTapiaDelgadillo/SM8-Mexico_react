@@ -26,7 +26,7 @@ export default function HomePage() {
       </div>
       <div className="h-auto xl:h-screen w-full flex justify-center items-center bg-neutral-900 p-12 md:p-48">
         <div className="w-full h-auto">
-          <h1 className="text-yellow-300 text-center text-5xl pb-12 md:pb-24">
+          <h1 className="text-yellow-300 text-center text-3xl md:text-5xl pb-12 md:pb-24">
             ¿Por qué escogernos?
           </h1>
           <div className="grid grid-cols-1 xl:grid-cols-3 w-full justify-items-center gap-4">

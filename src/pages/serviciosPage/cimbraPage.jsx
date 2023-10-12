@@ -4,6 +4,8 @@ import Foto from "./img/cimbra_2.jpg";
 import CardCatalogo from "../../components/cardCatalogo";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
+import Apuntalamiento from "./pdf/Catalogo apuntalamiento_compressed.pdf";
 export default function CimbraPage() {
   return (
     <div>
@@ -76,13 +78,15 @@ export default function CimbraPage() {
           <CardCatalogo
             titulo={"Catálogo SM8"}
             cuerpo={"Explora Nuestro Catálogo SM8 para Proyectos Inigualables."}
+            catalogo={CatalogoSm8}
           ></CardCatalogo>
           <div>
             <CardCatalogo
-              titulo={"Catálogo"}
+              titulo={"Catálogo Apuntalamiento"}
               cuerpo={
                 "Explora nuestro universo de posibilidades: descubre el catálogo completo."
               }
+              catalogo={Apuntalamiento}
             ></CardCatalogo>
           </div>
         </div>
