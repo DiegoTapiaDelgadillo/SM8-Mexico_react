@@ -18,6 +18,11 @@ import Monterrey from "./img/monterrey.jpg";
 import Puebla from "./img/puebla.jpg";
 import Vallarta from "./img/vallarta.jpg";
 import Queretaro from "./img/qro.jpg";
+import Tijuana from "./img/tijuana.jpg";
+import Toluca from "./img/toluca.jpg";
+import Tuxcla from "./img/tuxtla.jpg";
+import Zapopan from "./img/zapopan.jpg";
+import Corporativo from "./img/corpo.jpg";
 export default function SucursalesPage() {
   return (
     <div>
@@ -184,6 +189,61 @@ export default function SucursalesPage() {
             rutaImagen={Queretaro}
             maps={
               "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Quer%C3%A9taro/@20.5790424,-100.4020271,17z/data=!3m1!4b1!4m6!3m5!1s0x85d34528db4fabdb:0x70eeb421df9c1f27!8m2!3d20.5790424!4d-100.3994522!16s%2Fg%2F11b806dbc4"
+            }
+          ></CardSucursales>
+          <CardSucursales
+            titulo={"Tijuana, B.C"}
+            direccion={
+              "Blvr. Lázaro Cárdenas 10, Los Santos, 22104 Tijuana, B.C."
+            }
+            telefono={"664 622 2160"}
+            rutaImagen={Tijuana}
+            maps={
+              "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Tijuana/@32.5049967,-116.9653844,17z/data=!3m1!4b1!4m6!3m5!1s0x80d94805c119245f:0xe4f6f2835fd3849!8m2!3d32.5049967!4d-116.9628095!16s%2Fg%2F1vg_7l7p"
+            }
+          ></CardSucursales>
+          <CardSucursales
+            titulo={"Toluca, Edo.Méx"}
+            direccion={
+              "Benito Juárez 16, Reforma, 52100 San Mateo Atenco, Méx."
+            }
+            telefono={"722 238 1405"}
+            rutaImagen={Toluca}
+            maps={
+              "https://www.google.com/maps/place/Andamios+SM8+de+M%C3%A9xico+-+Suc.+Toluca/@19.2931019,-99.5633589,17z/data=!3m1!4b1!4m6!3m5!1s0x85cd8ac75ff1d79f:0x1c8d054fcb5db2aa!8m2!3d19.2931019!4d-99.560784!16s%2Fg%2F11c2q3vs_h"
+            }
+          ></CardSucursales>
+          <CardSucursales
+            titulo={"Tuxtla Gutiérrez, Chis"}
+            direccion={
+              "Libramiento Nte. Pte. 812, Plan de Ayala Ampliación Sur, 29020 Tuxtla Gutiérrez, Chis."
+            }
+            telefono={"961 119 0305"}
+            rutaImagen={Tuxcla}
+            maps={
+              "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Tuxtla+Gtz./@16.7756279,-93.1873349,17z/data=!3m1!4b1!4m6!3m5!1s0x85ecdbe15708181f:0x2b7e3838542a6016!8m2!3d16.775628!4d-93.182464!16s%2Fg%2F11bwbwp8jz"
+            }
+          ></CardSucursales>
+          <CardSucursales
+            titulo={"Zapopan, Jal"}
+            direccion={
+              "Av. Perif. Pte. Manuel Gómez Morin 6360, Miramar, 45060 Zapopan, Jal."
+            }
+            telefono={"33 3070 4277"}
+            rutaImagen={Zapopan}
+            maps={
+              "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Zapopan/@20.6375891,-103.4400188,19z/data=!4m10!1m2!2m1!1ssm8!3m6!1s0x8428ad3e5e9b6ee9:0x76373cdfbd55d76b!8m2!3d20.6377064!4d-103.4395474!15sCgNzbTgiA4gBAZIBG2J1aWxkaW5nX21hdGVyaWFsc19zdXBwbGllcuABAA!16s%2Fg%2F11b7ln07rs?hl=es&entry=ttu"
+            }
+          ></CardSucursales>
+          <CardSucursales
+            titulo={"Corporativo"}
+            direccion={
+              "C. Guillermo Gonzalez Camarena 1450-Piso 4, Santa Fe, Sta Fé, Álvaro Obregón, 01210 Ciudad de México, CDMX"
+            }
+            telefono={"55 5514 2372"}
+            rutaImagen={Corporativo}
+            maps={
+              "https://www.google.com/maps/place/ANDAMIOS+SM8+DE+MEXICO+CORPORATIVO/@19.3650303,-99.2653537,17z/data=!4m6!3m5!1s0x85d1f92bdc5655cf:0xadc2c6b7c3f1798d!8m2!3d19.364756!4d-99.2656536!16s%2Fg%2F11grtx83sx"
             }
           ></CardSucursales>
         </div>

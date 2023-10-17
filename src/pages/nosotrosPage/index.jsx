@@ -43,9 +43,9 @@ export default function NosotrosPage() {
         </div>
       </div>
       <div className=" bg-neutral-800 flex justify-center items-center py-24 px-12 xl:p-24">
-        <div className="bg-neutral-900 p-24 rounded-3xl shadow-2xl w-full border-4 border-neutral-900 hover:border-yellow-300 ease-in-out duration-300 grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="flex justify-center items-center">
-            <div>
+        <div className="bg-neutral-900 p-12 xl:p-24 rounded-3xl shadow-2xl w-full border-4 border-neutral-900 hover:border-yellow-300 ease-in-out duration-300 grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <div className="flex justify-center items-center w-full">
+            <div className="w-full p-0">
               <h1 className="text-yellow-300 text-3xl xl:text-5xl">
                 Conoce nuestras certificaciones
               </h1>

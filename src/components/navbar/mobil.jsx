@@ -29,7 +29,12 @@ export default function MobilMenu() {
               <Link to={"/Nosotros"}>Nosotros</Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              Catálogo
+              <a
+                href="https://publuu.com/flip-book/177837/438154"
+                target="_blank"
+              >
+                Catálogo
+              </a>
             </li>
             <li className="py-8">
               <div className="flex w-full justify-center">

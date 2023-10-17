@@ -81,13 +81,13 @@ export default function GraderiasPage() {
           <CardCatalogo
             titulo={"Catálogo SM8"}
             cuerpo={"Explora Nuestro Catálogo SM8 para Proyectos Inigualables."}
-            catalogo={CatalogoSm8}
+            catalogo={"https://publuu.com/flip-book/177837/438154"}
           ></CardCatalogo>
           <div>
             <CardCatalogo
               titulo={"Catálogo de eventos"}
               cuerpo={"Conoce nuestro catálogo de eventos"}
-              catalogo={CatalogoEventos}
+              catalogo={"https://publuu.com/flip-book/177837/604508"}
             ></CardCatalogo>
           </div>
         </div>

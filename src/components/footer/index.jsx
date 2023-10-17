@@ -60,7 +60,12 @@ export default function Footer() {
               <Link to={"/Nosotros"}>Nosotros</Link>
             </li>
             <li className="text-white text-sm cursor-pointer hover:text-neutral-400 ease-in-out duration-300 pb-1">
-              Catálogo
+              <a
+                href="https://publuu.com/flip-book/177837/438154"
+                target="_blank"
+              >
+                Catálogo
+              </a>
             </li>
           </ul>
         </div>

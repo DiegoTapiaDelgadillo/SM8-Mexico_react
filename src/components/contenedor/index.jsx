@@ -3,6 +3,7 @@ import imagen from "./img/8445c776-e17b-4f3c-8c51-ac7b53c411a9.jpg";
 import imagen1 from "./img/eventos 2.jpg";
 import imagen2 from "./img/torres de servicio 2.jpg";
 import imagen3 from "./img/WhatsApp Image 2023-03-15 at 12.44.35 PM.jpeg";
+import { Link } from "react-router-dom";
 export default function Contenedor() {
   return (
     <div className="flex justify-center items-center p-12 md:p-20 xl:h-screen bg-neutral-800">
@@ -13,11 +14,16 @@ export default function Contenedor() {
               Conoce todos nuestros servicios
             </h1>
             <h2 className=" text-white pb-8 text-justify">
-              With Opus, you can borrow against your portfolio, including
-              carefully curated yield-bearing collateral. Interest rates are set
-              autonomously and other risk parameters are determined dynamically.
+              Nos enorgullecemos de ofrecer una amplia gama de servicios
+              diseñados para satisfacer todas tus necesidades. Estamos dedicados
+              a brindarte soluciones integrales y personalizadas que
+              transformarán tus ideas en realidades tangibles. Conoce todos
+              nuestros servicios y descubre cómo podemos ayudarte a alcanzar tus
+              objetivos.
             </h2>
-            <BotonPrincipal text={"visitar"}></BotonPrincipal>
+            <Link to={"/Servicios"}>
+              <BotonPrincipal text={"visitar"}></BotonPrincipal>
+            </Link>
           </div>
         </div>
         <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full h-full xl:p-12 ">

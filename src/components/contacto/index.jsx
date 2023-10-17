@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import BotonPrincipal from "../botonPrincipal";
 export default function Contacto({ titulo, cuerpo, rosetin }) {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full md:px-20 p-0 md:p-12">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full md:px-20 p-12">
       <div className="md:flex md:justify-center md:items-center">
         <div className="w-full">
           <h1 className="text-yellow-300 text-3xl md:text-5xl">{titulo}</h1>

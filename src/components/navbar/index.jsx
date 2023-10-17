@@ -73,7 +73,12 @@ export default function Navbar() {
                   <Link to="/Nosotros">Nosotros</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
-                  Catálogo
+                  <a
+                    href="https://publuu.com/flip-book/177837/438154"
+                    target="_blank"
+                  >
+                    Catálogo
+                  </a>
                 </li>
                 <li className="px-4 py-4 text-yellow-300/50">|</li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">

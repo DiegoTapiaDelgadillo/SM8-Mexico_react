@@ -49,7 +49,7 @@ export default function TuboPage() {
             cuerpo={
               "Explora nuestro universo de posibilidades, descubre el catálogo completo"
             }
-            catalogo={Tubo}
+            catalogo={"https://publuu.com/flip-book/177837/438154"}
           ></CardCatalogo>
         </div>
       </div>

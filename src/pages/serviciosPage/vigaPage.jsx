@@ -2,7 +2,6 @@ import Fondo from "./img/viga_h20.jpg";
 import Foto from "./img/viga_h20_2.jpg";
 import Mural from "../../components/mural";
 import CardCatalogo from "../../components/cardCatalogo";
-import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
 import CatalogoViga from "./pdf/SM8 -Viga H20.pdf";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
@@ -88,7 +87,7 @@ export default function VigaPage() {
           <CardCatalogo
             titulo={"Catálogo SM8"}
             cuerpo={"Explora Nuestro Catálogo SM8 para Proyectos Inigualables."}
-            catalogo={CatalogoSm8}
+            catalogo={"https://publuu.com/flip-book/177837/438154"}
           ></CardCatalogo>
           <div>
             <CardCatalogo
