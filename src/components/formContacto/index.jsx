@@ -13,7 +13,7 @@ export default function FormContacto() {
 
   const enviarCorreo = async () => {
     try {
-      await axios.post("http://localhost:3001/enviar-correo", {
+      await axios.post("http://localhost:3001/api/enviar-correo", {
         correoDestino,
         asunto,
         nombre,
