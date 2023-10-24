@@ -3,15 +3,26 @@ import Instagram from "./img/instagram.png";
 import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function MobilMenu() {
+  const [isCloseMovil, setCloseMovil] = useState(false);
+
+  const movilNavar = () => {
+    setCloseMovil(!isCloseMovil);
+    console.log(isCloseMovil);
+    return isCloseMovil;
+  };
+
   return (
     <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed">
       <div className="grid w-3/6 pt-8 pb-8">
         <div className="grid w-full">
           <ul className="divide-y-2 divide-yellow-300/10">
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
-              <Link to={"/"}>Inicio</Link>
+              <Link to={"/"} onClick={movilNavar}>
+                Inicio
+              </Link>
             </li>
             <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
               <Link to={"/Servicios"}>Servicios</Link>

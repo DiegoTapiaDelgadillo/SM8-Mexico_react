@@ -1,31 +1,48 @@
 import BotonPrincipal from "../botonPrincipal";
-import axios from "axios";
+//import axios from "axios";
 import { useState } from "react";
 
 export default function FormContacto() {
-  const [correoDestino, setCorreoDestino] = useState("");
-  const [asunto, setAsunto] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [ciudad, setCiudad] = useState("");
-  const [empresa, setEmpresa] = useState("");
-  const [mensaje, setMensaje] = useState("");
+  const [formData, setFormData] = useState({
+    correoDestino: "",
+    asunto: "",
+    nombre: "",
+    telefono: "",
+    ciudad: "",
+    empresa: "",
+    mensaje: "",
+  });
 
-  const enviarCorreo = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
-      await axios.post("http://localhost:3001/api/enviar-correo", {
-        correoDestino,
-        asunto,
-        nombre,
-        telefono,
-        ciudad,
-        empresa,
-        mensaje,
+      const response = await fetch("http://localhost:3000/api/enviar-correo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        console.log("Solicitud POST exitosa");
+        alert("El correo se envio con exito");
+      } else {
+        console.error("Error en la solicitud POST");
+        alert("El correo no se pudo enviar");
+      }
     } catch (error) {
-      console.error(error);
-      console.log("Error al enviar el correo");
+      console.error("Error al enviar la solicitud POST:", error);
     }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
@@ -41,56 +58,58 @@ export default function FormContacto() {
           <h2 className="text-white py-4">
             Escribe tus datos y nosotros nos pondremos en contacto contigo.
           </h2>
-          <form action="" method="post">
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
-              name=""
-              id=""
+              name="nombre"
+              id="nombre"
               className="w-full p-4 rounded-xl border-black border-2"
               required="true"
               placeholder="Nombre"
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
+              value={formData.nombre}
+              onChange={handleInputChange}
             />
             <div className="py-2"></div>
             <input
               type="text"
-              name=""
-              id=""
+              name="correoDestino"
+              id="correoDestino"
               className="w-full p-4 rounded-xl border-black border-2"
               required="true"
               placeholder="Email"
-              value={correoDestino}
-              onChange={(e) => setCorreoDestino(e.target.value)}
+              value={formData.correoDestino}
+              onChange={handleInputChange}
             />
             <div className="py-2"></div>
             <input
               type="text"
-              name=""
-              id=""
+              name="telefono"
+              id="telefono"
               className="w-full p-4 rounded-xl border-black border-2"
               placeholder="Teléfono"
               required="true"
-              value={telefono}
-              onChange={(e) => setTelefono(e.target.value)}
+              value={formData.telefono}
+              onChange={handleInputChange}
             />
             <div className="py-2"></div>
             <input
               type="text"
-              name=""
-              id=""
+              name="asunto"
+              id="asunto"
               className="w-full p-4 rounded-xl border-black border-2"
               required="true"
               placeholder="Asunto"
-              value={asunto}
-              onChange={(e) => setAsunto(e.target.value)}
+              value={formData.asunto}
+              onChange={handleInputChange}
             />
             <div className="py-2"></div>
             <select
               className="w-full p-4 rounded-xl border-black border-2 bg-white"
               required="true"
-              value={ciudad}
-              onChange={(e) => setCiudad(e.target.value)}
+              name="ciudad"
+              id="ciudad"
+              value={formData.ciudad}
+              onChange={handleInputChange}
             >
               <option value="Selecciona">Selecciona una ciudad</option>
               <option value="Aguascalientes">Aguascalientes</option>
@@ -118,28 +137,31 @@ export default function FormContacto() {
             <div className="py-2"></div>
             <input
               type="text"
-              name=""
-              id=""
+              name="empresa"
+              id="empresa"
               className="w-full p-4 rounded-xl border-black border-2"
               required="true"
               placeholder="Empresa (opcional)"
-              value={empresa}
-              onChange={(e) => setEmpresa(e.target.value)}
+              value={formData.empresa}
+              onChange={handleInputChange}
             />
             <div className="py-2"></div>
             <textarea
               className="w-full p-4 rounded-xl border-black border-2"
               required="true"
+              name="mensaje"
+              id="mensaje"
               placeholder="Cuéntanos tus ideas y juntos crearemos algo increíble..."
-              value={mensaje}
-              onChange={(e) => setMensaje(e.target.value)}
+              value={formData.mensaje}
+              onChange={handleInputChange}
             ></textarea>
-            <div className="flex justify-between w-full">
-              <div></div>
-              <div onClick={enviarCorreo}>
-                <BotonPrincipal text={"Enviar"}></BotonPrincipal>
-              </div>
-            </div>
+            <div className="p-1"></div>
+            <button
+              type="submit"
+              className="w-full bg-yellow-300 p-4 rounded-3xl border-4 border-black hover:bg-black hover:text-yellow-300 hover:border-yellow-300 shadow-2xl ease-in-out duration-300"
+            >
+              Enviar
+            </button>
           </form>
         </div>
       </div>

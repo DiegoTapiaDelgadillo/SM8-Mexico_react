@@ -9,6 +9,10 @@ import CardCodigos from "../../components/cardCodigos";
 import Contacto from "../../components/contacto";
 import Rose from "./img/Character_Render_02.png";
 import Certi from "./pdf/certificado-sm8.pdf";
+import conducta from "./pdf/Código de Conducta_Rev.00.pdf";
+import privacidad from "./pdf/AVISO DE PRIVACIDAD 2023.pdf";
+import etica from "./pdf/Código de Ética_Rev.00.pdf";
+import calidad from "./pdf/POLITICA DE CALIDAD.pdf";
 export default function NosotrosPage() {
   return (
     <div>
@@ -93,9 +97,9 @@ export default function NosotrosPage() {
           </div>
         </div>
       </div>
-      <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24">
+      <div className=" bg-neutral-800 flex justify-center items-center w-full ">
         <div
-          className="flex bg-cover bg-center h-auto p-12 xl:p-24 justify-center items-center rounded-3xl shadow-2xl"
+          className="flex bg-cover bg-center h-auto p-12 xl:p-24 justify-center items-center "
           style={{ backgroundImage: `url(${Calidad})` }}
         >
           <div>
@@ -125,10 +129,19 @@ export default function NosotrosPage() {
             Descubre Nuestras Políticas y Compromisos.
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 w-full">
-            <CardCodigos titulo={"Código de conducta"}></CardCodigos>
-            <CardCodigos titulo={"Aviso de privacidad"}></CardCodigos>
-            <CardCodigos titulo={"Código de etica"}></CardCodigos>
-            <CardCodigos titulo={"Politica de calidad"}></CardCodigos>
+            <CardCodigos
+              titulo={"Código de conducta"}
+              ruta={conducta}
+            ></CardCodigos>
+            <CardCodigos
+              titulo={"Aviso de privacidad"}
+              ruta={privacidad}
+            ></CardCodigos>
+            <CardCodigos titulo={"Código de ética"} ruta={etica}></CardCodigos>
+            <CardCodigos
+              titulo={"Politica de calidad"}
+              ruta={calidad}
+            ></CardCodigos>
           </div>
         </div>
       </div>

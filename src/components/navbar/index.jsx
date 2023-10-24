@@ -17,10 +17,6 @@ export default function Navbar() {
     console.log(isNavbarOpen);
   };
 
-  const ShowElement = () => {
-    setShow(true);
-  };
-
   const handleScroll = () => {
     if (window.scrollY > 0) {
       setScrolling(true);
@@ -162,7 +158,99 @@ export default function Navbar() {
         </div>
       </nav>
       <div className={isNavbarOpen ? "block xl:hidden" : "hidden"}>
-        <MobilMenu></MobilMenu>
+        <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed">
+          <div className="grid w-3/6 pt-8 pb-8">
+            <div className="grid w-full">
+              <ul className="divide-y-2 divide-yellow-300/10">
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/"} onClick={NavbarOpen}>
+                    Inicio
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/Servicios"} onClick={NavbarOpen}>
+                    Servicios
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/Sucursales"} onClick={NavbarOpen}>
+                    Sucursales
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/Vacantes"} onClick={NavbarOpen}>
+                    Vacantes
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/Contacto"} onClick={NavbarOpen}>
+                    Contacto
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/Nosotros"} onClick={NavbarOpen}>
+                    Nosotros
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <a
+                    href="https://publuu.com/flip-book/177837/438154"
+                    target="_blank"
+                  >
+                    Catálogo
+                  </a>
+                </li>
+                <li className="py-8">
+                  <div className="flex w-full justify-center">
+                    <div className="px-2">
+                      <a
+                        href="https://www.facebook.com/sm8demexico"
+                        target="_blank"
+                      >
+                        <img
+                          src={Facebook}
+                          alt=""
+                          className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
+                        />
+                      </a>
+                    </div>
+                    <div className="px-2">
+                      <a
+                        href="https://www.instagram.com/sm8demexico/"
+                        target="_blank"
+                      >
+                        <img
+                          src={Instagram}
+                          alt=""
+                          className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
+                        />
+                      </a>
+                    </div>
+                    <div className="px-2">
+                      <a
+                        href="https://www.linkedin.com/company/sm8/"
+                        target="_blank"
+                      >
+                        <img
+                          src={Linkedin}
+                          alt=""
+                          className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
+                        />
+                      </a>
+                    </div>
+                    <div className="px-2">
+                      <img
+                        src={Whastapp}
+                        alt=""
+                        className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
+                      />
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
