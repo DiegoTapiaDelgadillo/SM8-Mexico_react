@@ -4,7 +4,6 @@ import Facebook from "./img/facebook.png";
 import Instagram from "./img/instagram.png";
 import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
-import MobilMenu from "./mobil";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -102,7 +101,9 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
-                  <img src={Whastapp} alt="" className="w-6" />
+                  <a href=" https://wa.me/5215514231881" target="_blank">
+                    <img src={Whastapp} alt="" className="w-6" />
+                  </a>
                 </li>
               </ul>
             </div>
@@ -239,11 +240,13 @@ export default function Navbar() {
                       </a>
                     </div>
                     <div className="px-2">
-                      <img
-                        src={Whastapp}
-                        alt=""
-                        className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
-                      />
+                      <a href=" https://wa.me/5215514231881" target="_blank">
+                        <img
+                          src={Whastapp}
+                          alt=""
+                          className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
+                        />
+                      </a>
                     </div>
                   </div>
                 </li>

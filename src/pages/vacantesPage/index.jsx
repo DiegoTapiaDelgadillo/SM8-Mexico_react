@@ -19,40 +19,12 @@ export default function VacantesPage() {
       <div className="bg-neutral-800  w-full py-24 px-12 md:px-24">
         <div className="grid grid-cols-1 gap-4">
           <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"Aguascalientes"}
-            descripcion={"descripción"}
-            requisitos={"requisitos"}
-            oferta={"oferta"}
+            titulo={"Sin vacantes disponibles"}
+            ubicacion={""}
+            descripcion={""}
+            requisitos={""}
+            oferta={""}
           ></CardVacantes>{" "}
-          <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"Aguascalientes"}
-            descripcion={"descripción"}
-            requisitos={"requisitos"}
-            oferta={"oferta"}
-          ></CardVacantes>{" "}
-          <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"Aguascalientes"}
-            descripcion={"descripción"}
-            requisitos={"requisitos"}
-            oferta={"oferta"}
-          ></CardVacantes>{" "}
-          <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"Aguascalientes"}
-            descripcion={"descripción"}
-            requisitos={"requisitos"}
-            oferta={"oferta"}
-          ></CardVacantes>{" "}
-          <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"Aguascalientes"}
-            descripcion={"descripción"}
-            requisitos={"requisitos"}
-            oferta={"oferta"}
-          ></CardVacantes>
         </div>
       </div>
       <div className="flex justify-center items-center bg-neutral-800 h-screen px-6">

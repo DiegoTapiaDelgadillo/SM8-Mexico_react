@@ -1,5 +1,3 @@
-import BotonPrincipal from "../botonPrincipal";
-//import axios from "axios";
 import { useState } from "react";
 
 export default function FormContacto() {
@@ -30,10 +28,10 @@ export default function FormContacto() {
 
       if (response.ok) {
         console.log("Solicitud POST exitosa");
-        alert("El correo se envio con exito");
+        alert("El mensaje se envio con exito");
       } else {
         console.error("Error en la solicitud POST");
-        alert("El correo no se pudo enviar");
+        alert("El mensaje no se pudo enviar");
       }
     } catch (error) {
       console.error("Error al enviar la solicitud POST:", error);
