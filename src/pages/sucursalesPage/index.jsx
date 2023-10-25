@@ -185,7 +185,7 @@ export default function SucursalesPage() {
             direccion={
               "C. Roberto Barrios 2, Casa Blanca, 76030 Santiago de Querétaro, Qro."
             }
-            telefono={"442 242 6065"}
+            telefono={"442 242 8625"}
             rutaImagen={Queretaro}
             maps={
               "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Quer%C3%A9taro/@20.5790424,-100.4020271,17z/data=!3m1!4b1!4m6!3m5!1s0x85d34528db4fabdb:0x70eeb421df9c1f27!8m2!3d20.5790424!4d-100.3994522!16s%2Fg%2F11b806dbc4"
@@ -216,9 +216,9 @@ export default function SucursalesPage() {
           <CardSucursales
             titulo={"Tuxtla Gutiérrez, Chis"}
             direccion={
-              "Libramiento Nte. Pte. 812, Plan de Ayala Ampliación Sur, 29020 Tuxtla Gutiérrez, Chis."
+              "Libramiento Nte. Pte. 812, Plan de Ayala Ampliación Norte, 29020 Tuxtla Gutiérrez, Chis."
             }
-            telefono={"961 119 0305"}
+            telefono={"961 140 3105"}
             rutaImagen={Tuxcla}
             maps={
               "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Tuxtla+Gtz./@16.7756279,-93.1873349,17z/data=!3m1!4b1!4m6!3m5!1s0x85ecdbe15708181f:0x2b7e3838542a6016!8m2!3d16.775628!4d-93.182464!16s%2Fg%2F11bwbwp8jz"

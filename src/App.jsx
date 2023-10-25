@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Loanding from "./components/loandig";
@@ -26,7 +27,7 @@ export default function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar></Navbar>
         <Suspense fallback={<Loanding></Loanding>}>
           <Routes>
@@ -52,7 +53,7 @@ export default function App() {
           </Routes>
         </Suspense>
         <Footer></Footer>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
