@@ -1,12 +1,6 @@
 import BotonPrincipal from "../botonPrincipal";
 import { Link } from "react-router-dom";
-export default function CardVacantes({
-  titulo,
-  descripcion,
-  requisitos,
-  oferta,
-  ubicacion,
-}) {
+export default function CardVacantes({ titulo, ubicacion }) {
   return (
     <div className="border-4 border-neutral-900/80 w-full rounded-3xl shadow-2xl hover:border-yellow-300 ease-in-out duration-300 flex">
       <div className="hidden w-1/6 border-r-4 border-neutral-900/30 h-full lg:block">
@@ -52,24 +46,16 @@ export default function CardVacantes({
           </svg>
           <h2 className="pl-2 text-white">{ubicacion}</h2>
         </div>
-        <div className="flex pt-1">
-          <h2 className="pl-2 text-white font-bold">Descripción: </h2>
-          <h2 className="pl-2 text-white">{descripcion}</h2>
-        </div>
-        <div className="flex pt-1">
-          <h2 className="pl-2 text-white font-bold">Requisitos: </h2>
-          <h2 className="pl-2 text-white">{requisitos}</h2>
-        </div>{" "}
-        <div className="flex pt-1">
-          <h2 className="pl-2 text-white font-bold">Oferta: </h2>
-          <h2 className="pl-2 text-white">{oferta}</h2>
-        </div>
+
         <div className="flex w-full justify-between">
           <div></div>
           <div>
-            <Link to="">
+            <a
+              href="https://api.whatsapp.com/send/?phone=525510021327&text&type=phone_number&app_absent=0"
+              target="_blank"
+            >
               <BotonPrincipal text={"Aplicar"}></BotonPrincipal>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

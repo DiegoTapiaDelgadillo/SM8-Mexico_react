@@ -1,4 +1,3 @@
-import BotonPrincipal from "../botonPrincipal";
 export default function Mural({ title, body, rutaFondo, buttonText }) {
   return (
     <div

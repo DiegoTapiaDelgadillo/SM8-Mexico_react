@@ -15,13 +15,16 @@ export default function FormContacto() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/enviar-correo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://vercel-backend-tau.vercel.app/enviar-correo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         console.log("Solicitud POST exitosa");

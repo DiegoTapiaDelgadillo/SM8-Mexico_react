@@ -19,12 +19,103 @@ export default function VacantesPage() {
       <div className="bg-neutral-800  w-full py-24 px-12 md:px-24">
         <div className="grid grid-cols-1 gap-4">
           <CardVacantes
-            titulo={"Sin vacantes disponibles"}
-            ubicacion={""}
-            descripcion={""}
-            requisitos={""}
-            oferta={""}
-          ></CardVacantes>{" "}
+            titulo={"Analista de ventas"}
+            ubicacion={"CORPORATIVO, CDMX"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante general"}
+            ubicacion={"AGUASCALIENTES"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Chofer (Licencia tipo B)"}
+            ubicacion={"AGUASCALIENTES"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar de Asesor Técnico"}
+            ubicacion={"CANCÚN"}
+          ></CardVacantes>
+          <CardVacantes titulo={"Chofer"} ubicacion={"CANCÚN"}></CardVacantes>
+          <CardVacantes
+            titulo={"Asesor Técnico"}
+            ubicacion={"CUERNVACA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"CUERNVACA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar Administrativo"}
+            ubicacion={"GUADALAJARA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Soldador"}
+            ubicacion={"GUADALAJARA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar Administrativo"}
+            ubicacion={"LA PAZ"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar Administrativo"}
+            ubicacion={"LA PAZ"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar Administrativo de Almacén"}
+            ubicacion={"LOS CABOS"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar de Asesor Técnico"}
+            ubicacion={"LOS CABOS"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Chofer"}
+            ubicacion={"LOS CABOS"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"LOS CABOS"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"MAZATLAN"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"MÉRIDA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"MÉRIDA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar de Asesor Técnico"}
+            ubicacion={"MONTERREY"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"MONTERREY"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"PUERTO VALLARTA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Chofer"}
+            ubicacion={"PUERTO VALLARTA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Auxiliar de Asesor Técnico"}
+            ubicacion={"QUERETARO"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Chofer"}
+            ubicacion={"QUERETARO"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"QUERETARO"}
+          ></CardVacantes>
+          <CardVacantes titulo={"Becario"} ubicacion={"TIJUANA"}></CardVacantes>
         </div>
       </div>
       <div className="flex justify-center items-center bg-neutral-800 h-screen px-6">
