@@ -23,7 +23,7 @@ export default function CardVacantes({ titulo, ubicacion }) {
       </div>
 
       <div className="py-8 px-8 w-full">
-        <h1 className="text-yellow-300 text-4xl pb-2">{titulo}</h1>
+        <h1 className="text-yellow-300 text-2xl md:text-4xl pb-2">{titulo}</h1>
         <div className="flex pt-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,16 +47,13 @@ export default function CardVacantes({ titulo, ubicacion }) {
           <h2 className="pl-2 text-white">{ubicacion}</h2>
         </div>
 
-        <div className="flex w-full justify-between">
-          <div></div>
-          <div>
-            <a
-              href="https://api.whatsapp.com/send/?phone=525510021327&text&type=phone_number&app_absent=0"
-              target="_blank"
-            >
-              <BotonPrincipal text={"Aplicar"}></BotonPrincipal>
-            </a>
-          </div>
+        <div className="flex w-full pt-4 justify-end">
+          <a
+            href="https://api.whatsapp.com/send/?phone=525510021327&text&type=phone_number&app_absent=0"
+            target="_blank"
+          >
+            <BotonPrincipal text={"Aplicar"}></BotonPrincipal>
+          </a>
         </div>
       </div>
     </div>
