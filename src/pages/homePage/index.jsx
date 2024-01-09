@@ -6,8 +6,10 @@ import CardText from "../../components/cardText";
 import Contacto from "../../components/contacto";
 import Proyectos from "../../components/proyectos";
 import Rosetin from "./img/Character_Render_17.png";
+import ScrollTop from "../../hooks/scrollTop";
 
 export default function HomePage() {
+  ScrollTop();
   return (
     <div>
       <Mural

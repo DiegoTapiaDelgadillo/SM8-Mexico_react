@@ -3,8 +3,10 @@ import Fondo from "./img/vacantes.jpg";
 import CardVacantes from "../../components/cardVacantes";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/3.png";
+import ScrollTop from "../../hooks/scrollTop";
 
 export default function VacantesPage() {
+  ScrollTop();
   return (
     <div>
       <Mural

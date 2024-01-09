@@ -23,7 +23,9 @@ import Toluca from "./img/toluca.jpg";
 import Tuxcla from "./img/tuxtla.jpg";
 import Zapopan from "./img/zapopan.jpg";
 import Corporativo from "./img/corpo.jpg";
+import ScrollTop from "../../hooks/scrollTop";
 export default function SucursalesPage() {
+  ScrollTop();
   return (
     <div>
       <Mural

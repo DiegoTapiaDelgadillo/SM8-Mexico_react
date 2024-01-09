@@ -15,7 +15,9 @@ import Silleta from "./img/silleta.jpg";
 import Tirantes from "./img/tirantes.jpg";
 import Arco from "./img/arcotecho.jpg";
 import CatalogoPDF from "./pdf/Catаlogo SM8 2023.pdf";
+import ScrollTop from "../../hooks/scrollTop";
 export default function ServiciosPage() {
+  ScrollTop();
   return (
     <div>
       <Mural

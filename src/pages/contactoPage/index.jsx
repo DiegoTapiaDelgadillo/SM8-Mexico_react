@@ -2,8 +2,10 @@ import FormContacto from "../../components/formContacto";
 import Mural from "../../components/mural";
 import Fondo from "./img/DJI_0341.jpg";
 import Rosetin from "./img/5.png";
+import ScrollTop from "../../hooks/scrollTop";
 
 export default function ContactoPage() {
+  ScrollTop();
   return (
     <div>
       <Mural

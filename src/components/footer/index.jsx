@@ -12,7 +12,7 @@ export default function Footer() {
           <Link to={"/"}>
             <img src={SM8Logo} alt="" className="w-24" />
           </Link>
-          <h2 className="text-white pt-6 pb-6 text-xs">
+          <h2 className="text-white pt-6 pb-6 text-xs text-justify">
             "Construye tus sueños como si estuvieras construyendo un andamio
             sólido: con paciencia, precisión y la confianza de que cada paso te
             acerca más a la cima."
@@ -83,6 +83,8 @@ export default function Footer() {
               </a>
             </li>
           </ul>
+          <h1 className="text-xl text-yellow-300 pt-4 pb-1">Teléfono</h1>
+          <p className="text-white text-sm">55 5514 2372</p>
         </div>
       </div>
       <div class="border border-transparent border-t-neutral-700">
