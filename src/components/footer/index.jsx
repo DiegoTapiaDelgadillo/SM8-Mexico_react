@@ -33,9 +33,14 @@ export default function Footer() {
                 <img src={Linkedin} alt="" className="w-6" />
               </li>
             </a>
-            <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
-              <img src={Whastapp} alt="" className="w-6" />
-            </li>
+            <a
+              href="https://api.whatsapp.com/send/?phone=5215514231881&text&type=phone_number&app_absent=0"
+              target="_blank"
+            >
+              <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
+                <img src={Whastapp} alt="" className="w-6" />
+              </li>
+            </a>
           </ul>
         </div>
         <div>
