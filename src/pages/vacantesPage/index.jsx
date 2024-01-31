@@ -37,6 +37,10 @@ export default function VacantesPage() {
             ubicacion={"CANCÚN"}
           ></CardVacantes>
           <CardVacantes
+            titulo={"Ayudante general"}
+            ubicacion={"CANCÚN"}
+          ></CardVacantes>
+          <CardVacantes
             titulo={"Asesor Técnico"}
             ubicacion={"CANCÚN"}
           ></CardVacantes>
@@ -48,6 +52,10 @@ export default function VacantesPage() {
           <CardVacantes
             titulo={"Ayudante General"}
             ubicacion={"CUERNVACA"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"COATZACOALCOS"}
           ></CardVacantes>
           <CardVacantes
             titulo={"Auxiliar Administrativo"}
@@ -82,10 +90,6 @@ export default function VacantesPage() {
             ubicacion={"MÉRIDA"}
           ></CardVacantes>
           <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"MÉRIDA"}
-          ></CardVacantes>
-          <CardVacantes
             titulo={"Auxiliar de Asesor Técnico"}
             ubicacion={"MONTERREY"}
           ></CardVacantes>
@@ -102,12 +106,20 @@ export default function VacantesPage() {
             ubicacion={"PUERTO VALLARTA"}
           ></CardVacantes>
           <CardVacantes
+            titulo={"Auxiliar Administrativo"}
+            ubicacion={"PUERTO VALLARTA"}
+          ></CardVacantes>
+          <CardVacantes
             titulo={"Auxiliar de Asesor Técnico"}
             ubicacion={"QUERETARO"}
           ></CardVacantes>
           <CardVacantes
             titulo={"Ayudante General"}
             ubicacion={"QUERETARO"}
+          ></CardVacantes>
+          <CardVacantes
+            titulo={"Ayudante General"}
+            ubicacion={"ZAPOPAN"}
           ></CardVacantes>
           <CardVacantes titulo={"Becario"} ubicacion={"TIJUANA"}></CardVacantes>
         </div>
