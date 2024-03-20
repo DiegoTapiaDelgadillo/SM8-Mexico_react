@@ -6,7 +6,7 @@ import Whastapp from "../navbar/img/whatsapp.png";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <footer className="w-full bg-neutral-900 h-auto p-8 xl:p-20">
+    <footer className="w-full bg-neutral-950 h-auto p-8 xl:p-20">
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-36 w-full pb-8">
         <div>
           <Link to={"/"}>

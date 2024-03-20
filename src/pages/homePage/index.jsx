@@ -7,9 +7,10 @@ import Contacto from "../../components/contacto";
 import Proyectos from "../../components/proyectos";
 import Rosetin from "./img/Character_Render_17.png";
 import ScrollTop from "../../hooks/scrollTop";
+import CardCategorias from "../../components/cardCategorias";
 
 export default function HomePage() {
-  ScrollTop();
+  //ScrollTop();
   return (
     <div>
       <Mural
@@ -20,12 +21,13 @@ export default function HomePage() {
         rutaFondo={Fondo}
       ></Mural>
       <Contenedor></Contenedor>
-      <div className="h-auto xl:h-screen w-full flex justify-center items-center bg-neutral-900 py-24">
+      <div className="w-full flex justify-center items-center bg-neutral-900 py-24 px-8 md:py-0 md:px-0 md:h-screen">
         <Clientes></Clientes>
       </div>
-      <div className="h-auto w-full flex justify-center items-center bg-neutral-800">
+      {/*<div className="h-auto w-full flex justify-center items-center bg-neutral-800">
         <Proyectos></Proyectos>
-      </div>
+      </div>*/}
+      <CardCategorias />
       <div className="h-auto xl:h-screen w-full flex justify-center items-center bg-neutral-900 p-12 md:p-48">
         <div className="w-full h-auto">
           <h1 className="text-yellow-300 text-center text-3xl md:text-5xl pb-12 md:pb-24">

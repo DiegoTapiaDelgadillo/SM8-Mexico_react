@@ -2,12 +2,11 @@ import Evento from "./img/1.jpg";
 import Construccion from "./img/2.png";
 import Restauracion from "./img/6.png";
 import Industria from "./img/4.png";
+import Title from "../titles";
 export default function Proyectos() {
   return (
-    <div className="w-full p-12 md:p-40  h-auto">
-      <h1 className="text-3xl md:text-5xl text-yellow-300 pb-2">
-        Alcanza las Alturas
-      </h1>
+    <div className="w-full px-8 py-12 md:p-40  h-auto">
+      <Title text={"Alcanza las Alturas"} />
       <h1 className="text-md md:text-xl text-white pb-8 xl:pb-16">
         Explora el Potencial Infinito de Andamios SM8 en Tus Proyectos.
       </h1>
