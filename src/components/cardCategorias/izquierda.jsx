@@ -12,7 +12,7 @@ export default function CardIzquierda({ img, title, body }) {
           </div>
         </div>
         <div className="md:pl-12 xl:pl-36 text-start">
-          <h1 className="text-6xl 2xl:text-9xl text-yellow-300 py-8">
+          <h1 className="text-6xl 2xl:text-8xl text-yellow-300 py-8">
             {title}
           </h1>
           <h2 className="text-white text-justify pb-8">{body}</h2>

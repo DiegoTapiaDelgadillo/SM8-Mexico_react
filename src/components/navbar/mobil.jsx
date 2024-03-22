@@ -15,7 +15,7 @@ export default function MobilMenu() {
   };
 
   return (
-    <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed">
+    <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed z-50 overflow-hidden">
       <div className="grid w-3/6 pt-8 pb-8">
         <div className="grid w-full">
           <ul className="divide-y-2 divide-yellow-300/10">

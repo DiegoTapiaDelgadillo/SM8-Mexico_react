@@ -11,7 +11,7 @@ export default function CardDerecha({ img, title, body }) {
           ></img>
         </div>
         <div className="md:pr-12 xl:pr-48">
-          <h1 className="text-6xl 2xl:text-9xl text-yellow-300 py-8">
+          <h1 className="text-6xl xl:text-7xl 2xl:text-8xl text-yellow-300 py-8">
             {title}
           </h1>
           <h2 className="text-white text-justify pb-8">{body}</h2>

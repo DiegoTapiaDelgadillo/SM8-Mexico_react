@@ -4,10 +4,10 @@ import Contenedor from "../../components/contenedor";
 import Clientes from "../../components/clientes";
 import CardText from "../../components/cardText";
 import Contacto from "../../components/contacto";
-import Proyectos from "../../components/proyectos";
 import Rosetin from "./img/Character_Render_17.png";
 import ScrollTop from "../../hooks/scrollTop";
 import CardCategorias from "../../components/cardCategorias";
+import Modal from "../../components/modal";
 
 export default function HomePage() {
   //ScrollTop();
@@ -62,7 +62,10 @@ export default function HomePage() {
             "Nuestro grupo de expertos estan listos para brindarte la mejor solución."
           }
           rosetin={Rosetin}
-        ></Contacto>
+        />
+      </div>
+      <div className="h-auo xl:h-screen w-full bg-neutral-800">
+        <Modal />
       </div>
     </div>
   );

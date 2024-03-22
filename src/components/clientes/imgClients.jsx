@@ -8,7 +8,7 @@ import Ocho from "./img/ocho.png";
 import Nueve from "./img/nueve.png";
 export default function ImgClients() {
   return (
-    <div className="grid">
+    <div className="grid z-10">
       <div className="flex">
         <div className="px-1">
           <img

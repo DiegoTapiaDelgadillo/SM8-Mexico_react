@@ -4,11 +4,11 @@ export default function Clientes() {
   return (
     <div className="flex justify-center items-center">
       <div className="absolute pb-96 hidden md:block">
-        <ImgClients></ImgClients>
+        <ImgClients />
       </div>
       <div className="w-full md:w-4/6 h-auto bg-neutral-800 rounded-3xl shadow-2xl p-6 md:px-16 md:pt-48 md:pb-16">
-        <div className="flex justify-center items-center pb-8 md:hidden">
-          <ImgClients></ImgClients>
+        <div className="flex justify-center items-center pb-8 md:hidden z-0">
+          <ImgClients />
         </div>
         <Title
           text={"Nuestros principales clientes"}
