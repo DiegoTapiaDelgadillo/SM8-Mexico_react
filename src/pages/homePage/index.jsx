@@ -64,9 +64,6 @@ export default function HomePage() {
           rosetin={Rosetin}
         />
       </div>
-      <div className="h-auo xl:h-screen w-full bg-neutral-800">
-        <Modal />
-      </div>
     </div>
   );
 }

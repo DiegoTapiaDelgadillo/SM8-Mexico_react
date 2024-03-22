@@ -1,6 +1,8 @@
 import React from "react";
+import Carrusel from "../carrusel";
+import CloseSvg from "../closeSvg";
 
-export default function Modal() {
+export default function Modal({ imagenes }) {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
@@ -13,15 +15,30 @@ export default function Modal() {
       </button>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-my-blur">
-            <div className="relative w-full px-8 py-48">
-              <div className="w-auto rounded-md bg-white">
-                <div className="flex justify-end w-full p-4">
-                  <button type="button" onClick={() => setShowModal(false)}>
-                    X
-                  </button>
+          <div className="justify-center items-center flex   fixed inset-0 z-50 outline-none focus:outline-none bg-my-blur animate-fade">
+            <div className="relative w-full px-8 xl:px-64 py-48">
+              <div className="w-auto rounded-md bg-black overscroll-y-contain">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div>
+                    <Carrusel images={imagenes} />
+                  </div>
+                  <div className="py-4 p-8 border-y border-r border-black rounded-r-md">
+                    <div className="flex items-start justify-end w-full">
+                      <CloseSvg onClick={() => setShowModal(false)} />
+                    </div>
+                    <div>
+                      <h1 className="text-2xl md:text-4xl lg:text-6xl text-yellow-300 py-8 uppercase">
+                        Tecate pa'l norte 2021
+                      </h1>
+                      <p className="text-white text-justify text-sm md:text-md">
+                        Nuestro sistema es el ideal para restauraciones tanto en
+                        exteriores como en interiores, además gracias a su
+                        estabilidad, se pueden cubrir grandes extensiones de
+                        obra sin importar la altura.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className=""></div>
               </div>
             </div>
           </div>

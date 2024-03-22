@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`w-full h-auto fixed z-50 shadow-md ${
+        className={`w-full h-auto fixed z-50 shadow-md animate-fade-down ${
           scrolling
             ? "bg-neutral-950 ease-in-out duration-300"
             : "bg-transparent ease-in-out duration-300"
@@ -159,7 +159,7 @@ export default function Navbar() {
         </div>
       </nav>
       <div className={isNavbarOpen ? "block xl:hidden" : "hidden"}>
-        <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed">
+        <div className="grid pt-16 w-full h-screen bg-neutral-900 text-yellow-300 justify-items-center fixed z-40">
           <div className="grid w-3/6 pt-8 pb-8">
             <div className="grid w-full">
               <ul className="divide-y-2 divide-yellow-300/10">
