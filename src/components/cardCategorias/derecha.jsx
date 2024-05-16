@@ -1,10 +1,4 @@
-import Modal from "../modal";
-import foto1 from "./img/1.jpg";
-import foto2 from "./img/2.png";
-import foto3 from "./img/4.png";
-
 export default function CardDerecha({ img, title, body }) {
-  const fotos = [foto1, foto2, foto3];
   return (
     <div className="py-12 sm:py-24 xl:h-screen bg-neutral-800 flex justify-center items-center">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center w-full px-8 md:p-0">
@@ -19,7 +13,6 @@ export default function CardDerecha({ img, title, body }) {
             {title}
           </h1>
           <h2 className="text-white text-justify pb-8">{body}</h2>
-          <Modal imagenes={fotos} />
         </div>
       </div>
     </div>

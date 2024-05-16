@@ -14,7 +14,7 @@ export default function CardServicios({ titulo, cuerpo, ruta, rutaImagen }) {
           <h2 className="text-white text-md xl:text-xl text-justify pb-4">
             {cuerpo}
           </h2>
-          <div className="grid w-full justify-items-center pb-8 md:p-0">
+          <div className="grid w-full justify-items-center pb-8">
             <Link to={ruta}>
               <BotonPrincipal text={"Visitar"}></BotonPrincipal>
             </Link>

@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`w-full h-auto fixed z-50 shadow-md animate-fade-down ${
+        className={`w-full h-auto fixed z-50 animate-fade-down ${
           scrolling
             ? "bg-neutral-950 ease-in-out duration-300"
             : "bg-transparent ease-in-out duration-300"

@@ -7,7 +7,8 @@ import Contacto from "../../components/contacto";
 import Rosetin from "./img/Character_Render_17.png";
 import ScrollTop from "../../hooks/scrollTop";
 import CardCategorias from "../../components/cardCategorias";
-import Modal from "../../components/modal";
+import Peluches from "../../assets/PELUSHES WEB.webp";
+import Title from "../../components/titles";
 
 export default function HomePage() {
   //ScrollTop();
@@ -20,8 +21,32 @@ export default function HomePage() {
         }
         rutaFondo={Fondo}
       ></Mural>
+      <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
+        <div className="hidden xl:block">
+          <h1 className=" text-yellow-500"></h1>
+          <Title text={"Adquiere nuestro adorable Rosetín de peluche"} />
+          <h2 className=" text-white pb-8 text-justify">
+            En SM8, sabemos que un peluche no es solo un juguete, es un
+            compañero de aventuras, un guardián de sueños y un amigo
+            inseparable. Nuestra nueva colección de peluches está diseñada para
+            derretir corazones de todas las edades con encanto inigualable.
+          </h2>
+        </div>
+        <figure className=" xl:flex xl:justify-center 2xl:justify-end">
+          <a
+            href="https://api.whatsapp.com/send/?phone=5215514231881&text&type=phone_number&app_absent=0"
+            target="_blank"
+          >
+            <img
+              src={Peluches}
+              alt=""
+              className=" md:rounded-xl md:shadow-2xl"
+            />
+          </a>
+        </figure>
+      </div>
       <Contenedor></Contenedor>
-      <div className="w-full flex justify-center items-center bg-neutral-900 py-24 px-8 md:py-0 md:px-0 md:h-screen">
+      <div className="w-full flex justify-center items-center bg-neutral-900 py-24 px-2 md:py-0 md:px-0 md:h-screen">
         <Clientes></Clientes>
       </div>
       {/*<div className="h-auto w-full flex justify-center items-center bg-neutral-800">

@@ -26,7 +26,7 @@ export default function ServiciosPage() {
         rutaFondo={Fondo}
         buttonText={"Conocer más"}
       ></Mural>
-      <div className="bg-neutral-800  w-full py-24 px-12 md:px-24">
+      <div className="bg-neutral-800  w-full py-24 px-4 md:px-24">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 justify-items-center">
           <CardServicios
             rutaImagen={Multi}

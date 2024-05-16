@@ -18,7 +18,7 @@ export default function VacantesPage() {
         rutaFondo={Fondo}
       ></Mural>
 
-      <div className="bg-neutral-800  w-full py-24 px-12 md:px-24">
+      <div className="bg-neutral-800  w-full py-24 px-4 md:px-24">
         <div className="grid grid-cols-1 gap-4">
           <CardVacantes
             titulo={"Analista de ventas"}
