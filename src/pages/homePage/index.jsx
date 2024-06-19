@@ -8,6 +8,8 @@ import Rosetin from "./img/Character_Render_17.png";
 import ScrollTop from "../../hooks/scrollTop";
 import CardCategorias from "../../components/cardCategorias";
 import Peluches from "../../assets/PELUSHES WEB.webp";
+import GTOpc from "../../assets/GTOcompu.png";
+import GTOph from "../../assets/GTPcel.webp";
 import Title from "../../components/titles";
 
 export default function HomePage() {
@@ -21,6 +23,10 @@ export default function HomePage() {
         }
         rutaFondo={Fondo}
       ></Mural>
+      <div className="flex justify-center items-center bg-neutral-900 xl:py-16 xl:pb-0 md:py-12">
+        <img src={GTOpc} alt="Imagen para PC" className="hidden lg:block w-full" />
+        <img src={GTOph} alt="Imagen para móviles" className="block lg:hidden w-full" />
+      </div>
       <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
         <div className="hidden xl:block">
           <h1 className=" text-yellow-500"></h1>
