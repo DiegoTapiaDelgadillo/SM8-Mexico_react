@@ -23,9 +23,17 @@ export default function HomePage() {
         }
         rutaFondo={Fondo}
       ></Mural>
-      <div className="flex justify-center items-center bg-neutral-900 xl:py-16 xl:pb-0 md:py-12">
-        <img src={GTOpc} alt="Imagen para PC" className="hidden lg:block w-full" />
-        <img src={GTOph} alt="Imagen para móviles" className="block lg:hidden w-full" />
+      <div className="flex justify-center items-center bg-neutral-800 sm:px-24 sm:py-12">
+        <img
+          src={GTOpc}
+          alt="Imagen para PC"
+          className="hidden lg:block w-full rounded-2xl"
+        />
+        <img
+          src={GTOph}
+          alt="Imagen para móviles"
+          className="block lg:hidden w-full sm:rounded-2xl"
+        />
       </div>
       <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
         <div className="hidden xl:block">
@@ -55,9 +63,6 @@ export default function HomePage() {
       <div className="w-full flex justify-center items-center bg-neutral-900 py-24 px-2 md:py-0 md:px-0 md:h-screen">
         <Clientes></Clientes>
       </div>
-      {/*<div className="h-auto w-full flex justify-center items-center bg-neutral-800">
-        <Proyectos></Proyectos>
-      </div>*/}
       <CardCategorias />
       <div className="h-auto xl:h-screen w-full flex justify-center items-center bg-neutral-900 p-12 md:p-48">
         <div className="w-full h-auto">

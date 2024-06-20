@@ -36,7 +36,7 @@ export default function SucursalesPage() {
         buttonText={"Conocer más"}
         rutaFondo={Fondo}
       ></Mural>
-      <div className="bg-neutral-800  w-full py-24 px-12 md:px-24">
+      <div className="bg-neutral-800  w-full py-24 px-4 sm:px-12 md:px-24">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 justify-items-center">
           <CardSucursales
             titulo={"Aguascalientes"}
@@ -65,7 +65,7 @@ export default function SucursalesPage() {
             direccion={
               "Carr. Coatzacoalcos Villahermosa km 3.9, Andador 2, Bodega 2, Nueva Pajaritos, 96380 Coatzacoalcos, Ver."
             }
-            telefono={"921 218 0093"}
+            telefono={"921 191 1481"}
             rutaImagen={Coatza}
             maps={
               "https://www.google.com/maps/place/Andamios+SM8+de+M%C3%A9xico+-+Suc.+Coatzacoalcos/@18.111508,-94.4090269,17z/data=!3m1!4b1!4m6!3m5!1s0x85e9820dc3c99205:0xea3527939c1ca209!8m2!3d18.111508!4d-94.406452!16s%2Fg%2F11bx567tl3"
@@ -229,7 +229,7 @@ export default function SucursalesPage() {
           <CardSucursales
             titulo={"Zapopan, Jal"}
             direccion={
-              "Av. Perif. Pte. Manuel Gómez Morin 6360, Miramar, 45060 Zapopan, Jal."
+              "Anillo Perif. Nte. Manuel Gómez Morín 1500, San Juan de Ocotán, 45019 Zapopan, Jal."
             }
             telefono={"33 3070 4277"}
             rutaImagen={Zapopan}
