@@ -5,8 +5,10 @@ import CardCatalogo from "../../components/cardCatalogo";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
 import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
+import useScrollTop from "../../hooks/useScrollTop";
 import Apuntalamiento from "./pdf/Catalogo apuntalamiento_compressed.pdf";
 export default function CimbraPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

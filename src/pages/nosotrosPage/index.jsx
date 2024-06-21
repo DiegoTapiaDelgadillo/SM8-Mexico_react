@@ -13,9 +13,10 @@ import conducta from "./pdf/Código de Conducta_Rev.00.pdf";
 import privacidad from "./pdf/AVISO DE PRIVACIDAD 2023.pdf";
 import etica from "./pdf/Código de Ética_Rev.00.pdf";
 import calidad from "./pdf/POLITICA DE CALIDAD.pdf";
-import ScrollTop from "../../hooks/scrollTop";
+import useScrollTop from "../../hooks/useScrollTop";
+
 export default function NosotrosPage() {
-  ScrollTop();
+  useScrollTop();
   return (
     <div>
       <Mural

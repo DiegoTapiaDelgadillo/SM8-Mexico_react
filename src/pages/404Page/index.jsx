@@ -1,9 +1,9 @@
 import BotonPrincipal from "../../components/botonPrincipal";
 import { Link } from "react-router-dom";
 import Rosetin from "./img/4.png";
-import ScrollTop from "../../hooks/scrollTop";
+import useScrollTop from "../../hooks/useScrollTop";
 export default function Page404() {
-  ScrollTop();
+  useScrollTop();
   return (
     <div className="h-auto xl:h-screen bg-neutral-800 w-full flex justify-center items-center px-12 py-48 xl:px-64 xl:py-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">

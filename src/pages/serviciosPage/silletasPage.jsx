@@ -6,7 +6,9 @@ import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
 import CatalogoSilletas from "./pdf/Catаlogo Silletas.pdf";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import useScrollTop from "../../hooks/useScrollTop";
 export default function SilletasPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

@@ -5,15 +5,15 @@ import Clientes from "../../components/clientes";
 import CardText from "../../components/cardText";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/Character_Render_17.png";
-import ScrollTop from "../../hooks/scrollTop";
 import CardCategorias from "../../components/cardCategorias";
 import Peluches from "../../assets/PELUSHES WEB.webp";
 import GTOpc from "../../assets/leon_web.webp";
 import GTOph from "../../assets/GTPcel.webp";
 import Title from "../../components/titles";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function HomePage() {
-  //ScrollTop();
+  useScrollTop();
   return (
     <div>
       <Mural
