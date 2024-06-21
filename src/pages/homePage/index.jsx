@@ -8,7 +8,7 @@ import Rosetin from "./img/Character_Render_17.png";
 import ScrollTop from "../../hooks/scrollTop";
 import CardCategorias from "../../components/cardCategorias";
 import Peluches from "../../assets/PELUSHES WEB.webp";
-import GTOpc from "../../assets/GTOcompu.png";
+import GTOpc from "../../assets/leon_web.webp";
 import GTOph from "../../assets/GTPcel.webp";
 import Title from "../../components/titles";
 
