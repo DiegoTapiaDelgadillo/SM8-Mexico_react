@@ -6,7 +6,8 @@ import Seis from "./img/seis.png";
 import Siete from "./img/siete.png";
 import Ocho from "./img/ocho.png";
 import Nueve from "./img/nueve.png";
-export default function ImgClients() {
+
+export default function ImgClients() {  
   return (
     <div className="grid z-10">
       <div className="flex">
@@ -15,6 +16,7 @@ export default function ImgClients() {
             src={Uno}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
         <div className="px-1">
@@ -22,6 +24,7 @@ export default function ImgClients() {
             src={Dos}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
         <div className="px-1">
@@ -29,6 +32,7 @@ export default function ImgClients() {
             src={Tres}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
         <div className="px-1">
@@ -36,6 +40,7 @@ export default function ImgClients() {
             src={Cinco}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
       </div>
@@ -45,6 +50,7 @@ export default function ImgClients() {
             src={Seis}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
         <div className="px-1">
@@ -52,6 +58,7 @@ export default function ImgClients() {
             src={Siete}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
         <div className="px-1">
@@ -59,6 +66,7 @@ export default function ImgClients() {
             src={Ocho}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
         <div className="px-1">
@@ -66,6 +74,7 @@ export default function ImgClients() {
             src={Nueve}
             alt=""
             className="w-16 h-16 md:w-32 md:h-32 md:hover:w-36 md:hover:h-36 ease-in-out duration-300"
+            data-aos="zoom-in"
           />
         </div>
       </div>

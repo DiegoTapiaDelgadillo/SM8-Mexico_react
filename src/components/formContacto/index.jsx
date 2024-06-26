@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CloseSvg from "../closeSvg";
 import useFormValidation from "../../hooks/useValidationForm";
+x
 
 export default function FormContacto() {
   const { errors, validateForm } = useFormValidation();

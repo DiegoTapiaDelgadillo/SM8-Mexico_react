@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Mural from "../../components/mural";
 import Fondo from "../../components/mural/img/home.jpg";
 import Contenedor from "../../components/contenedor";
@@ -11,9 +12,15 @@ import GTOpc from "../../assets/leon_web.webp";
 import GTOph from "../../assets/GTPcel.webp";
 import Title from "../../components/titles";
 import useScrollTop from "../../hooks/useScrollTop";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function HomePage() {
   useScrollTop();
+  useEffect(() => {
+    AOS.refresh();
+  }, []);
+
   return (
     <div>
       <Mural
@@ -75,23 +82,26 @@ export default function HomePage() {
               cuerpo={
                 "Contamos con cobertura nacional, 19 sucursales distribuidas en todo el país."
               }
+              delay={150}
             ></CardText>
             <CardText
               titulo={"LOGÍSTICA"}
               cuerpo={
                 "Nuestra logística operativa nos hace un aliado estratégico para el éxito de cada proyecto."
               }
+              delay={300}
             ></CardText>
             <CardText
               titulo={"COMPROMISO CON LA CALIDAD"}
               cuerpo={
                 "Calidad certificada y especialistas expertos. Transformamos tus proyectos de principio a fin con resultados excepcionales."
               }
+              delay={450}
             ></CardText>
           </div>
         </div>
       </div>
-      <div className="h-auo xl:h-screen w-full flex justify-center items-center bg-neutral-800">
+      <div className="h-auo xl:h-screen w-full flex justify-center items-center bg-neutral-800 overflow-hidden">
         <Contacto
           titulo={"No lo pienses más y Contáctanos"}
           cuerpo={

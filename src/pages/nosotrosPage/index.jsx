@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Mural from "../../components/mural";
 import Fondo from "./img/nosotros.jpg";
 import Rosetin from "./img/5.png";

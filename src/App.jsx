@@ -1,11 +1,19 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HashRouter } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import Loanding from "./components/loandig";
+import React, { useEffect } from 'react';
+import { lazy, Suspense } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import Loanding from './components/loandig';
 
 export default function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1100, 
+    });
+  }, []);
+  
   const Home = lazy(() => import("./pages/homePage/index"));
   const Servicios = lazy(() => import("./pages/serviciosPage/index"));
   const Sucursales = lazy(() => import("./pages/sucursalesPage/index"));

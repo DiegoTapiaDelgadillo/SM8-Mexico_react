@@ -35,6 +35,7 @@ export default function ServiciosPage() {
               "Andamio certificado para la industria, gracias a su versatilidad, garantiza la reducción de tiempo en montaje y facilita el mantenimiento en instalaciones industriales."
             }
             ruta={"/Servicios/Multidireccional"}
+            delay={100}
           ></CardServicios>
           <CardServicios
             rutaImagen={Torres}
@@ -43,6 +44,7 @@ export default function ServiciosPage() {
               "Torres de Andamio Multidireccional SM8 y/o andamio convencional de marco y cruceta que permite alcanzar la altura deseada con la mayor seguridad y confianza para trabajar en ellas."
             }
             ruta={"/Servicios/Torres"}
+            delay={200}
           ></CardServicios>
           <CardServicios
             rutaImagen={Apuntalamiento}
@@ -51,6 +53,7 @@ export default function ServiciosPage() {
               "Cimbra realizada con Puntal Metálico o Andamio Estructural que cuenta con capacidad de carga optimizada en obras de edificación, así como flexibilidad en alturas y áreas requeridas."
             }
             ruta={"/Servicios/Cimbra"}
+            delay={300}
           ></CardServicios>
           <CardServicios
             rutaImagen={Tubo}
@@ -59,6 +62,7 @@ export default function ServiciosPage() {
               "Sistema conformado por tubos de acero sin costura, unidos por juntas de acero permitiendo una gran versatilidad en el armado de estructuras."
             }
             ruta={"/Servicios/TuboJunta"}
+            delay={400}
           ></CardServicios>
           <CardServicios
             rutaImagen={Viga}
@@ -67,6 +71,7 @@ export default function ServiciosPage() {
               "Construida con madera de pino a los extremos y al centro madera de pino multicapa armado transversalmente, siendo las más ligeras del mercado."
             }
             ruta={"/Servicios/Viga"}
+            delay={500}
           ></CardServicios>
           <CardServicios
             rutaImagen={Graderia}
@@ -75,6 +80,7 @@ export default function ServiciosPage() {
               "Instalación de gradas temporales con capacidad desde 25 personas hasta 10 mil. Además de renta e instalación de vallas metálicas que otorgaran la mayor comodidad y seguridad a tus eventos."
             }
             ruta={"/Servicios/Graderias"}
+            delay={600}
           ></CardServicios>
           <CardServicios
             rutaImagen={Silleta}
@@ -83,6 +89,7 @@ export default function ServiciosPage() {
               "Proporcionar el espacio necesario para lograr el recubrimiento especificado al acero de refuerzo."
             }
             ruta={"/Servicios/Silletas"}
+            delay={700}
           ></CardServicios>
           <CardServicios
             rutaImagen={Tirantes}
@@ -91,6 +98,7 @@ export default function ServiciosPage() {
               "Son elementos de acero de alto carbón que sirven para retener las paredes a la cimbra, antes, durante y después del vaciado de concreto."
             }
             ruta={"/Servicios/Tirantes"}
+            delay={800}
           ></CardServicios>
           <CardServicios
             rutaImagen={Arco}
@@ -99,12 +107,13 @@ export default function ServiciosPage() {
               "Es un sistema constructivo autoportante a base de arcos de acero galvanizado y pintado, fabricados a pie de obra. "
             }
             ruta={"/Servicios/Arcotechos"}
+            delay={900}
           ></CardServicios>
         </div>
       </div>
       <div className="flex justify-center items-center p-12 md:p-20 xl:h-screen bg-neutral-900">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-ful">
-          <div className="flex items-center w-full h-full xl:pr-20 xl:pl-20 p-1">
+          <div className="flex items-center w-full h-full xl:pr-20 xl:pl-20 p-1" data-aos="fade-right">
             <div>
               <h1 className="text-2xl xl:text-5xl pb-8 text-yellow-300">
                 Conoce el catálogo de todos nuestros servicios
