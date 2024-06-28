@@ -1,12 +1,14 @@
 import BotonPrincipal from "../botonPrincipal";
 import { Link } from "react-router-dom";
-export default function CardVacantes({ titulo, ubicacion }) {
+export default function CardVacantes({ titulo, ubicacion, delay}) {
   return (
-    <div className="border-4 border-neutral-900/80 w-full rounded-3xl shadow-2xl hover:border-yellow-300 ease-in-out duration-300 flex">
+    <div className="border-4 border-neutral-900/80 w-full rounded-3xl shadow-2xl hover:border-yellow-300 ease-in-out duration-300 flex" 
+    data-aos="zoom-in"
+    data-aos-delat={delay}>
       <div className="hidden w-1/6 border-r-4 border-neutral-900/30 h-full lg:block">
         <div className="flex justify-center items-cente py-8 h-full">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg" 
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
@@ -47,7 +49,7 @@ export default function CardVacantes({ titulo, ubicacion }) {
           <h2 className="pl-2 text-white">{ubicacion}</h2>
         </div>
 
-        <div className="flex w-full pt-4 justify-end">
+        <div className="sm:flex w-full pt-4 sm:justify-end">
           <a
             href="https://api.whatsapp.com/send/?phone=525510021327&text&type=phone_number&app_absent=0"
             target="_blank"
