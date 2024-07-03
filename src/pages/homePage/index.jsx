@@ -8,8 +8,7 @@ import Contacto from "../../components/contacto";
 import Rosetin from "./img/Character_Render_17.png";
 import CardCategorias from "../../components/cardCategorias";
 import Peluches from "../../assets/PELUSHES WEB.webp";
-import GTOpc from "../../assets/leon_web.webp";
-import GTOph from "../../assets/GTPcel.webp";
+import GTOpc from "../../assets/GTOpc.webp";
 import Title from "../../components/titles";
 import useScrollTop from "../../hooks/useScrollTop";
 import AOS from 'aos';
@@ -34,12 +33,7 @@ export default function HomePage() {
         <img
           src={GTOpc}
           alt="Imagen para PC"
-          className="hidden lg:block w-full rounded-2xl"
-        />
-        <img
-          src={GTOph}
-          alt="Imagen para móviles"
-          className="block lg:hidden w-full sm:rounded-2xl"
+          className="w-full "
         />
       </div>
       <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
