@@ -68,6 +68,9 @@ export default function Navbar() {
                   <Link to="/Nosotros">Nosotros</Link>
                 </li>
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
+                  <Link to="/Noticias">Noticias</Link>
+                </li>
+                <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
                   <a
                     href="https://publuu.com/flip-book/177837/438154"
                     target="_blank"
@@ -191,6 +194,11 @@ export default function Navbar() {
                 <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
                   <Link to={"/Nosotros"} onClick={NavbarOpen}>
                     Nosotros
+                  </Link>
+                </li>
+                <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">
+                  <Link to={"/Noticias"} onClick={NavbarOpen}>
+                    Noticias
                   </Link>
                 </li>
                 <li className="text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300 py-4">

@@ -20,6 +20,7 @@ export default function App() {
   const Vacantes = lazy(() => import("./pages/vacantesPage/index"));
   const Contacto = lazy(() => import("./pages/contactoPage/index"));
   const NotFound = lazy(() => import("./pages/404Page/index"));
+  const Noticias = lazy(() => import("./pages/noticias/index"));
   const Nosotros = lazy(() => import("./pages/nosotrosPage/index"));
   const Multidireccional = lazy(() =>
     import("./pages/serviciosPage/multidireccionalPage")
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <>
       <HashRouter>
-        <Navbar></Navbar>
+        <Navbar/>
         <Suspense fallback={<Loanding></Loanding>}>
           <Routes>
             <Route path="/" element={<Home />}></Route>
@@ -58,6 +59,7 @@ export default function App() {
             <Route path="/Contacto" element={<Contacto />}></Route>
             <Route path="*" element={<NotFound />}></Route>
             <Route path="/Nosotros" element={<Nosotros />}></Route>
+            <Route path="/Noticias" element={<Noticias />}/>
           </Routes>
         </Suspense>
         <Footer></Footer>
