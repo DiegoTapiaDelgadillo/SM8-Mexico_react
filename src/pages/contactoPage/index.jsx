@@ -2,10 +2,10 @@ import FormContacto from "../../components/formContacto";
 import Mural from "../../components/mural";
 import Fondo from "./img/DJI_0341.jpg";
 import Rosetin from "./img/5.png";
-import ScrollTop from "../../hooks/scrollTop";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function ContactoPage() {
-  ScrollTop();
+  useScrollTop();
   return (
     <div>
       <Mural
@@ -18,7 +18,7 @@ export default function ContactoPage() {
       ></Mural>
       <div className="w-full flex justify-center items-center h-auto bg-neutral-800 px-4 py-8 xl:p-24">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 justify-items-center bg-neutral-900 rounded-3xl shadow-2xl w-full xl:p-8">
-          <div className="hidden justify-center items-center w-full xl:flex">
+          <div className="hidden justify-center items-center w-full xl:flex" data-aos="fade-right">
             <img src={Rosetin} alt="" className="w-5/6" />
           </div>
           <div className="flex justify-center items-center w-full">

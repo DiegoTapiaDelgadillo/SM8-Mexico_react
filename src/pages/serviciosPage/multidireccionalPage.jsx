@@ -5,8 +5,10 @@ import Foto2 from "./img/multidireccional.jpg";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
 import CardCatalogo from "../../components/cardCatalogo";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function MultidireccionalPage() {
+  useScrollTop();
   return (
     <div className="">
       <Mural

@@ -4,9 +4,9 @@ import GridImg from "./gridImg";
 import { Link } from "react-router-dom";
 export default function Contenedor() {
   return (
-    <div className="flex justify-center items-center px-6 py-12 md:p-20 xl:h-screen bg-neutral-800">
+    <div className="flex justify-center items-center px-6 py-12 md:p-20 xl:h-screen bg-neutral-800 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-ful">
-        <div className="block lg:hidden">
+        <div className="block lg:hidden ">
           <GridImg />
         </div>
         <div className="flex items-center w-full h-full xl:pr-20 xl:pl-20 p-1">
@@ -25,7 +25,7 @@ export default function Contenedor() {
             </Link>
           </div>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden lg:block"> 
           <GridImg />
         </div>
       </div>

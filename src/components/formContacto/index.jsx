@@ -1,7 +1,10 @@
 import { useState } from "react";
 import CloseSvg from "../closeSvg";
+import useFormValidation from "../../hooks/useValidationForm";
+
 
 export default function FormContacto() {
+  const { errors, validateForm } = useFormValidation();
   const [messageStatus, setMessageStatus] = useState("neutral");
   const [modalStatus, setModalStatus] = useState(false);
   const [formData, setFormData] = useState({
@@ -14,32 +17,6 @@ export default function FormContacto() {
     mensaje: "",
   });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setMessageStatus("londing");
-    setModalStatus(true);
-    try {
-      const response = await fetch(
-        "https://vercel-backend-tau.vercel.app/enviar-correo",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (response.ok) {
-        setMessageStatus("enviado");
-      } else {
-        setMessageStatus("error");
-      }
-    } catch (error) {
-      console.error("Error al enviar la solicitud POST:", error);
-    }
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -51,6 +28,33 @@ export default function FormContacto() {
   const closeModal = () => {
     setModalStatus(false);
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await validateForm(formData);
+      setMessageStatus("londing");
+      setModalStatus(true);
+      const response = await fetch(
+        "https://vercel-backend-tau.vercel.app/enviar-correo",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      if (response.ok) {
+        setMessageStatus("enviado");
+      } else {
+        setMessageStatus("error");
+      }
+    } catch (formErrors) {
+      setMessageStatus("error");
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 w-full bg-transparent p-8 xl:p-16">
@@ -71,22 +75,24 @@ export default function FormContacto() {
                 name="nombre"
                 id="nombre"
                 className="w-full p-4 rounded-xl border-black border-2"
-                required="true"
+                required={true}
                 placeholder="Nombre"
                 value={formData.nombre}
                 onChange={handleInputChange}
               />
+              {errors.nombre && <p className="text-red-500">{errors.nombre}</p>}
               <div className="py-2"></div>
               <input
                 type="text"
                 name="correoDestino"
                 id="correoDestino"
                 className="w-full p-4 rounded-xl border-black border-2"
-                required="true"
+                required={true}
                 placeholder="Email"
                 value={formData.correoDestino}
                 onChange={handleInputChange}
               />
+              {errors.correoDestino && <p className="text-red-500">{errors.correoDestino}</p>}
               <div className="py-2"></div>
               <input
                 type="text"
@@ -94,17 +100,18 @@ export default function FormContacto() {
                 id="telefono"
                 className="w-full p-4 rounded-xl border-black border-2"
                 placeholder="Teléfono"
-                required="true"
+                required={true}
                 value={formData.telefono}
                 onChange={handleInputChange}
               />
+              {errors.telefono && <p className="text-red-500">{errors.telefono}</p>}
               <div className="py-2"></div>
               <input
                 type="text"
                 name="asunto"
                 id="asunto"
                 className="w-full p-4 rounded-xl border-black border-2"
-                required="true"
+                required={true}
                 placeholder="Asunto"
                 value={formData.asunto}
                 onChange={handleInputChange}
@@ -112,7 +119,7 @@ export default function FormContacto() {
               <div className="py-2"></div>
               <select
                 className="w-full p-4 rounded-xl border-black border-2 bg-white"
-                required="true"
+                required={true}
                 name="ciudad"
                 id="ciudad"
                 value={formData.ciudad}
@@ -147,7 +154,7 @@ export default function FormContacto() {
                 name="empresa"
                 id="empresa"
                 className="w-full p-4 rounded-xl border-black border-2"
-                required="true"
+                required={false}
                 placeholder="Empresa (opcional)"
                 value={formData.empresa}
                 onChange={handleInputChange}
@@ -155,7 +162,7 @@ export default function FormContacto() {
               <div className="py-2"></div>
               <textarea
                 className="w-full p-4 rounded-xl border-black border-2"
-                required="true"
+                required={true}
                 name="mensaje"
                 id="mensaje"
                 placeholder="Cuéntanos tus ideas y juntos crearemos algo increíble..."

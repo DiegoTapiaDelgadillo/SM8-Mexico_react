@@ -5,11 +5,14 @@ export default function CardSucursales({
   titulo,
   maps,
   direccion,
-  rutaImagen,
+  rutaImagen, 
   telefono,
+  delay
 }) {
   return (
-    <div className=" border-2 border-neutral-950 rounded-2xl p-4">
+    <div className=" border-2 border-neutral-950 rounded-2xl p-4"
+    data-aos="zoom-in"
+    data-aos-delay={delay}>
       <figure>
         <img src={rutaImagen} alt="" className=" rounded-2xl shadow " />
       </figure>
@@ -23,7 +26,7 @@ export default function CardSucursales({
         <p className=" pl-4 text-white">{telefono}</p>
       </div>
       <a href={maps} target="_blank" className=" flex justify-center">
-        <BotonPrincipal text={"Visitar"} />
+        <BotonPrincipal text={"Visitar"}  />
       </a>
     </div>
   );

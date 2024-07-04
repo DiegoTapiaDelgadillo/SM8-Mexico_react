@@ -4,9 +4,11 @@ import Foto from "./img/torres_de_servicio_2.jpg";
 import Rosetin from "./img/1.png";
 import Contacto from "../../components/contacto";
 import CardCatalogo from "../../components/cardCatalogo";
-
 import CatalogoTorre from "./pdf/digital-construccion.pdf";
+import useScrollTop from "../../hooks/useScrollTop";
+
 export default function TorresPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

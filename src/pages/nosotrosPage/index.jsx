@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Mural from "../../components/mural";
 import Fondo from "./img/nosotros.jpg";
 import Rosetin from "./img/5.png";
@@ -13,9 +14,10 @@ import conducta from "./pdf/Código de Conducta_Rev.00.pdf";
 import privacidad from "./pdf/AVISO DE PRIVACIDAD 2023.pdf";
 import etica from "./pdf/Código de Ética_Rev.00.pdf";
 import calidad from "./pdf/POLITICA DE CALIDAD.pdf";
-import ScrollTop from "../../hooks/scrollTop";
+import useScrollTop from "../../hooks/useScrollTop";
+
 export default function NosotrosPage() {
-  ScrollTop();
+  useScrollTop();
   return (
     <div>
       <Mural
@@ -27,7 +29,7 @@ export default function NosotrosPage() {
       ></Mural>
       <div className=" bg-neutral-800 flex justify-center items-center py-24 px-12 xl:p-24">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center" data-aos="zoom-in-out">
             <div>
               <h1 className="text-yellow-300 text-3xl xl:text-5xl">
                 ¿Quiénes somos?
@@ -43,15 +45,15 @@ export default function NosotrosPage() {
               </h1>
             </div>
           </div>
-          <div className="flex justify-center items-center w-full">
+          <div className="flex justify-center items-center w-full" data-aos="zoom-in-left">
             <img src={Rosetin} alt="" className="w-5/6" />
           </div>
         </div>
       </div>
       <div className=" bg-neutral-800 flex justify-center items-center py-24 px-4 xl:p-24">
         <div className="bg-neutral-900 p-8 xl:p-24 rounded-3xl shadow-2xl w-full border-4 border-neutral-900 hover:border-yellow-300 ease-in-out duration-300 grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="flex justify-center items-center w-full">
-            <div className="w-full p-0">
+          <div className="flex justify-center items-center w-full" data-aos="fade-up">
+            <div className="w-full p-0" >
               <h1 className="text-yellow-300 text-2xl xl:text-5xl">
                 Conoce nuestras certificaciones
               </h1>
@@ -76,17 +78,17 @@ export default function NosotrosPage() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
           <div className="flex items-center w-full">
             <div>
-              <h1 className="text-yellow-300 text-3xl xl:text-5xl">Misión</h1>
-              <h1 className="text-white text-md xl:text-xl py-8 text-justify">
+              <h1 className="text-yellow-300 text-3xl xl:text-5xl" data-aos="fade-right">Misión</h1>
+              <h1 className="text-white text-md xl:text-xl py-8 text-justify" data-aos="fade-right">
                 Ofrecer y apoyar a nuestros clientes con soluciones de
                 ingeniería para la construcción, mantenimiento de instalaciones
                 e infraestructura de eventos, a través de la renta y venta de
                 estructuras metálicas.
               </h1>
-              <h1 className="text-yellow-300 text-3xl xl:text-5xl pt-8">
+              <h1 className="text-yellow-300 text-3xl xl:text-5xl pt-8" data-aos="fade-right">
                 Visión
               </h1>
-              <h1 className="text-white text-md xl:text-xl py-8 text-justify">
+              <h1 className="text-white text-md xl:text-xl py-8 text-justify" data-aos="fade-right">
                 Ser una empresa de clase mundial, líder nacional en el sector de
                 andamios, destacandonos por la satisfacción de nuestros
                 clientes, el desarrollo de nuestros colaboradores y las
@@ -94,7 +96,7 @@ export default function NosotrosPage() {
               </h1>
             </div>
           </div>
-          <div className="flex justify-center xl:justify-end items-center">
+          <div className="flex justify-center xl:justify-end items-center" data-aos="fade-right">  
             <img src={Andamio} alt="" className="w-5/6" />
           </div>
         </div>
@@ -102,9 +104,8 @@ export default function NosotrosPage() {
       <div className=" bg-neutral-800 flex justify-center items-center w-full ">
         <div
           className="flex bg-cover bg-center h-auto p-12 xl:p-24 justify-center items-center "
-          style={{ backgroundImage: `url(${Calidad})` }}
-        >
-          <div>
+          style={{ backgroundImage: `url(${Calidad})` }}        >
+          <div data-aos="zoom-in">
             <h1 className="text-yellow-300 text-2xl xl:text-6xl text-center">
               LA CALIDAD ES PRIMERO
             </h1>
@@ -122,8 +123,8 @@ export default function NosotrosPage() {
           </div>
         </div>
       </div>
-      <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24">
-        <div className="w-full">
+      <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24" >
+        <div className="w-full" data-aos="zoom-in-down"> 
           <h1 className="text-yellow-300 text-3xl xl:text-5xl pb-2">
             Transparencia que nos define
           </h1>

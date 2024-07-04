@@ -5,7 +5,9 @@ import CardCatalogo from "../../components/cardCatalogo";
 import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import useScrollTop from "../../hooks/useScrollTop";
 export default function ArcotechosPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

@@ -5,7 +5,10 @@ import CardCatalogo from "../../components/cardCatalogo";
 import CatalogoViga from "./pdf/SM8 -Viga H20.pdf";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import useScrollTop from "../../hooks/useScrollTop";
+
 export default function VigaPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

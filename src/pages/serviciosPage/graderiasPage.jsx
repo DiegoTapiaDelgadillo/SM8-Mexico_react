@@ -6,7 +6,9 @@ import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
 import CatalogoEventos from "./pdf/Catalogo Eventos digital.pdf";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import useScrollTop from "../../hooks/useScrollTop";
 export default function GraderiasPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

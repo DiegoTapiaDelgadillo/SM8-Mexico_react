@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import BotonPrincipal from "../botonPrincipal";
 export default function Contacto({ titulo, cuerpo, rosetin }) {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full md:px-20 p-12">
-      <div className="md:flex md:justify-center md:items-center">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full md:px-20 p-12 overflow-hidden">
+      <div className="md:flex md:justify-center md:items-center" data-aos="fade-left">
         <div className="w-full">
           <h1 className="text-yellow-300 text-3xl md:text-5xl">{titulo}</h1>
           <h1 className="text-white text-md xl:text-xl pt-8 pb-8">{cuerpo}</h1>
@@ -12,7 +12,7 @@ export default function Contacto({ titulo, cuerpo, rosetin }) {
           </Link>
         </div>
       </div>
-      <div className="grid justify-items-center xl:justify-items-end">
+      <div className="grid justify-items-center xl:justify-items-end" data-aos="fade-left">
         <img
           src={rosetin}
           alt=""

@@ -1,17 +1,26 @@
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HashRouter } from "react-router-dom";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import Loanding from "./components/loandig";
+import React, { useEffect } from 'react';
+import { lazy, Suspense } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import Loanding from './components/loandig';
 
 export default function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1100, 
+    });
+  }, []);
+  
   const Home = lazy(() => import("./pages/homePage/index"));
   const Servicios = lazy(() => import("./pages/serviciosPage/index"));
   const Sucursales = lazy(() => import("./pages/sucursalesPage/index"));
   const Vacantes = lazy(() => import("./pages/vacantesPage/index"));
   const Contacto = lazy(() => import("./pages/contactoPage/index"));
   const NotFound = lazy(() => import("./pages/404Page/index"));
+  const Noticias = lazy(() => import("./pages/noticias/index"));
   const Nosotros = lazy(() => import("./pages/nosotrosPage/index"));
   const Multidireccional = lazy(() =>
     import("./pages/serviciosPage/multidireccionalPage")
@@ -28,7 +37,7 @@ export default function App() {
   return (
     <>
       <HashRouter>
-        <Navbar></Navbar>
+        <Navbar/>
         <Suspense fallback={<Loanding></Loanding>}>
           <Routes>
             <Route path="/" element={<Home />}></Route>
@@ -50,6 +59,7 @@ export default function App() {
             <Route path="/Contacto" element={<Contacto />}></Route>
             <Route path="*" element={<NotFound />}></Route>
             <Route path="/Nosotros" element={<Nosotros />}></Route>
+            <Route path="/Noticias" element={<Noticias />}/>
           </Routes>
         </Suspense>
         <Footer></Footer>

@@ -4,8 +4,9 @@ import Eventos from "./img/1.jpg";
 import Construccion from "./img/2.png";
 import Restauracion from "./img/6.png";
 import Industria from "./img/4.png";
-
+ 
 export default function CardCategorias() {
+  
   return (
     <>
       <CardDerecha

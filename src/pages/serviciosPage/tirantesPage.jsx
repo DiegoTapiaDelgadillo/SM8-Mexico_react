@@ -6,7 +6,10 @@ import CatalogoSm8 from "./pdf/CATALOGO_SM8_ligero.pdf";
 import Tirantes from "./pdf/tirantes-digital.pdf";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
+import useScrollTop from "../../hooks/useScrollTop";
+
 export default function TirantesPage() {
+  useScrollTop();
   return (
     <div>
       <Mural

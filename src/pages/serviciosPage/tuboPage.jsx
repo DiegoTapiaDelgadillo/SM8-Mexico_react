@@ -5,7 +5,10 @@ import CardCatalogo from "../../components/cardCatalogo";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/1.png";
 import Tubo from "./pdf/CATALOGO_SM8_ligero.pdf";
+import useScrollTop from "../../hooks/useScrollTop";
+
 export default function TuboPage() {
+  useScrollTop
   return (
     <div>
       <Mural

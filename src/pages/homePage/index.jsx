@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Mural from "../../components/mural";
 import Fondo from "../../components/mural/img/home.jpg";
 import Contenedor from "../../components/contenedor";
@@ -5,15 +6,20 @@ import Clientes from "../../components/clientes";
 import CardText from "../../components/cardText";
 import Contacto from "../../components/contacto";
 import Rosetin from "./img/Character_Render_17.png";
-import ScrollTop from "../../hooks/scrollTop";
 import CardCategorias from "../../components/cardCategorias";
 import Peluches from "../../assets/PELUSHES WEB.webp";
-import GTOpc from "../../assets/leon_web.webp";
-import GTOph from "../../assets/GTPcel.webp";
+import GTOpc from "../../assets/GTOpc.webp";
 import Title from "../../components/titles";
+import useScrollTop from "../../hooks/useScrollTop";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function HomePage() {
-  //ScrollTop();
+  useScrollTop();
+  useEffect(() => {
+    AOS.refresh();
+  }, []);
+
   return (
     <div>
       <Mural
@@ -27,12 +33,7 @@ export default function HomePage() {
         <img
           src={GTOpc}
           alt="Imagen para PC"
-          className="hidden lg:block w-full rounded-2xl"
-        />
-        <img
-          src={GTOph}
-          alt="Imagen para móviles"
-          className="block lg:hidden w-full sm:rounded-2xl"
+          className="w-full "
         />
       </div>
       <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
@@ -75,23 +76,26 @@ export default function HomePage() {
               cuerpo={
                 "Contamos con cobertura nacional, 19 sucursales distribuidas en todo el país."
               }
+              delay={150}
             ></CardText>
             <CardText
               titulo={"LOGÍSTICA"}
               cuerpo={
                 "Nuestra logística operativa nos hace un aliado estratégico para el éxito de cada proyecto."
               }
+              delay={300}
             ></CardText>
             <CardText
               titulo={"COMPROMISO CON LA CALIDAD"}
               cuerpo={
                 "Calidad certificada y especialistas expertos. Transformamos tus proyectos de principio a fin con resultados excepcionales."
               }
+              delay={450}
             ></CardText>
           </div>
         </div>
       </div>
-      <div className="h-auo xl:h-screen w-full flex justify-center items-center bg-neutral-800">
+      <div className="h-auo xl:h-screen w-full flex justify-center items-center bg-neutral-800 overflow-hidden">
         <Contacto
           titulo={"No lo pienses más y Contáctanos"}
           cuerpo={
