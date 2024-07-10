@@ -20,7 +20,7 @@ export default function Carrusel({ images }) {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextImage, 3000);
+    const interval = setInterval(nextImage, 5000);
     return () => clearInterval(interval);
   }, []);
 

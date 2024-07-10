@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 import useScrollTop from "../../hooks/useScrollTop";
 import Carrusel from "../../components/carrusel";
-import { noticias } from '../../data/noticias'; // Importa el archivo de noticias
+import { noticias } from '../../data/noticias'; 
 
 export default function Noticias() {
   useScrollTop();
-
+  
   const imagenes = noticias.map(noticia => ({
     id: noticia.id,
     src: noticia.image,

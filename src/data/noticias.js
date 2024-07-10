@@ -2,7 +2,7 @@
 import n1 from "../components/carrusel/img/c3.jpg";
 import n2 from "../components/carrusel/img/c4.webp";
 import n3 from "../components/carrusel/img/c5.jpg";
-
+import n4 from "../components/carrusel/img/c6.jpg";
 
 export const noticias = [
     {
@@ -26,6 +26,14 @@ export const noticias = [
         title: "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
         date: "5 de julio de 2023",
         image: n3,
+        summary: "Nunc interdum id mauris et euismod. Sed egestas auctor faucibus. Etiam a diam gravida, vehicula mauris et, scelerisque purus. Proin egestas in metus sed lacinia.",
+        content: "Contenido adicional de la noticia 2..."
+    },
+    {
+        id: 4,
+        title: "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+        date: "5 de julio de 2023",
+        image: n4,
         summary: "Nunc interdum id mauris et euismod. Sed egestas auctor faucibus. Etiam a diam gravida, vehicula mauris et, scelerisque purus. Proin egestas in metus sed lacinia.",
         content: "Contenido adicional de la noticia 2..."
     },
