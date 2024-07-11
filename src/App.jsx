@@ -20,11 +20,10 @@ export default function App() {
   const Vacantes = lazy(() => import("./pages/vacantesPage/index"));
   const Contacto = lazy(() => import("./pages/contactoPage/index"));
   const NotFound = lazy(() => import("./pages/404Page/index"));
-  const Noticias = lazy(() => import("./pages/noticias/index"));
+  const Noticias = lazy(() => import("./pages/noticiasPage/index"));
+  const NoticiaDetalle = lazy(() => import("./pages/noticiasPage/NoticiaDetalle"));
   const Nosotros = lazy(() => import("./pages/nosotrosPage/index"));
-  const Multidireccional = lazy(() =>
-    import("./pages/serviciosPage/multidireccionalPage")
-  );
+  const Multidireccional = lazy(() => import("./pages/serviciosPage/multidireccionalPage"));
   const Torres = lazy(() => import("./pages/serviciosPage/torresPage"));
   const Cimbra = lazy(() => import("./pages/serviciosPage/cimbraPage"));
   const Tubo = lazy(() => import("./pages/serviciosPage/tuboPage"));
@@ -57,9 +56,10 @@ export default function App() {
             <Route path="/Sucursales" element={<Sucursales />}></Route>
             <Route path="/Vacantes" element={<Vacantes />}></Route>
             <Route path="/Contacto" element={<Contacto />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-            <Route path="/Nosotros" element={<Nosotros />}></Route>
+            <Route path="*" element={<NotFound />} />
+            <Route path="/Nosotros" element={<Nosotros />}/>
             <Route path="/Noticias" element={<Noticias />}/>
+            <Route path="/noticia/:id" element={<NoticiaDetalle/>}/>
           </Routes>
         </Suspense>
         <Footer></Footer>
