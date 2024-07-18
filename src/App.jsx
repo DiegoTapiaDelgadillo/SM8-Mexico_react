@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Loanding from './components/loandig';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function App() {
   useEffect(() => {

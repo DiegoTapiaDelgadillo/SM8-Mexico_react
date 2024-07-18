@@ -52,7 +52,7 @@ export default function FormContacto() {
       }
     } catch (formErrors) {
       setMessageStatus("error");
-    }
+    } 
   };
 
   return (

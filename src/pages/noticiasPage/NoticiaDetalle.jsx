@@ -18,7 +18,6 @@ function NoticiaDetalle() {
       AOS.init();
       AOS.refresh();
     }, 100); 
-
     return () => clearTimeout(timer); 
   }, [id]);
 
@@ -37,7 +36,7 @@ function NoticiaDetalle() {
             >
             </div>
             <div className="lg:col-span-8" data-aos="zoom-in">
-              <h1 className="text-left text-4xl font-bold text-yellow-300 mb-4">
+              <h1 className="text-left text-4xl text-yellow-300 mb-4">
                 {noticia.title}
               </h1>
               <p className="text-sm text-gray-500 mb-2">
@@ -55,6 +54,15 @@ function NoticiaDetalle() {
               <p className="text-lg text-justify text-white mb-4">
                 {noticia.content}
               </p>
+              <p className="text-lg text-justify font-bold text-white mb-4">
+                {noticia.content2}
+              </p>
+              <p className="text-lg text-justify text-white mb-4">
+                {noticia.content3}
+              </p>
+              <p className="text-lg text-justify text-white mb-4">
+                {noticia.content4}
+              </p>
             </div>
             <div
               className="hidden lg:flex lg:col-span-2 lg:justify-center lg:items-start relative"
@@ -62,7 +70,7 @@ function NoticiaDetalle() {
             >
             </div>
           </div>
-          <h2 className="text-3xl pt-20 font-bold text-yellow-300 mb-4">
+          <h2 className="text-3xl pt-20 text-yellow-300 mb-4">
             Otras Noticias
           </h2>
           <hr className="border-t-2 border-gray-400 mb-10"/>
