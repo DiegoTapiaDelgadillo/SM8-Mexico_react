@@ -11,7 +11,7 @@ export default function GestionDeo() {
     },
     {
       title: "Noticias",
-      rute: "/",
+      rute: "/gestion-noticias",
       icon: <NewspaperSvg />,
     },
   ];

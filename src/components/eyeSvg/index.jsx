@@ -1,4 +1,5 @@
-export default function EyeSvg({ onClick }) {
+import clsx from "clsx";
+export default function EyeSvg({ onClick, className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +7,7 @@ export default function EyeSvg({ onClick }) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 stroke-neutral-500 cursor-pointer hover:stroke-black ease-in-out duration-300"
+      className={clsx("w-6 ", className)}
       onClick={onClick}
     >
       <path

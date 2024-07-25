@@ -4,15 +4,24 @@ import { useState, useMemo, useRef } from "react";
 import Modal from "../../components/modal";
 import BotonPrincipal from "../../components/botonPrincipal";
 import PlusSvg from "../../components/plusSvg";
+import AtrasBoton from "../../components/atrasButton";
 
 export default function GestionVacantes() {
   const [search, setSearch] = useState("");
-  const head = ["Titulo", "Ubicación", "Editar", "Eliminar"];
+  const head = ["Titulo", "Ubicación", "Descripción", "Editar", "Eliminar"];
 
-  const body = Array.from({ length: 10 }, () => ({
-    title: "Analista de ventas",
-    location: "CORPORATIVO, CDMX",
-  }));
+  const body = [
+    {
+      title: "Analista de ventas",
+      location: "CORPORATIVO, CDMX",
+      descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Chofer",
+      location: "CORPORATIVO, CDMX",
+      descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ];
 
   const filtredData = useMemo(() => {
     return body.filter((item) => item.title.toLowerCase().includes(search));
@@ -42,7 +51,11 @@ export default function GestionVacantes() {
 
   return (
     <>
-      <div className=" bg-neutral-800 h-screen py-36 px-10 lg:px-20">
+      <div className=" bg-neutral-800 h-screen py-20 sm:py-36 px-10 lg:px-20">
+        <div className=" pb-4">
+          <AtrasBoton to={"/gestion-deo"} />
+        </div>
+
         <p className=" text-yellow-300 text-xl 2xl:text-6xl">
           Gestión Vacantes
         </p>
@@ -60,7 +73,7 @@ export default function GestionVacantes() {
             <PlusSvg onClick={handleOpenModalCreate} />
           </div>
         </div>
-        <div className="overflow-y-auto max-h-full">
+        <div className="overflow-y-auto h-3/4">
           <table className=" w-full table-auto">
             <thead>
               <tr>
@@ -82,6 +95,9 @@ export default function GestionVacantes() {
                   </td>
                   <td className=" text-white text-xs py-4 2xl:text-base">
                     {item.location}
+                  </td>
+                  <td className=" text-white text-xs py-4 2xl:text-base">
+                    {item.descripcion}
                   </td>
                   <td className="py-4">
                     <EditSvg onClick={handleOpenModal} />
@@ -122,6 +138,12 @@ export default function GestionVacantes() {
             </select>
           </div>
           <div className=" pt-4">
+            <textarea
+              className=" w-full border rounded-xl p-2"
+              placeholder="Descripción de la vacante"
+            ></textarea>
+          </div>
+          <div className=" pt-4">
             <BotonPrincipal
               type={"submit"}
               text={"Actualizar"}
@@ -155,6 +177,12 @@ export default function GestionVacantes() {
                 </option>
               ))}
             </select>
+          </div>
+          <div className=" pt-4">
+            <textarea
+              className=" w-full border rounded-xl p-2"
+              placeholder="Descripción de la vacante"
+            ></textarea>
           </div>
           <div className=" pt-4">
             <BotonPrincipal

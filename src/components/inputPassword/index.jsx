@@ -18,7 +18,12 @@ export default function InputPassword({ value, onChange, name, placeholder }) {
         required
       />
       {showPassword ? (
-        <EyeSvg onClick={handleShowPassword} />
+        <EyeSvg
+          onClick={handleShowPassword}
+          className={
+            "stroke-neutral-500 cursor-pointer hover:stroke-black ease-in-out duration-300"
+          }
+        />
       ) : (
         <CloseEyeSvg onClick={handleShowPassword} />
       )}
