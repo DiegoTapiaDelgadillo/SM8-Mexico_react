@@ -49,6 +49,7 @@ export default function LogIn() {
               name={"password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder={"Ingrese su contraseña"}
             />
             <div className=" py-2"></div>
             <BotonPrincipal

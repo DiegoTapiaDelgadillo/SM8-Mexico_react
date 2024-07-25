@@ -39,6 +39,7 @@ export default function App() {
   const LogIn = lazy(() => import("./pages/logIn"));
   const ChangePassword = lazy(() => import("./pages/changePassword"));
   const GestionDeo = lazy(() => import("./pages/GestionDEO"));
+  const GestionVacantes = lazy(() => import("./pages/gestionVacantes"));
 
   return (
     <>
@@ -71,6 +72,7 @@ export default function App() {
             <Route path="/change-password/" element={<ChangePassword />} />{" "}
             {/* Cambiar ruta por "/change-password/:token" para extraer el token de la url */}
             <Route path="/gestion-deo" element={<GestionDeo />} />
+            <Route path="/gestion-vacantes" element={<GestionVacantes />} />
           </Routes>
         </Suspense>
         <Footer></Footer>

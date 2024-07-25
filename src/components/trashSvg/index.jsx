@@ -6,7 +6,7 @@ export default function TrashSvg() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 stroke-yellow-300"
+      className="w-6 2xl:w-8 stroke-red-500 hover:stroke-red-500/50 cursor-pointer ease-in-out duration-300"
     >
       <path
         strokeLinecap="round"

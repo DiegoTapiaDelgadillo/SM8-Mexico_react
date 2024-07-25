@@ -1,150 +1,42 @@
-import BotonPrincipal from "../../components/botonPrincipal";
-import PlusSvg from "../../components/plusSvg";
-import TrashSvg from "../../components/trashSvg";
-import UpdateSvg from "../../components/updateSvg";
-import ViewSvg from "../../components/viewSvg";
-import Modal from "../../components/modal";
-import { useRef } from "react";
+import { Link } from "react-router-dom";
+import NewspaperSvg from "../../components/newspaperSvg";
+import JobSvg from "../../components/jobSvg";
 
 export default function GestionDeo() {
-  const modalRef = useRef();
-
-  const handleOpenModalCreateNews = () => {
-    modalRef.current.openModal();
-  };
-
-  const crudVacantes = [
+  const options = [
     {
-      svg: <PlusSvg />,
-      title: "Crear",
-      description: "Crea una nueva vacante para SM8",
-      button: "Crear Vacante",
-      modal: handleOpenModalCreateNews,
+      title: "Vacantes",
+      rute: "/gestion-vacantes",
+      icon: <JobSvg />,
     },
     {
-      svg: <ViewSvg />,
-      title: "Consultar",
-      description: "Consulta todas las vacantes de SM8",
-      button: "Consultar Vacantes",
-      modal: handleOpenModalCreateNews,
-    },
-    {
-      svg: <UpdateSvg />,
-      title: "Actualizar",
-      description: "Actualiza una vacante de SM8",
-      button: "Actualizar Vacante",
-      modal: handleOpenModalCreateNews,
-    },
-    {
-      svg: <TrashSvg />,
-      title: "Borrar",
-      description: "Borra una vacante de SM8",
-      button: "Borrar Vacante",
-      modal: handleOpenModalCreateNews,
+      title: "Noticias",
+      rute: "/",
+      icon: <NewspaperSvg />,
     },
   ];
-
-  const crudNoticias = [
-    {
-      svg: <PlusSvg />,
-      title: "Crear",
-      description: "Crea una nueva noticia para SM8",
-      button: "Crear Noticia",
-      modal: handleOpenModalCreateNews,
-    },
-    {
-      svg: <ViewSvg />,
-      title: "Consultar",
-      description: "Consulta todas las noticia de SM8",
-      button: "Consultar Noticia",
-      modal: handleOpenModalCreateNews,
-    },
-    {
-      svg: <UpdateSvg />,
-      title: "Actualizar",
-      description: "Actualiza una noticia de SM8",
-      button: "Actualizar Noticia",
-      modal: handleOpenModalCreateNews,
-    },
-    {
-      svg: <TrashSvg />,
-      title: "Borrar",
-      description: "Borra una noticia de SM8",
-      button: "Borrar Noticia",
-      modal: handleOpenModalCreateNews,
-    },
-  ];
-
   return (
-    <>
-      <div className=" py-48 px-8 sm:px-24 bg-neutral-900">
-        <p className=" text-3xl sm:text-4xl text-yellow-300">
-          Hola, Bienvenido nuevamente a tu sección equipo DEO
+    <div className=" h-screen bg-neutral-800 flex items-center justify-center px-10">
+      <div>
+        <p className=" text-yellow-300 text-2xl 2xl:text-6xl text-center">
+          Hola, bienvenido a tu sección equipo DEO
         </p>
-        <p className=" pb-24 text-white sm:text-xl pt-2">
-          Aquí podras gestionar las vacantes y noticas de la pagina de SM8
-          México
+        <p className=" text-center text-white 2xl:text-3xl 2xl:py-2">
+          Selecciona una opción
         </p>
-        <div className=" grid grid-cols-1 2xl:grid-cols-2 gap-4 items-center">
-          <div>
-            <p className=" text-yellow-300 text-3xl">Gestión de noticias</p>
-            <p className=" text-white">
-              En esta sección podras consultar, borrar, actualizar y crear una
-              noticia
-            </p>
-          </div>
-          <div className=" grid sm:grid-cols-2 gap-4">
-            {crudNoticias.map((item, index) => (
-              <div
-                className=" border-2 border-black rounded-xl p-8"
-                key={index}
-              >
-                <div className=" w-full flex justify-center pb-4">
-                  {item.svg}
-                </div>
-                <p className=" text-xl text-yellow-300 text-center">
-                  {item.title}
-                </p>
-                <p className=" text-white text-center">{item.description}</p>
-                <div className=" flex w-full justify-center pt-4">
-                  <BotonPrincipal text={item.button} onClick={item.modal} />
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className=" grid sm:grid-cols-2 gap-4 py-8">
+          {options.map((option, index) => (
+            <Link
+              key={index}
+              to={option.rute}
+              className=" border border-yellow-300 rounded-xl p-4 text-center text-white hover:bg-yellow-300 hover:border-black hover:text-black ease-in-out duration-300 flex justify-center items-center 2xl:text-xl"
+            >
+              <div className=" pr-4">{option.icon}</div>
+              {option.title}
+            </Link>
+          ))}
         </div>
       </div>
-      <div className=" py-48 px-8 sm:px-24 bg-neutral-800">
-        <div className=" grid grid-cols-1 2xl:grid-cols-2 gap-4 items-center">
-          <div>
-            <p className=" text-yellow-300 text-3xl">Gestión de vacantes</p>
-            <p className=" text-white">
-              En esta sección podras consultar, borrar, actualizar y crear una
-              vacantes
-            </p>
-          </div>
-          <div className=" grid sm:grid-cols-2 gap-4">
-            {crudVacantes.map((item, index) => (
-              <div
-                className=" border-2 border-black rounded-xl p-8"
-                key={index}
-              >
-                <div className=" w-full flex justify-center pb-4">
-                  {item.svg}
-                </div>
-                <p className=" text-xl text-yellow-300 text-center">
-                  {item.title}
-                </p>
-                <p className=" text-white text-center">{item.description}</p>
-                <div className=" flex w-full justify-center pt-4">
-                  <BotonPrincipal text={item.button} onClick={item.modal} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      <Modal ref={modalRef}></Modal>
-    </>
+    </div>
   );
 }
