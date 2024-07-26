@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
-import BotonPrincipal from "../../components/botonPrincipal";
 
 export default function Carrusel({ images }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -20,7 +17,7 @@ export default function Carrusel({ images }) {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextImage, 5000);
+    const interval = setInterval(nextImage, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -41,12 +38,6 @@ export default function Carrusel({ images }) {
         <p className="text-sm text-center mx-9 md:mx-auto sm:text-lg mt-2">
           {images[currentImage].text}
         </p>
-        <Link to={images[currentImage].buttonUrl} className="inline-block mt-4">
-          <BotonPrincipal
-            text="Leer más"
-            className="text-black px-8 py-2 text-sm md:text-base md:px-16 md:py-4"
-          />
-        </Link>
       </div>
 
       <svg
@@ -85,7 +76,7 @@ export default function Carrusel({ images }) {
         {images.map((_, index) => (
           <div
             key={index}
-            className={`w-3 h-3 sm:w-4 sm:h-4 cursor-pointer border-2 ${
+            className={`w-3 h-3 sm:w-4 sm:h-4 cursor-pointer border-2 rounded-full ${
               currentImage === index ? "bg-white" : "bg-transparent"
             } border-white`}
             onClick={() => goToImage(index)}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import Mural from "../../components/mural";
 import Fondo from "../../components/mural/img/home.jpg";
 import Contenedor from "../../components/contenedor";
@@ -8,11 +8,11 @@ import Contacto from "../../components/contacto";
 import Rosetin from "./img/Character_Render_17.png";
 import CardCategorias from "../../components/cardCategorias";
 import Peluches from "../../assets/PELUSHES WEB.webp";
-import GTOpc from "../../assets/GTOpc.webp";
+
 import Title from "../../components/titles";
 import useScrollTop from "../../hooks/useScrollTop";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function HomePage() {
   useScrollTop();
@@ -29,13 +29,7 @@ export default function HomePage() {
         }
         rutaFondo={Fondo}
       ></Mural>
-      <div className="flex justify-center items-center bg-neutral-800 sm:px-24 sm:py-12">
-        <img
-          src={GTOpc}
-          alt="Imagen para PC"
-          className="w-full "
-        />
-      </div>
+
       <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
         <div className="hidden xl:block">
           <h1 className=" text-yellow-500"></h1>

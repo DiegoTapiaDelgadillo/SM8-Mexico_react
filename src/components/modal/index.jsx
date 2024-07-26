@@ -1,5 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import CloseSvg from "../closeSvg";
+import clsx from "clsx";
 
 const Modal = forwardRef(({ children }, ref) => {
   const [active, setActive] = useState(false);

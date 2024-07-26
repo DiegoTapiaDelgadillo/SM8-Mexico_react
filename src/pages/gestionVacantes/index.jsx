@@ -8,8 +8,38 @@ import AtrasBoton from "../../components/atrasButton";
 
 export default function GestionVacantes() {
   const [search, setSearch] = useState("");
-  const head = ["Titulo", "Ubicación", "Descripción", "Editar", "Eliminar"];
+  const [dataEdit, setDataEdit] = useState({
+    title: "",
+    location: "",
+    descripcion: "",
+  });
+  const [dataCreate, setDataCreate] = useState({
+    title: "",
+    location: "",
+    descripcion: "",
+  });
 
+  const handleSumitCreate = (e) => {
+    e.preventDefault();
+    console.log(dataCreate);
+    setDataCreate({
+      title: "",
+      location: "",
+      descripcion: "",
+    });
+  };
+
+  const handleSumitEdit = (e) => {
+    e.preventDefault();
+    console.log(dataEdit);
+    setDataEdit({
+      title: "",
+      location: "",
+      descripcion: "",
+    });
+  };
+
+  const head = ["Titulo", "Ubicación", "Descripción", "Editar", "Eliminar"];
   const body = [
     {
       title: "Analista de ventas",
@@ -40,12 +70,92 @@ export default function GestionVacantes() {
 
   const option = [
     {
-      text: "Corporativo",
-      value: "corporativo",
+      text: "Selecciona una ubicación",
+      value: "seleccion",
     },
     {
-      text: "Vallejo",
-      value: "Vallejo",
+      text: "Aguascalientes",
+      value: "Aguascalientes",
+    },
+    {
+      text: "Cancún, Qroo",
+      value: "Cancún, Qroo",
+    },
+    {
+      text: "Coatzacoalcos, Ver",
+      value: "Coatzacoalcos, Ver",
+    },
+    {
+      text: "Corporativo, CDMX",
+      value: "Corporativo, CDMX",
+    },
+    {
+      text: "Cuernavaca, Mor",
+      value: "Cuernavaca, Mor",
+    },
+    {
+      text: "Culiacán, Sin",
+      value: "Culiacán, Sin",
+    },
+    {
+      text: "Ciudad de México",
+      value: "Ciudad de México",
+    },
+    {
+      text: "Guadalajara, Jal",
+      value: "Guadalajara, Jal",
+    },
+    {
+      text: "La paz, B.C.S",
+      value: "La paz, B.C.S",
+    },
+    {
+      text: "León, Gto",
+      value: "León, Gto",
+    },
+    {
+      text: "Los Cabos, B.C.S",
+      value: "Los Cabos, B.C.S",
+    },
+    {
+      text: "Mazatlán, Sin",
+      value: "Mazatlán, Sin",
+    },
+    {
+      text: "Mérida, Yuc",
+      value: "Mérida, Yuc",
+    },
+    {
+      text: "Monterrey, N.L",
+      value: "Monterrey, N.L",
+    },
+    {
+      text: "Puebla, Pue",
+      value: "Puebla, Pue",
+    },
+    {
+      text: "Puerto Vallarta, Jal",
+      value: "Puerto Vallarta, Jal",
+    },
+    {
+      text: "Querétaro, Qro",
+      value: "Querétaro, Qro",
+    },
+    {
+      text: "Tijuana, B.C",
+      value: "Tijuana, B.C",
+    },
+    {
+      text: "Toluca, Edo de Méx",
+      value: "Toluca, Edo de Méx",
+    },
+    {
+      text: "Tuxtla Gutiérrez, Chis",
+      value: "Tuxtla Gutiérrez, Chis",
+    },
+    {
+      text: "Zapopan, Jal",
+      value: "Zapopan, Jal",
     },
   ];
 
@@ -116,19 +226,28 @@ export default function GestionVacantes() {
         <p className=" text-white text-xs md:text-xl">
           Ingresa los siguinetes datos para editar la vacante
         </p>
-        <form action="">
+        <form onSubmit={handleSumitEdit}>
           <div className=" pt-2">
             <input
               className=" w-full border rounded-xl p-2"
               placeholder="Titulo de la vacante"
               type="text"
+              value={dataEdit.title}
+              name="title"
+              onChange={(e) =>
+                setDataEdit({ ...dataEdit, title: e.target.value })
+              }
             />
           </div>
           <div className=" pt-4">
             <select
-              name=""
-              id=""
+              name="location"
+              id="location"
               className="w-full border rounded-xl p-2 cursor-pointer"
+              onChange={(e) =>
+                setDataEdit({ ...dataEdit, location: e.target.value })
+              }
+              value={dataEdit.location}
             >
               {option.map((item, index) => (
                 <option value={item.value} key={index}>
@@ -141,6 +260,11 @@ export default function GestionVacantes() {
             <textarea
               className=" w-full border rounded-xl p-2"
               placeholder="Descripción de la vacante"
+              value={dataEdit.descripcion}
+              name="descripcion"
+              onChange={(e) =>
+                setDataEdit({ ...dataEdit, descripcion: e.target.value })
+              }
             ></textarea>
           </div>
           <div className=" pt-4">
@@ -157,19 +281,28 @@ export default function GestionVacantes() {
         <p className=" text-white text-xs md:text-xl">
           Ingresa los siguinetes datos para crear la vacante
         </p>
-        <form action="">
+        <form onSubmit={handleSumitCreate}>
           <div className=" pt-2">
             <input
               className=" w-full border rounded-xl p-2"
               placeholder="Titulo de la vacante"
               type="text"
+              value={dataCreate.title}
+              name="title"
+              onChange={(e) =>
+                setDataCreate({ ...dataCreate, title: e.target.value })
+              }
             />
           </div>
           <div className=" pt-4">
             <select
-              name=""
-              id=""
+              name="location"
+              id="location"
               className="w-full border rounded-xl p-2 cursor-pointer"
+              onChange={(e) =>
+                setDataCreate({ ...dataCreate, location: e.target.value })
+              }
+              value={dataCreate.location}
             >
               {option.map((item, index) => (
                 <option value={item.value} key={index}>
@@ -182,6 +315,11 @@ export default function GestionVacantes() {
             <textarea
               className=" w-full border rounded-xl p-2"
               placeholder="Descripción de la vacante"
+              value={dataCreate.descripcion}
+              name="descripcion"
+              onChange={(e) =>
+                setDataCreate({ ...dataCreate, descripcion: e.target.value })
+              }
             ></textarea>
           </div>
           <div className=" pt-4">
