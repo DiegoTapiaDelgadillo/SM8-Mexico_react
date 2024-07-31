@@ -3,13 +3,16 @@ import { useState } from "react";
 import useScrollTop from "../../hooks/useScrollTop";
 import Carrusel from "../../components/carrusel";
 import { noticias } from "../../data/noticias";
-import n4 from "../../components/carrusel/img/c3.jpg";
 import MainNews from "../../components/mainNews";
 import SecondaryNews from "../../components/secndaryNews";
 
 export default function Noticias() {
   const [showAllNews, setShowAllNews] = useState(false);
   //useScrollTop();
+
+  const mainNewsIndex = noticias.length - 1;
+  const mainNews = noticias[mainNewsIndex];
+  const secondaryNews = noticias.slice(0, mainNewsIndex);
 
   const imagenes = noticias.map((noticia) => ({
     id: noticia.id,
@@ -18,50 +21,6 @@ export default function Noticias() {
     text: noticia.summary,
     buttonUrl: `/noticia/${noticia.id}`,
   }));
-
-  const mainNews = {
-    img: n4,
-    category: "Categoria",
-    title: "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-    sumary:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis repudiandae placeat libero ad impedit, soluta itaque rem hic labore iusto quasi optio sint, error vero consectetur recusandae voluptas. Molestiae, saepe.",
-    date: "Fecha de publicación: 18 de Octubre del 2024",
-    description:
-      "Donec efficitur sagittis ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur nec ligula a tristique. Suspendisse mi ligula, aliquet sit amet sagittis eu, tincidunt non tortor. Donec laoreet auctor est ac sagittis. Sed placerat, est at finibus faucibus, elit erat commodo erat, ac elementum diam lectus sed purus. In hac habitasse platea dictumst. Proin non ante in urna interdum gravida. Suspendisse potenti. Vivamus dignissim interdum dolor, quis dictum risus hendrerit in. Duis molestie, lorem fringilla venenatis interdum, quam lacus tincidunt purus, quis tempor libero justo vitae ipsum. Nullam finibus auctor arcu, eu sollicitudin tellus rutrum et.",
-  };
-
-  const secondaryNews = [
-    {
-      img: n4,
-      category: "Categoria",
-      title: "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-      sumary:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis repudiandae placeat libero ad impedit, soluta itaque rem hic labore iusto quasi optio sint, error vero consectetur recusandae voluptas. Molestiae, saepe.",
-      date: "Fecha de publicación: 18 de Octubre del 2024",
-      description:
-        "Donec efficitur sagittis ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur nec ligula a tristique. Suspendisse mi ligula, aliquet sit amet sagittis eu, tincidunt non tortor. Donec laoreet auctor est ac sagittis. Sed placerat, est at finibus faucibus, elit erat commodo erat, ac elementum diam lectus sed purus. In hac habitasse platea dictumst. Proin non ante in urna interdum gravida. Suspendisse potenti. Vivamus dignissim interdum dolor, quis dictum risus hendrerit in. Duis molestie, lorem fringilla venenatis interdum, quam lacus tincidunt purus, quis tempor libero justo vitae ipsum. Nullam finibus auctor arcu, eu sollicitudin tell",
-    },
-    {
-      img: n4,
-      category: "Categoria",
-      title: "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-      sumary:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis repudiandae placeat libero ad impedit, soluta itaque rem hic labore iusto quasi optio sint, error vero consectetur recusandae voluptas. Molestiae, saepe.",
-      date: "Fecha de publicación: 18 de Octubre del 2024",
-      description:
-        "Donec efficitur sagittis ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur nec ligula a tristique. Suspendisse mi ligula, aliquet sit amet sagittis eu, tincidunt non tortor. Donec laoreet auctor est ac sagittis. Sed placerat, est at finibus faucibus, elit erat commodo erat, ac elementum diam lectus sed purus. In hac habitasse platea dictumst. Proin non ante in urna interdum gravida. Suspendisse potenti. Vivamus dignissim interdum dolor, quis dictum risus hendrerit in. Duis molestie, lorem fringilla venenatis interdum, quam lacus tincidunt purus, quis tempor libero justo vitae ipsum. Nullam finibus auctor arcu, eu sollicitudin tell",
-    },
-    {
-      img: n4,
-      category: "Categoria",
-      title: "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-      sumary:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis repudiandae placeat libero ad impedit, soluta itaque rem hic labore iusto quasi optio sint, error vero consectetur recusandae voluptas. Molestiae, saepe.",
-      date: "Fecha de publicación: 18 de Octubre del 2024",
-      description:
-        "Donec efficitur sagittis ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur nec ligula a tristique. Suspendisse mi ligula, aliquet sit amet sagittis eu, tincidunt non tortor. Donec laoreet auctor est ac sagittis. Sed placerat, est at finibus faucibus, elit erat commodo erat, ac elementum diam lectus sed purus. In hac habitasse platea dictumst. Proin non ante in urna interdum gravida. Suspendisse potenti. Vivamus dignissim interdum dolor, quis dictum risus hendrerit in. Duis molestie, lorem fringilla venenatis interdum, quam lacus tincidunt purus, quis tempor libero justo vitae ipsum. Nullam finibus auctor arcu, eu sollicitudin tell",
-    },
-  ];
 
   const handleShowAllNews = () => {
     setShowAllNews(!showAllNews);
@@ -77,31 +36,31 @@ export default function Noticias() {
               Bienvenido a SM8 Noticias
             </p>
             <p className=" text-center text-yellow-300 pt-2 sm:text-2xl">
-              !Mantente al día con nosotros!
+              ¡Mantente al día con nosotros!
             </p>
             <p className=" text-center text-white sm:text-xl">
               Explora las noticias más recientes y relevantes de SM8
             </p>
           </div>
           <MainNews
-            img={n4}
-            category={mainNews.category}
+            img={mainNews.image}
+            category={mainNews.section}
             title={mainNews.title}
-            sumary={mainNews.sumary}
+            sumary={mainNews.summary}
             date={mainNews.date}
-            description={mainNews.description}
+            description={mainNews.content}
           />
-          <p className=" pt-8 text-yellow-300 text-4xl">Ultimas Noticias</p>
+          <p className=" pt-8 text-yellow-300 text-4xl">Últimas Noticias</p>
           <div className=" grid grid-cols-1 xl:grid-cols-3 gap-8 pt-8">
             {secondaryNews.map((news, index) => (
               <SecondaryNews
                 key={index}
-                img={news.img}
-                category={news.category}
+                img={news.image}
+                category={news.section}
                 title={news.title}
-                sumary={news.sumary}
+                sumary={news.summary}
                 date={news.date}
-                description={news.description}
+                description={news.content}
               />
             ))}
           </div>
@@ -123,12 +82,12 @@ export default function Noticias() {
                   {secondaryNews.map((news, index) => (
                     <SecondaryNews
                       key={index}
-                      img={news.img}
-                      category={news.category}
+                      img={news.image}
+                      category={news.section}
                       title={news.title}
-                      sumary={news.sumary}
+                      sumary={news.summary}
                       date={news.date}
-                      description={news.description}
+                      description={news.content}
                     />
                   ))}
                 </div>
