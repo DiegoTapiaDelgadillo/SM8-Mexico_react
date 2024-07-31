@@ -14,12 +14,16 @@ function NoticiaDetalle() {
   const noticia = noticias.find((noticia) => noticia.id === parseInt(id));
 
   useEffect(() => {
-    AOS.refresh();
-  }, []);
+    const timer = setTimeout(() => {
+      AOS.init();
+      AOS.refresh();
+    }, 100); 
+    return () => clearTimeout(timer); 
+  }, [id]);
 
   const otrasNoticias = noticias
     .filter((n) => n.id !== parseInt(id))
-    .slice(0, 3); 
+    .slice(0, 3);
 
   return (
     <div>
@@ -30,14 +34,9 @@ function NoticiaDetalle() {
               className="hidden lg:flex lg:col-span-2 lg:justify-center lg:items-start relative"
               data-aos="fade-right"
             >
-              <img
-                src={Rose2}
-                alt="ESR Logo"
-                className="absolute left-0 top-10 transform -translate-x-1/2"
-              />
             </div>
             <div className="lg:col-span-8" data-aos="zoom-in">
-              <h1 className="text-left text-4xl font-bold text-yellow-300 mb-4">
+              <h1 className="text-left text-4xl text-yellow-300 mb-4">
                 {noticia.title}
               </h1>
               <p className="text-sm text-gray-500 mb-2">
@@ -55,29 +54,34 @@ function NoticiaDetalle() {
               <p className="text-lg text-justify text-white mb-4">
                 {noticia.content}
               </p>
+              <p className="text-lg text-justify font-bold text-white mb-4">
+                {noticia.content2}
+              </p>
+              <p className="text-lg text-justify text-white mb-4">
+                {noticia.content3}
+              </p>
+              <p className="text-lg text-justify text-white mb-4">
+                {noticia.content4}
+              </p>
             </div>
             <div
               className="hidden lg:flex lg:col-span-2 lg:justify-center lg:items-start relative"
               data-aos="fade-left"
             >
-              <img
-                src={Rose3}
-                alt="Rose"
-                className="absolute right-0 top-10 transform translate-x-1/2"
-              />
             </div>
           </div>
-          <h2 className="text-3xl py-10 font-bold text-yellow-300 mb-4">
+          <h2 className="text-3xl pt-20 text-yellow-300 mb-4">
             Otras Noticias
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <hr className="border-t-2 border-gray-400 mb-10"/>
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
             {otrasNoticias.map((noticia, index) => (
               <CardNoticia
                 key={noticia.id}
                 title={noticia.title}
+                section={noticia.section}
                 date={noticia.date}
                 image={noticia.image}
-                summary={noticia.summary}
                 link={`/noticia/${noticia.id}`}
                 delay={(index + 1) * 100}
               />

@@ -19,7 +19,7 @@ export default function Carrusel({ images }) {
   useEffect(() => {
     const interval = setInterval(nextImage, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentImage]);
 
   return (
     <div className="relative h-screen overflow-hidden flex items-center justify-center">
@@ -32,7 +32,7 @@ export default function Carrusel({ images }) {
       />
 
       <div className="grid justify-items-center text-white mx-auto mb-20 sm:mb-0 animate-fade-down px-4 sm:px-8 max-w-screen-md md:max-w-screen-lg lg:max-w-screen-lg xl:max-w-screen-lg">
-        <h1 className="pb-4 text-yellow-300 md:mx-1 text-center text-3xl lg:text-7xl">
+        <h1 className="pb-4 text-yellow-300 md:mx-1 text-center text-2xl lg:text-5xl">
           {images[currentImage].title}
         </h1>
         <p className="text-sm text-center mx-9 md:mx-auto sm:text-lg mt-2">
@@ -72,7 +72,7 @@ export default function Carrusel({ images }) {
         />
       </svg>
 
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 pb-20">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:pb-0 sm:mt-2">
         {images.map((_, index) => (
           <div
             key={index}
