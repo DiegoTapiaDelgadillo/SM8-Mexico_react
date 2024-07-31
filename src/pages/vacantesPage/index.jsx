@@ -19,10 +19,13 @@ export default function VacantesPage() {
       ></Mural>
 
       <div className="bg-neutral-800  w-full py-24 px-4 md:px-24">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <CardVacantes
             titulo={"Analista de ventas"}
             ubicacion={"CORPORATIVO, CDMX"}
+            descripcion={
+              "loremp ipsum dolor sit amet, consectetur adipiscing elit. "
+            }
             delay={50}
           ></CardVacantes>
           <CardVacantes
@@ -37,7 +40,7 @@ export default function VacantesPage() {
           ></CardVacantes>
           <CardVacantes
             titulo={"Auxiliar de Asesor Técnico"}
-            ubicacion={"CANCÚN"}  
+            ubicacion={"CANCÚN"}
             delay={200}
           ></CardVacantes>
           <CardVacantes
@@ -135,7 +138,7 @@ export default function VacantesPage() {
             "Nuestro grupo de expertos estan listos para brindarte la mejor solución."
           }
           rosetin={Rosetin}
-        ></Contacto>
+        />
       </div>
     </div>
   );

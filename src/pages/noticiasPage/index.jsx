@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+// pages/Noticias.js
+import { useState } from "react";
 import useScrollTop from "../../hooks/useScrollTop";
 import Carrusel from "../../components/carrusel";
 import { noticias } from "../../data/noticias";
-import CardNoticia from "../../components/cardNoticia/CardNoticia";
-import CardNoticiaGrande from "../../components/cardNoticia/CardNoticiaPrincipal";
-import CardNoticiaPequena from "../../components/cardNoticia/CardNoticiaPequeña";
+import MainNews from "../../components/mainNews";
+import SecondaryNews from "../../components/secndaryNews";
 
 export default function Noticias() {
-  useScrollTop();
-  const { id } = useParams();
-  const noticia = noticias.find((noticia) => noticia.id === parseInt(id));
+  const [showAllNews, setShowAllNews] = useState(false);
+  //useScrollTop();
+
+  const mainNewsIndex = noticias.length - 1;
+  const mainNews = noticias[mainNewsIndex];
+  const secondaryNews = noticias.slice(0, mainNewsIndex);
 
   const imagenes = noticias.map((noticia) => ({
     id: noticia.id,
@@ -20,59 +22,92 @@ export default function Noticias() {
     buttonUrl: `/noticia/${noticia.id}`,
   }));
 
-  const [noticiaGrande, ...otrasNoticias] = noticias;
+  const handleShowAllNews = () => {
+    setShowAllNews(!showAllNews);
+  };
 
   return (
-    <div>
+    <>
       <Carrusel images={imagenes} />
-      <div className="bg-neutral-800 text-white min-h-screen md:pt-20 pt-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-rows-2 gap-4 mx-4 sm:mx-20">
-          <div className="md:col-span-2 sm:row-span-2 sm:col-span-2">
-            <CardNoticiaGrande
-              title={noticiaGrande.title}
-              section={noticiaGrande.section}
-              date={noticiaGrande.date}
-              image={noticiaGrande.image}
-              summary={noticiaGrande.summary}
-              link={`/noticia/${noticiaGrande.id}`}
-              delay={100}
-            />
+      <div className=" bg-neutral-900">
+        <div className=" p-10 sm:p-20">
+          <div className=" bg-neutral-800 w-full p-4 rounded-xl">
+            <p className=" text-center text-neutral-400 text-xs sm:text-base">
+              Bienvenido a SM8 Noticias
+            </p>
+            <p className=" text-center text-yellow-300 pt-2 sm:text-2xl">
+              ¡Mantente al día con nosotros!
+            </p>
+            <p className=" text-center text-white sm:text-xl">
+              Explora las noticias más recientes y relevantes de SM8
+            </p>
           </div>
-          
-            {otrasNoticias.slice(0, 2).map((noticia, index) => (
-              <div key={index}>
-              <CardNoticiaPequena
-                title={noticia.title}
-                section={noticia.section}
-                date={noticia.date}
-                image={noticia.image}
-                link={`/noticia/${noticia.id}`}
-                delay={(index + 1) * 100}
+          <MainNews
+            img={mainNews.image}
+            category={mainNews.section}
+            title={mainNews.title}
+            sumary={mainNews.summary}
+            date={mainNews.date}
+            description={mainNews.content}
+          />
+          <p className=" pt-8 text-yellow-300 text-4xl">Últimas Noticias</p>
+          <div className=" grid grid-cols-1 xl:grid-cols-3 gap-8 pt-8">
+            {secondaryNews.map((news, index) => (
+              <SecondaryNews
+                key={index}
+                img={news.image}
+                category={news.section}
+                title={news.title}
+                sumary={news.summary}
+                date={news.date}
+                description={news.content}
               />
+            ))}
+          </div>
+          <div className=" flex justify-end w-full py-8">
+            <p
+              className=" text-yellow-300 cursor-pointer hover:text-yellow-300/50 hidden sm:block"
+              onClick={handleShowAllNews}
+            >
+              {showAllNews ? "Menos noticias" : "Todas las noticias"}
+            </p>
+          </div>
+          {showAllNews ? (
+            <>
+              <div className=" animate-fade">
+                <p className=" py-8 text-yellow-300 text-4xl">
+                  Todas las Noticias
+                </p>
+                <div className=" grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {secondaryNews.map((news, index) => (
+                    <SecondaryNews
+                      key={index}
+                      img={news.image}
+                      category={news.section}
+                      title={news.title}
+                      sumary={news.summary}
+                      date={news.date}
+                      description={news.content}
+                    />
+                  ))}
+                </div>
+                <div className=" flex justify-center pt-8">
+                  <div className=" flex justify-between items-center">
+                    <p className=" text-white pr-4 hover:text-white/50 cursor-pointer">
+                      {" "}
+                      Atras
+                    </p>
+                    <p className=" px-3 py-1 border text-white rounded-md">1</p>
+                    <p className=" text-white pl-4 hover:text-white/50 cursor-pointer">
+                      Adelante
+                    </p>
+                  </div>
+                </div>
               </div>
-            ))}
-          
-        </div>
-        <div className="container mx-auto px-4 py-8">
-          <h2 className="text-3xl py-5 text-yellow-300 mb-0">
-            Otras Noticias
-          </h2>
-          <hr className="border-t-2 border-gray-400 mb-10"/>
-          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
-            {otrasNoticias.map((noticia, index) => (
-              <CardNoticia
-                key={noticia.id}
-                title={noticia.title}
-                section={noticia.section}
-                date={noticia.date}
-                image={noticia.image}
-                link={`/noticia/${noticia.id}`}
-                delay={(index + 1) * 100}
-              />
-            ))}
-          </div>
+            </>
+          ) : null}
         </div>
       </div>
-    </div>
+    </>
   );
 }
