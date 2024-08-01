@@ -2,57 +2,83 @@ import AtrasBoton from "../../components/atrasButton";
 import PlusSvg from "../../components/plusSvg";
 import EditSvg from "../../components/editSvg";
 import TrashSvg from "../../components/trashSvg";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import Modal from "../../components/modal";
 import EyeSvg from "../../components/eyeSvg";
 import PhotoSvg from "../../components/photoSvg";
 import BotonPrincipal from "../../components/botonPrincipal";
+import api from "../../services/api"; // Importa la configuración de Axios
+
 export default function GestionNoticias() {
   const [search, setSearch] = useState("");
+  const [noticias, setNoticias] = useState([]);
   const [previewSrc, setPreviewSrc] = useState(null);
+  const [titulo, setTitulo] = useState("");
+  const [subtitulo, setSubtitulo] = useState("");
+  const [contenido, setContenido] = useState("");
+  const [imagen, setImagen] = useState(null);
+  const [selectedNoticia, setSelectedNoticia] = useState(null);
   const head = ["Titulo", "Categoria", "Fecha", "Leer", "Editar", "Eliminar"];
-  const body = [
-    {
-      title:
-        "Replica de pirámide de Kukulkán en el centro histórico de la Ciudad de México",
-      categoria: "Proyectos",
-      fecha: "18 de julio de 2024",
-      descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      subtitulo: "Lorem ipsum dolor sit amet.",
-      img: "https://www.eluniversal.com.mx/sites/default/files/2021/07/19/kukulkan.jpg",
-    },
-  ];
-  const filtredData = useMemo(() => {
-    return body.filter((item) => item.title.toLowerCase().includes(search));
-  }, [search, body]);
 
-  const modalRefRead = useRef();
+  useEffect(() => {
+    fetchNoticias();
+  }, []);
 
-  const modalRefEdit = useRef();
-
-  const handleOpenModalRead = () => {
-    modalRefRead.current.openModal();
+  const fetchNoticias = async () => {
+    try {
+      const response = await api.get('/noticias');
+      setNoticias(response.data);
+    } catch (error) {
+      console.error('Error al obtener las noticias:', error);
+    }
   };
 
-  const handleOpenModalEdit = () => {
-    modalRefEdit.current.openModal();
+  const handleCreateNoticia = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('titulo', titulo);
+      formData.append('subtitulo', subtitulo);
+      formData.append('contenido', contenido);
+      formData.append('imagen', imagen);
+
+      await api.post('/noticias', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      fetchNoticias(); // Recargar las noticias
+      modalRefCreate.current.closeModal();
+    } catch (error) {
+      console.error('Error al crear la noticia:', error);
+    }
   };
 
-  const fileInput = useRef();
+  const handleUpdateNoticia = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('titulo', titulo);
+      formData.append('subtitulo', subtitulo);
+      formData.append('contenido', contenido);
+      if (imagen) formData.append('imagen', imagen);
 
-  const handleFileInput = (e) => {
-    fileInput.current.click();
-  };
-
-  const modalRefCreate = useRef();
-
-  const handleOpenModalCreate = () => {
-    modalRefCreate.current.openModal();
+      await api.put(`/noticias/${selectedNoticia.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      fetchNoticias(); // Recargar las noticias
+      modalRefEdit.current.closeModal();
+    } catch (error) {
+      console.error('Error al actualizar la noticia:', error);
+    }
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+      setImagen(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewSrc(reader.result);
@@ -62,15 +88,70 @@ export default function GestionNoticias() {
       alert("Por favor, selecciona un archivo JPG o PNG.");
     }
   };
+
+
+  const handleDeleteNoticia = async (id) => {
+    try {
+      await api.delete(`/noticias/${id}`);
+      fetchNoticias();
+    } catch (error) {
+      console.error('Error al eliminar la noticia:', error);
+    }
+  };
+
+  const handleSelectNoticia = (noticia) => {
+    setSelectedNoticia(noticia);
+    modalRefRead.current.openModal();
+  };
+
+  const handleEditNoticia = (noticia) => {
+    setSelectedNoticia(noticia);
+    setTitulo(noticia.titulo);
+    setSubtitulo(noticia.subtitulo);
+    setContenido(noticia.contenido);
+    setPreviewSrc(noticia.imagen);
+    modalRefEdit.current.openModal();
+  };
+
+  const formatDate = (date) => {
+    const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
+    return new Date(date).toLocaleDateString('es-ES', options);
+  };
+
+  const filtredData = useMemo(() => {
+    return noticias.filter((item) => item.titulo.toLowerCase().includes(search));
+  }, [search, noticias]);
+
+  const modalRefRead = useRef();
+  const modalRefEdit = useRef();
+  const modalRefCreate = useRef();
+  const fileInput = useRef();
+
+  const handleOpenModalCreate = () => {
+    modalRefCreate.current.openModal();
+  };
+
+  const handleFileInput = (e) => {
+    fileInput.current.click();
+  };
+
+  const stringToBlob = (str) => {
+    const blob = new Blob([str], { type: 'text/plain' });
+    return blob;
+  }
+
+  const img = stringToBlob(previewSrc);
+
+  console.log(img);
+  console.log(typeof(img));
+
   return (
     <>
       <div className=" bg-neutral-800 h-screen py-20 sm:py-36 px-10 lg:px-20">
         <div className=" pb-4">
           <AtrasBoton to={"/gestion-deo"} />
         </div>
-        <p className=" text-yellow-300 text-xl 2xl:text-6xl">
-          Gestión Noticias
-        </p>
+        <p className=" text-yellow-300 text-xl 2xl:text-6xl">Gestión Noticias</p>
         <p className=" text-white text-xs 2xl:text-2xl">
           Aquí podras gestionar tus noticias
         </p>
@@ -103,27 +184,27 @@ export default function GestionNoticias() {
               {filtredData.map((item, index) => (
                 <tr key={index} className=" hover:bg-neutral-900">
                   <td className=" text-white text-xs py-4 2xl:text-base ">
-                    {item.title}
+                    {item.titulo}
                   </td>
                   <td className=" text-white text-xs py-4 2xl:text-base">
                     {item.categoria}
                   </td>
                   <td className=" text-white text-xs py-4 2xl:text-base">
-                    {item.fecha}
+                    {formatDate(item.fecha)}
                   </td>
                   <td className=" text-white text-xs py-4 2xl:text-base">
                     <EyeSvg
                       className={
                         "stroke-white hover:stroke-white/50 ease-in-out duration-300 cursor-pointer"
                       }
-                      onClick={handleOpenModalRead}
+                      onClick={() => handleSelectNoticia(item)}
                     />
                   </td>
                   <td className="py-4">
-                    <EditSvg onClick={handleOpenModalEdit} />
+                    <EditSvg onClick={() => handleEditNoticia(item)} />
                   </td>
                   <td className="py-4">
-                    <TrashSvg />
+                    <TrashSvg onClick={() => handleDeleteNoticia(item.id)} />
                   </td>
                 </tr>
               ))}
@@ -132,45 +213,34 @@ export default function GestionNoticias() {
         </div>
       </div>
       <Modal ref={modalRefRead}>
-        <div className=" overflow-y-auto h-96">
-          <p className=" text-yellow-300 text-xl">
-            Replica de pirámide de Kukulkán en el centro histórico de la Ciudad
-            de México{" "}
-          </p>
-          <p className=" text-xs text-neutral-500 py-1">
-            Publicado el 18 de julio de 2024
-          </p>
-          <p className=" text-white">
-            Nos complace ser participes de este proyecto, con una estrurctura
-            con sistema multidireccional de 15 metros de altura para replicar la
-            pirámide de Kukulkán.
-          </p>
-          <figure className=" flex justify-center py-4">
-            <img
-              src="https://www.eluniversal.com.mx/sites/default/files/2021/07/19/kukulkan.jpg"
-              className="w-full"
-            />
-          </figure>
-          <p className=" text-white">
-            Una de las sorpresas mas agradables que podemo encontrar al
-            comprometernos totalmente con algun proyecto especifico es que
-            surgen fuerzas y oportunidades. Nos complace ser participes de este
-            proyecto, con una estructura con sistema multidereccional de 15
-            metros de altura para replica de la piramide de Kukulkán. SM8,
-            siempre comprometidos con la calidad y seguridadque nuestros
-            clientes necesitan.
-          </p>
-        </div>
+        {selectedNoticia && (
+          <div className=" overflow-y-auto h-96">
+            <p className=" text-yellow-300 text-xl">{selectedNoticia.titulo}</p>
+            <p className=" text-xs text-neutral-500 py-1">
+              Publicado el {formatDate(selectedNoticia.fecha)}
+            </p>
+            <p className=" text-white">{selectedNoticia.contenido}</p>
+            <figure className=" flex justify-center py-4">
+              <img
+                src={selectedNoticia.imagen}
+                className="w-full"
+              />
+            </figure>
+            <p className=" text-white">{selectedNoticia.subtitulo}</p>
+          </div>
+        )}
       </Modal>
       <Modal ref={modalRefEdit}>
         <p className=" text-yellow-300 text-xl">Editar Noticia</p>
         <p className=" text-white">Aquí podras editar la noticia</p>
-        <form action="">
+        <form onSubmit={handleUpdateNoticia}>
           <div className=" pt-2">
             <input
               type="text"
               placeholder="Titulo de la noticia"
               className=" border p-1 rounded-xl w-full"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
           <div className=" pt-4">
@@ -178,13 +248,17 @@ export default function GestionNoticias() {
               type="text"
               placeholder="Subtitulo de la noticia"
               className=" border p-1 rounded-xl w-full"
+              value={subtitulo}
+              onChange={(e) => setSubtitulo(e.target.value)}
             />
           </div>
           <div className=" pt-4">
             <textarea
               type="text"
-              placeholder="Contnido de la noticia"
+              placeholder="Contenido de la noticia"
               className=" border p-1 rounded-xl w-full"
+              value={contenido}
+              onChange={(e) => setContenido(e.target.value)}
             />
           </div>
           <div className=" pt-4 flex flex-row items-center">
@@ -216,7 +290,7 @@ export default function GestionNoticias() {
           )}
           <div className=" pt-4">
             <BotonPrincipal
-              text={"Subir noticia"}
+              text={"Guardar cambios"}
               className={"xl:w-full"}
               type={"submit"}
             />
@@ -226,12 +300,14 @@ export default function GestionNoticias() {
       <Modal ref={modalRefCreate}>
         <p className=" text-yellow-300 text-xl">Crear Noticia</p>
         <p className=" text-white">Aquí podras crear una noticia</p>
-        <form action="">
+        <form onSubmit={handleCreateNoticia}>
           <div className=" pt-2">
             <input
               type="text"
               placeholder="Titulo de la noticia"
               className=" border p-1 rounded-xl w-full"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
           <div className=" pt-4">
@@ -239,13 +315,17 @@ export default function GestionNoticias() {
               type="text"
               placeholder="Subtitulo de la noticia"
               className=" border p-1 rounded-xl w-full"
+              value={subtitulo}
+              onChange={(e) => setSubtitulo(e.target.value)}
             />
           </div>
           <div className=" pt-4">
             <textarea
               type="text"
-              placeholder="Contnido de la noticia"
+              placeholder="Contenido de la noticia"
               className=" border p-1 rounded-xl w-full"
+              value={contenido}
+              onChange={(e) => setContenido(e.target.value)}
             />
           </div>
           <div className=" pt-4 flex flex-row items-center">
@@ -275,6 +355,7 @@ export default function GestionNoticias() {
               </div>
             </div>
           )}
+        
           <div className=" pt-4">
             <BotonPrincipal
               text={"Subir noticia"}
