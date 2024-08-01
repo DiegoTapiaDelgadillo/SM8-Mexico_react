@@ -7,6 +7,7 @@ import Modal from "../../components/modal";
 import EyeSvg from "../../components/eyeSvg";
 import PhotoSvg from "../../components/photoSvg";
 import BotonPrincipal from "../../components/botonPrincipal";
+import CreateNews from "../../components/createNews";
 export default function GestionNoticias() {
   const [search, setSearch] = useState("");
   const [previewSrc, setPreviewSrc] = useState(null);
@@ -224,65 +225,7 @@ export default function GestionNoticias() {
         </form>
       </Modal>
       <Modal ref={modalRefCreate}>
-        <p className=" text-yellow-300 text-xl">Crear Noticia</p>
-        <p className=" text-white">Aquí podras crear una noticia</p>
-        <form action="">
-          <div className=" pt-2">
-            <input
-              type="text"
-              placeholder="Titulo de la noticia"
-              className=" border p-1 rounded-xl w-full"
-            />
-          </div>
-          <div className=" pt-4">
-            <input
-              type="text"
-              placeholder="Subtitulo de la noticia"
-              className=" border p-1 rounded-xl w-full"
-            />
-          </div>
-          <div className=" pt-4">
-            <textarea
-              type="text"
-              placeholder="Contnido de la noticia"
-              className=" border p-1 rounded-xl w-full"
-            />
-          </div>
-          <div className=" pt-4 flex flex-row items-center">
-            <input
-              type="file"
-              ref={fileInput}
-              className=" hidden "
-              onChange={handleFileChange}
-            />
-            <button
-              className=" border w-full p-4 rounded-xl border-yellow-300 text-white hover:bg-yellow-300 hover:text-black hover:border-black ease-in-out duration-300"
-              onClick={handleFileInput}
-            >
-              Seleccionar archivo
-            </button>
-          </div>
-          <div className=" py-2"></div>
-          {previewSrc ? (
-            <figure className=" flex w-full justify-center">
-              <img src={previewSrc} alt="Vista previa" className="w-full" />
-            </figure>
-          ) : (
-            <div className=" w-full border border-neutral-500 p-4 rounded-xl flex justify-center items-center">
-              <div>
-                <PhotoSvg />
-                <p className=" text-center text-neutral-500">Vista previa</p>
-              </div>
-            </div>
-          )}
-          <div className=" pt-4">
-            <BotonPrincipal
-              text={"Subir noticia"}
-              className={"xl:w-full"}
-              type={"submit"}
-            />
-          </div>
-        </form>
+        <CreateNews />
       </Modal>
     </>
   );
