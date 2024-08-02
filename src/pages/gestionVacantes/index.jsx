@@ -5,7 +5,7 @@ import Modal from "../../components/modal";
 import BotonPrincipal from "../../components/botonPrincipal";
 import PlusSvg from "../../components/plusSvg";
 import AtrasBoton from "../../components/atrasButton";
-
+import api from "../../services/api"; 
 export default function GestionVacantes() {
   const [search, setSearch] = useState("");
   const [dataEdit, setDataEdit] = useState({
