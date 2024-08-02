@@ -4,8 +4,6 @@ import { noticias } from "../../data/noticias";
 import Contacto from "../../components/contacto";
 import CardNoticia from "../../components/cardNoticia/CardNoticia";
 import Rose1 from "./img/1.png";
-import Rose2 from "./img/2.png";
-import Rose3 from "./img/3.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -17,8 +15,8 @@ function NoticiaDetalle() {
     const timer = setTimeout(() => {
       AOS.init();
       AOS.refresh();
-    }, 100); 
-    return () => clearTimeout(timer); 
+    }, 100);
+    return () => clearTimeout(timer);
   }, [id]);
 
   const otrasNoticias = noticias
@@ -33,8 +31,7 @@ function NoticiaDetalle() {
             <div
               className="hidden lg:flex lg:col-span-2 lg:justify-center lg:items-start relative"
               data-aos="fade-right"
-            >
-            </div>
+            ></div>
             <div className="lg:col-span-8" data-aos="zoom-in">
               <h1 className="text-left text-4xl text-yellow-300 mb-4">
                 {noticia.title}
@@ -67,13 +64,12 @@ function NoticiaDetalle() {
             <div
               className="hidden lg:flex lg:col-span-2 lg:justify-center lg:items-start relative"
               data-aos="fade-left"
-            >
-            </div>
+            ></div>
           </div>
           <h2 className="text-3xl pt-20 text-yellow-300 mb-4">
             Otras Noticias
           </h2>
-          <hr className="border-t-2 border-gray-400 mb-10"/>
+          <hr className="border-t-2 border-gray-400 mb-10" />
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
             {otrasNoticias.map((noticia, index) => (
               <CardNoticia
