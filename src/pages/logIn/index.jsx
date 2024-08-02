@@ -1,18 +1,29 @@
+import { useState, useRef } from "react";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import Modal from "../../components/modal";
 import BotonPrincipal from "../../components/botonPrincipal";
 import CloseEyeSvg from "../../components/closeEyeSvg";
 import EyeSvg from "../../components/eyeSvg";
-import { useState, useRef } from "react";
 import RecoveryPassword from "../../components/recoveryPassword";
 import InputPassword from "../../components/inputPassword";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const navigate = useNavigate(); 
 
-  const handleSubmmit = (event) => {
+  const handleSubmmit = async (event) => {
     event.preventDefault();
-    console.log(email, password);
+    try {
+      const response = await axios.post('http://localhost:3000/api/usuarios/login', { email, password });
+      localStorage.setItem('token', response.data.token);
+      navigate('/gestion-deo'); 
+    } catch (error) {
+      console.error('Error en el login:', error);
+      setErrorMessage('Credenciales incorrectas. Verifique su correo y contraseña.'); 
+    }
   };
 
   const modalRef = useRef();
@@ -51,6 +62,9 @@ export default function LogIn() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder={"Ingrese su contraseña"}
             />
+            {errorMessage && (
+              <p className="text-red-500 text-center pt-4">{errorMessage}</p> 
+            )}
             <div className=" py-2"></div>
             <BotonPrincipal
               text={"Iniciar sesión"}
