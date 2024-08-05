@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import api from "../services/api"; // Importa la configuración de Axios
+import api from "../services/api"; 
 
 const useGestionNoticias = () => {
   const [noticias, setNoticias] = useState([]);

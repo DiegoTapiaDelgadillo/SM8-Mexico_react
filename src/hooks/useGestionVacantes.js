@@ -1,7 +1,5 @@
-//PENDIENTE POR CONECTAR AL COMPONENTE gestionVacantes
-
 import { useState, useEffect, useCallback } from "react";
-import api from "../services/api"; 
+import api from "../services/api"; // Importa la configuración de Axios
 
 const useGestionVacantes = () => {
   const [vacantes, setVacantes] = useState([]);
@@ -15,19 +13,27 @@ const useGestionVacantes = () => {
     }
   }, []);
 
-  const createVacante = async (formData) => {
+  const createVacante = async (vacanteData) => {
     try {
-      await api.post('/vacantes', formData);
-      fetchVacantes(); 
+      await api.post('/vacantes', vacanteData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      fetchVacantes(); // Recargar las vacantes
     } catch (error) {
       console.error('Error al crear la vacante:', error);
     }
   };
 
-  const updateVacante = async (id, formData) => {
+  const updateVacante = async (id, vacanteData) => {
     try {
-      await api.put(`/vacantes/${id}`, formData);
-      fetchVacantes(); 
+      await api.put(`/vacantes/${id}`, vacanteData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      fetchVacantes(); // Recargar las vacantes
     } catch (error) {
       console.error('Error al actualizar la vacante:', error);
     }

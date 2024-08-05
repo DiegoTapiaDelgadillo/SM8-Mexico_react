@@ -15,6 +15,7 @@ const Modal = forwardRef(({ children }, ref) => {
 
   useImperativeHandle(ref, () => ({
     openModal,
+    closeModal,
   }));
 
   return (
