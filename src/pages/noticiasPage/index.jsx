@@ -14,13 +14,16 @@ export default function Noticias() {
   const mainNews = noticias[mainNewsIndex];
   const secondaryNews = noticias.slice(0, mainNewsIndex);
 
-  const imagenes = noticias.map((noticia) => ({
-    id: noticia.id,
-    src: noticia.image,
-    title: noticia.title,
-    text: noticia.summary,
-    buttonUrl: `/noticia/${noticia.id}`,
-  }));
+  // Invertir el arreglo de imágenes
+  const imagenes = noticias
+    .map((noticia) => ({
+      id: noticia.id,
+      src: noticia.image,
+      title: noticia.title,
+      text: noticia.summary,
+      buttonUrl: `/noticia/${noticia.id}`,
+    }))
+    .reverse();
 
   const handleShowAllNews = () => {
     setShowAllNews(!showAllNews);
@@ -29,16 +32,16 @@ export default function Noticias() {
   return (
     <>
       <Carrusel images={imagenes} />
-      <div className=" bg-neutral-900">
-        <div className=" p-10 sm:p-20">
-          <div className=" bg-neutral-800 w-full p-4 rounded-xl">
-            <p className=" text-center text-neutral-400 text-xs sm:text-base">
+      <div className="bg-neutral-900">
+        <div className="p-10 sm:p-20">
+          <div className="bg-neutral-800 w-full p-4 rounded-xl">
+            <p className="text-center text-neutral-400 text-xs sm:text-base">
               Bienvenido a SM8 Noticias
             </p>
-            <p className=" text-center text-yellow-300 pt-2 sm:text-2xl">
+            <p className="text-center text-yellow-300 pt-2 sm:text-2xl">
               ¡Mantente al día con nosotros!
             </p>
-            <p className=" text-center text-white sm:text-xl">
+            <p className="text-center text-white sm:text-xl">
               Explora las noticias más recientes y relevantes de SM8
             </p>
           </div>
@@ -50,8 +53,8 @@ export default function Noticias() {
             date={mainNews.date}
             description={mainNews.content}
           />
-          <p className=" pt-8 text-yellow-300 text-4xl">Últimas Noticias</p>
-          <div className=" grid grid-cols-1 xl:grid-cols-3 gap-8 pt-8">
+          <p className="pt-8 text-yellow-300 text-4xl">Últimas Noticias</p>
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 pt-8">
             {secondaryNews.map((news, index) => (
               <SecondaryNews
                 key={index}
@@ -64,9 +67,9 @@ export default function Noticias() {
               />
             ))}
           </div>
-          <div className=" flex justify-end w-full py-8">
+          <div className="flex justify-end w-full py-8">
             <p
-              className=" text-yellow-300 cursor-pointer hover:text-yellow-300/50 hidden sm:block"
+              className="text-yellow-300 cursor-pointer hover:text-yellow-300/50 hidden sm:block"
               onClick={handleShowAllNews}
             >
               {showAllNews ? "Menos noticias" : "Todas las noticias"}
@@ -74,11 +77,11 @@ export default function Noticias() {
           </div>
           {showAllNews ? (
             <>
-              <div className=" animate-fade">
-                <p className=" py-8 text-yellow-300 text-4xl">
+              <div className="animate-fade">
+                <p className="py-8 text-yellow-300 text-4xl">
                   Todas las Noticias
                 </p>
-                <div className=" grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                   {secondaryNews.map((news, index) => (
                     <SecondaryNews
                       key={index}
@@ -91,14 +94,13 @@ export default function Noticias() {
                     />
                   ))}
                 </div>
-                <div className=" flex justify-center pt-8">
-                  <div className=" flex justify-between items-center">
-                    <p className=" text-white pr-4 hover:text-white/50 cursor-pointer">
-                      {" "}
+                <div className="flex justify-center pt-8">
+                  <div className="flex justify-between items-center">
+                    <p className="text-white pr-4 hover:text-white/50 cursor-pointer">
                       Atras
                     </p>
-                    <p className=" px-3 py-1 border text-white rounded-md">1</p>
-                    <p className=" text-white pl-4 hover:text-white/50 cursor-pointer">
+                    <p className="px-3 py-1 border text-white rounded-md">1</p>
+                    <p className="text-white pl-4 hover:text-white/50 cursor-pointer">
                       Adelante
                     </p>
                   </div>
