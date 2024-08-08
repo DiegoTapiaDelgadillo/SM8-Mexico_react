@@ -1,29 +1,41 @@
-import AtrasBoton from "../../components/atrasButton";
-import PlusSvg from "../../components/plusSvg";
 import EditSvg from "../../components/editSvg";
 import TrashSvg from "../../components/trashSvg";
 import { useState, useMemo, useRef } from "react";
 import Modal from "../../components/modal";
+import BotonPrincipal from "../../components/botonPrincipal";
+import PlusSvg from "../../components/plusSvg";
+import AtrasBoton from "../../components/atrasButton";
 import EyeSvg from "../../components/eyeSvg";
 import PhotoSvg from "../../components/photoSvg";
-import BotonPrincipal from "../../components/botonPrincipal";
 import useGestionNoticias from "../../hooks/useGestionNoticias";
+import useGestionImagenes from "../../hooks/useGestionImagenes";
 
 export default function GestionNoticias() {
   const [search, setSearch] = useState("");
+  const [dataEdit, setDataEdit] = useState({
+    titulo: "",
+    resumen: "",
+    contenido: "",
+    fecha: "",
+    categoria: "",
+  });
+  const [dataCreate, setDataCreate] = useState({
+    titulo: "",
+    resumen: "",
+    contenido: "",
+    fecha: "",
+    categoria: "",
+  });
   const [previewSrc, setPreviewSrc] = useState(null);
-  const [titulo, setTitulo] = useState("");
-  const [subtitulo, setSubtitulo] = useState("");
-  const [contenido, setContenido] = useState("");
   const [imagen, setImagen] = useState(null);
-  const [selectedNoticia, setSelectedNoticia] = useState(null);
   const { noticias, createNoticia, updateNoticia, deleteNoticia } = useGestionNoticias();
-  const head = ["Titulo", "Categoria", "Fecha", "Leer", "Editar", "Eliminar"];
+  const { createImagen } = useGestionImagenes();
 
-  const modalRefRead = useRef();
   const modalRefEdit = useRef();
   const modalRefCreate = useRef();
+  const modalRefRead = useRef();
   const fileInput = useRef();
+  const [selectedNoticia, setSelectedNoticia] = useState(null);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -37,37 +49,116 @@ export default function GestionNoticias() {
     }
   };
 
+  const handleSumitCreate = async (e) => {
+    e.preventDefault();
+    const noticiaData = {
+      titulo: dataCreate.titulo,
+      resumen: dataCreate.resumen,
+      contenido: dataCreate.contenido,
+      fecha: dataCreate.fecha,
+      categoria: dataCreate.categoria,
+    };
+  
+    try {
+      const noticia = await createNoticia(noticiaData);
+      if (imagen && noticia && noticia.id) {
+        const formData = {
+          imagen: previewSrc,  // Enviar la imagen en formato base64
+          id_noticia: noticia.id,
+        };
+        await createImagen(formData);
+      }
+      setDataCreate({
+        titulo: "",
+        resumen: "",
+        contenido: "",
+        fecha: "",
+        categoria: "",
+      });
+      setPreviewSrc(null);
+      setImagen(null);
+      modalRefCreate.current.closeModal();
+      window.location.reload();
+    } catch (error) {
+      console.error("Error al crear la noticia:", error);
+    }
+  };
+  
+  
+
+  const handleSumitEdit = async (e) => {
+    e.preventDefault();
+    const noticiaData = {
+      titulo: dataEdit.titulo,
+      resumen: dataEdit.resumen,
+      contenido: dataEdit.contenido,
+      fecha: dataEdit.fecha,
+      categoria: dataEdit.categoria,
+    };
+
+    try {
+      const noticia = await updateNoticia(selectedNoticia.id, noticiaData);
+      if (imagen && noticia && noticia.id) {
+        const formData = new FormData();
+        formData.append('imagen', imagen);
+        formData.append('id_noticia', noticia.id);
+        await createImagen(formData);
+      }
+      setDataEdit({
+        titulo: "",
+        resumen: "",
+        contenido: "",
+        fecha: "",
+        categoria: "",
+      });
+      setPreviewSrc(null);
+      setImagen(null);
+      modalRefEdit.current.closeModal();
+    } catch (error) {
+      console.error("Error al actualizar la noticia:", error);
+    }
+  };
+
   const handleDeleteNoticia = async (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar esta noticia?')) {
       await deleteNoticia(id);
     }
   };
 
+  const filtredData = useMemo(() => {
+    return noticias.filter((item) => item.titulo.toLowerCase().includes(search));
+  }, [search, noticias]);
+
+  const handleOpenModalEdit = (noticia) => {
+    setSelectedNoticia(noticia);
+    setDataEdit({
+      titulo: noticia.titulo,
+      resumen: noticia.resumen,
+      contenido: noticia.contenido,
+      fecha: noticia.fecha,
+      categoria: noticia.categoria,
+    });
+    if (noticia.imagenes && noticia.imagenes.length > 0) {
+      setPreviewSrc(noticia.imagenes[0].imagen);
+    } else {
+      setPreviewSrc(null);
+    }
+    setImagen(null);
+    modalRefEdit.current.openModal();
+  };
+
   const handleOpenModalCreate = () => {
-    setTitulo("");
-    setSubtitulo("");
-    setContenido("");
+    setDataCreate({
+      titulo: "",
+      resumen: "",
+      contenido: "",
+      fecha: "",
+      categoria: "",
+    });
     setPreviewSrc(null);
     setImagen(null);
     modalRefCreate.current.openModal();
   };
-
-  const handleFormSubmit = async (e, action) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('titulo', titulo);
-    formData.append('subtitulo', subtitulo);
-    formData.append('contenido', contenido);
-    if (imagen) formData.append('imagen', imagen);
-
-    await action(formData);
-    modalRefCreate.current.closeModal();
-    modalRefEdit.current.closeModal();
-  };
-
-  const filtredData = useMemo(() => {
-    return noticias.filter((item) => item.titulo.toLowerCase().includes(search));
-  }, [search, noticias]);
 
   return (
     <>
@@ -75,14 +166,13 @@ export default function GestionNoticias() {
         <div className="pb-4">
           <AtrasBoton to={"/gestion-deo"} />
         </div>
+
         <p className="text-yellow-300 text-xl 2xl:text-6xl">Gestión Noticias</p>
-        <p className="text-white text-xs 2xl:text-2xl">
-          Aquí podras gestionar tus noticias
-        </p>
+        <p className="text-white text-xs 2xl:text-2xl">Aquí podras gestionar tus noticias</p>
         <div className="py-4 flex">
           <input
             className="w-full border rounded-xl p-2 text-xs xl:text-base"
-            placeholder="Buscar nombre de noticia"
+            placeholder="Buscar nombre de la noticia"
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
             value={search}
           />
@@ -94,7 +184,7 @@ export default function GestionNoticias() {
           <table className="w-full table-auto">
             <thead>
               <tr>
-                {head.map((item, index) => (
+                {["Titulo", "Categoria", "Fecha", "Leer", "Editar", "Eliminar"].map((item, index) => (
                   <th key={index} className="text-yellow-300 text-xs text-start pr-16 md:pr-0 2xl:text-base">{item}</th>
                 ))}
               </tr>
@@ -109,7 +199,7 @@ export default function GestionNoticias() {
                     <EyeSvg className="stroke-white hover:stroke-white/50 ease-in-out duration-300 cursor-pointer" onClick={() => { setSelectedNoticia(item); modalRefRead.current.openModal(); }} />
                   </td>
                   <td className="py-4">
-                    <EditSvg onClick={() => { setSelectedNoticia(item); setTitulo(item.titulo); setSubtitulo(item.subtitulo); setContenido(item.contenido); setPreviewSrc(item.imagen); modalRefEdit.current.openModal(); }} />
+                    <EditSvg onClick={() => handleOpenModalEdit(item)} />
                   </td>
                   <td className="py-4">
                     <TrashSvg onClick={() => handleDeleteNoticia(item.id)} />
@@ -125,26 +215,48 @@ export default function GestionNoticias() {
           <div className="overflow-y-auto h-96">
             <p className="text-yellow-300 text-xl">{selectedNoticia.titulo}</p>
             <p className="text-xs text-neutral-500 py-1">Publicado el {new Date(selectedNoticia.fecha).toLocaleDateString('es-ES')}</p>
+            <p className="text-white">{selectedNoticia.resumen}</p>
             <p className="text-white">{selectedNoticia.contenido}</p>
-            <figure className="flex justify-center py-4">
-              <img src={selectedNoticia.imagen} className="w-full" />
-            </figure>
-            <p className="text-white">{selectedNoticia.subtitulo}</p>
+            {selectedNoticia.imagenes && selectedNoticia.imagenes.length > 0 && (
+              <figure className="flex justify-center py-4">
+                <img src={selectedNoticia.imagenes[0].imagen} className="w-full" />
+              </figure>
+            )}
           </div>
         )}
       </Modal>
       <Modal ref={modalRefEdit}>
-        <p className="text-yellow-300 text-xl">Editar Noticia</p>
-        <p className="text-white">Aquí podras editar la noticia</p>
-        <form onSubmit={(e) => handleFormSubmit(e, (formData) => updateNoticia(selectedNoticia.id, formData))}>
+        <p className="text-yellow-300 md:text-3xl">Editar Noticia</p>
+        <p className="text-white text-xs md:text-xl">Ingresa los siguientes datos para editar la noticia</p>
+        <form onSubmit={handleSumitEdit}>
           <div className="pt-2">
-            <input type="text" placeholder="Titulo de la noticia" className="border p-1 rounded-xl w-full" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+            <input
+              className="w-full border rounded-xl p-2"
+              placeholder="Titulo de la noticia"
+              type="text"
+              value={dataEdit.titulo}
+              name="titulo"
+              onChange={(e) => setDataEdit({ ...dataEdit, titulo: e.target.value })}
+            />
           </div>
           <div className="pt-4">
-            <input type="text" placeholder="Subtitulo de la noticia" className="border p-1 rounded-xl w-full" value={subtitulo} onChange={(e) => setSubtitulo(e.target.value)} />
+            <input
+              className="w-full border rounded-xl p-2"
+              placeholder="Resumen de la noticia"
+              type="text"
+              value={dataEdit.resumen}
+              name="resumen"
+              onChange={(e) => setDataEdit({ ...dataEdit, resumen: e.target.value })}
+            />
           </div>
           <div className="pt-4">
-            <textarea type="text" placeholder="Contenido de la noticia" className="border p-1 rounded-xl w-full" value={contenido} onChange={(e) => setContenido(e.target.value)} />
+            <textarea
+              className="w-full border rounded-xl p-2"
+              placeholder="Contenido de la noticia"
+              value={dataEdit.contenido}
+              name="contenido"
+              onChange={(e) => setDataEdit({ ...dataEdit, contenido: e.target.value })}
+            ></textarea>
           </div>
           <div className="pt-4 flex flex-row items-center">
             <input type="file" ref={fileInput} className="hidden" onChange={handleFileChange} />
@@ -166,22 +278,65 @@ export default function GestionNoticias() {
             </div>
           )}
           <div className="pt-4">
-            <BotonPrincipal text={"Guardar cambios"} className={"xl:w-full"} type={"submit"} />
+            <BotonPrincipal type={"submit"} text={"Actualizar"} className={"xl:w-full"} />
           </div>
         </form>
       </Modal>
       <Modal ref={modalRefCreate}>
-        <p className="text-yellow-300 text-xl">Crear Noticia</p>
-        <p className="text-white">Aquí podras crear una noticia</p>
-        <form onSubmit={(e) => handleFormSubmit(e, createNoticia)}>
+        <p className="text-yellow-300 md:text-3xl">Crear Noticia</p>
+        <p className="text-white text-xs md:text-xl">Ingresa los siguientes datos para crear la noticia</p>
+        <form onSubmit={handleSumitCreate}>
           <div className="pt-2">
-            <input type="text" placeholder="Titulo de la noticia" className="border p-1 rounded-xl w-full" value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+            <input
+              className="w-full border rounded-xl p-2"
+              placeholder="Titulo de la noticia"
+              type="text"
+              value={dataCreate.titulo}
+              name="titulo"
+              onChange={(e) => setDataCreate({ ...dataCreate, titulo: e.target.value })}
+            />
           </div>
           <div className="pt-4">
-            <input type="text" placeholder="Subtitulo de la noticia" className="border p-1 rounded-xl w-full" value={subtitulo} onChange={(e) => setSubtitulo(e.target.value)} />
+            <input
+              className="w-full border rounded-xl p-2"
+              placeholder="Resumen de la noticia"
+              type="text"
+              value={dataCreate.resumen}
+              name="resumen"
+              onChange={(e) => setDataCreate({ ...dataCreate, resumen: e.target.value })}
+            />
           </div>
           <div className="pt-4">
-            <textarea type="text" placeholder="Contenido de la noticia" className="border p-1 rounded-xl w-full" value={contenido} onChange={(e) => setContenido(e.target.value)} />
+            <textarea
+              className="w-full border rounded-xl p-2"
+              placeholder="Contenido de la noticia"
+              value={dataCreate.contenido}
+              name="contenido"
+              onChange={(e) => setDataCreate({ ...dataCreate, contenido: e.target.value })}
+            ></textarea>
+          </div>
+          <div className="pt-4">
+            <input
+              className="w-full border rounded-xl p-2"
+              placeholder="Fecha de la noticia"
+              type="date"
+              value={dataCreate.fecha}
+              name="fecha"
+              onChange={(e) => setDataCreate({ ...dataCreate, fecha: e.target.value })}
+            />
+          </div>
+          <div className="pt-4">
+            <select
+              className="w-full border rounded-xl p-2"
+              value={dataCreate.categoria}
+              name="categoria"
+              onChange={(e) => setDataCreate({ ...dataCreate, categoria: e.target.value })}
+            >
+              <option value="">Selecciona una categoría</option>
+              <option value="Empresa socialmente responsable">Empresa socialmente responsable</option>
+              <option value="Proyectos">Proyectos</option>
+              <option value="Empresa">Empresa</option>
+            </select>
           </div>
           <div className="pt-4 flex flex-row items-center">
             <input type="file" ref={fileInput} className="hidden" onChange={handleFileChange} />
@@ -203,7 +358,7 @@ export default function GestionNoticias() {
             </div>
           )}
           <div className="pt-4">
-            <BotonPrincipal text={"Subir noticia"} className={"xl:w-full"} type={"submit"} />
+            <BotonPrincipal type={"submit"} text={"Crear"} className={"xl:w-full"} />
           </div>
         </form>
       </Modal>
