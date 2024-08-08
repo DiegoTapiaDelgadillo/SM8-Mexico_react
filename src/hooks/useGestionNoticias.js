@@ -13,27 +13,22 @@ const useGestionNoticias = () => {
     }
   }, []);
 
-  const createNoticia = async (formData) => {
+  const createNoticia = async (data) => {
     try {
-      await api.post('/noticias', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const response = await api.post('/noticias', data);
       fetchNoticias();
+      return response.data;
     } catch (error) {
       console.error('Error al crear la noticia:', error);
+      throw error;  // Agregar esta línea para propagar el error
     }
   };
 
-  const updateNoticia = async (id, formData) => {
+  const updateNoticia = async (id, data) => {
     try {
-      await api.put(`/noticias/${id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      fetchNoticias(); 
+      const response = await api.put(`/noticias/${id}`, data);
+      fetchNoticias();
+      return response.data;
     } catch (error) {
       console.error('Error al actualizar la noticia:', error);
     }

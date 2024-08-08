@@ -6,10 +6,12 @@ import Linkedin from "./img/linkedin.png";
 import Whastapp from "./img/whatsapp.png";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from '../../context/AuthContext';
 
 export default function Navbar() {
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const { token, logout } = useAuth();
 
   const NavbarOpen = () => {
     setNavbarOpen(!isNavbarOpen);
@@ -41,13 +43,13 @@ export default function Navbar() {
         }`}
       >
         <div className="hidden xl:block">
-          <div className="flex justify-between pt-4 pb-4 pr-20 pl-20">
+          <div className="flex justify-between items-center pt-4 pb-4 pr-20 pl-20">
             <div>
               <Link to="/">
                 <img src={SM8Logo} alt="" className="w-24 cursor-pointer" />
               </Link>
             </div>
-            <div>
+            <div className="flex items-center">
               <ul className="list-none flex flex-wrap nowrap">
                 <li className="px-4 py-4 text-yellow-300 cursor-pointer hover:text-yellow-300/75 ease-in-out duration-300">
                   <Link to="/">Inicio</Link>
@@ -109,6 +111,14 @@ export default function Navbar() {
                   </a>
                 </li>
               </ul>
+              {token && (
+                <button
+                  onClick={logout}
+                  className="ml-4 text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded"
+                >
+                  Cerrar Sesión
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -259,6 +269,14 @@ export default function Navbar() {
                   </div>
                 </li>
               </ul>
+              {token && (
+                <button
+                  onClick={logout}
+                  className="w-full mt-4 text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded"
+                >
+                  Cerrar Sesión
+                </button>
+              )}
             </div>
           </div>
         </div>

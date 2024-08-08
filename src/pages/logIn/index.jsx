@@ -1,28 +1,29 @@
+// src/pages/logIn.jsx
 import { useState, useRef } from "react";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import Modal from "../../components/modal";
 import BotonPrincipal from "../../components/botonPrincipal";
-import CloseEyeSvg from "../../components/closeEyeSvg";
-import EyeSvg from "../../components/eyeSvg";
-import RecoveryPassword from "../../components/recoveryPassword";
 import InputPassword from "../../components/inputPassword";
+import RecoveryPassword from "../../components/recoveryPassword";
+import { useAuth } from "../../context/AuthContext";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); 
-  const navigate = useNavigate(); 
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/api/usuarios/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      navigate('/gestion-deo'); 
+      login(response.data.token);
+      navigate('/gestion-deo');
     } catch (error) {
       console.error('Error en el login:', error);
-      setErrorMessage('Credenciales incorrectas. Verifique su correo y contraseña.'); 
+      setErrorMessage('Credenciales incorrectas. Verifique su correo y contraseña.');
     }
   };
 
@@ -63,7 +64,7 @@ export default function LogIn() {
               placeholder={"Ingrese su contraseña"}
             />
             {errorMessage && (
-              <p className="text-red-500 text-center pt-4">{errorMessage}</p> 
+              <p className="text-red-500 text-center pt-4">{errorMessage}</p>
             )}
             <div className=" py-2"></div>
             <BotonPrincipal
