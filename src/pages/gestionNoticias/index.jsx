@@ -9,6 +9,7 @@ import EyeSvg from "../../components/eyeSvg";
 import PhotoSvg from "../../components/photoSvg";
 import useGestionNoticias from "../../hooks/useGestionNoticias";
 import useGestionImagenes from "../../hooks/useGestionImagenes";
+import CloseSvg from "../../components/closeSvg"; // Asegúrate de tener este componente o ícono
 
 export default function GestionNoticias() {
   const [search, setSearch] = useState("");
@@ -26,10 +27,11 @@ export default function GestionNoticias() {
     fecha: "",
     categoria: "",
   });
-  const [previewSrc, setPreviewSrc] = useState(null);
+  const [previewSrc, setPreviewSrc] = useState([]);
   const [imagen, setImagen] = useState(null);
+  const [existingImages, setExistingImages] = useState([]);
   const { noticias, createNoticia, updateNoticia, deleteNoticia } = useGestionNoticias();
-  const { createImagen } = useGestionImagenes();
+  const { createImagen, deleteImagen } = useGestionImagenes();
 
   const modalRefEdit = useRef();
   const modalRefCreate = useRef();
@@ -40,9 +42,11 @@ export default function GestionNoticias() {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
-      setImagen(file);
       const reader = new FileReader();
-      reader.onloadend = () => setPreviewSrc(reader.result);
+      reader.onloadend = () => {
+        setPreviewSrc([...previewSrc, reader.result]);
+        setImagen(file);
+      };
       reader.readAsDataURL(file);
     } else {
       alert("Por favor, selecciona un archivo JPG o PNG.");
@@ -61,12 +65,16 @@ export default function GestionNoticias() {
   
     try {
       const noticia = await createNoticia(noticiaData);
-      if (imagen && noticia && noticia.id) {
-        const formData = {
-          imagen: previewSrc,  // Enviar la imagen en formato base64
-          id_noticia: noticia.id,
-        };
-        await createImagen(formData);
+      if (previewSrc.length > 0 && noticia && noticia.id) {
+        await Promise.all(
+          previewSrc.map(async (src) => {
+            const formData = {
+              imagen: src,
+              id_noticia: noticia.id,
+            };
+            await createImagen(formData);
+          })
+        );
       }
       setDataCreate({
         titulo: "",
@@ -75,7 +83,7 @@ export default function GestionNoticias() {
         fecha: "",
         categoria: "",
       });
-      setPreviewSrc(null);
+      setPreviewSrc([]);
       setImagen(null);
       modalRefCreate.current.closeModal();
       window.location.reload();
@@ -83,8 +91,6 @@ export default function GestionNoticias() {
       console.error("Error al crear la noticia:", error);
     }
   };
-  
-  
 
   const handleSumitEdit = async (e) => {
     e.preventDefault();
@@ -98,11 +104,16 @@ export default function GestionNoticias() {
 
     try {
       const noticia = await updateNoticia(selectedNoticia.id, noticiaData);
-      if (imagen && noticia && noticia.id) {
-        const formData = new FormData();
-        formData.append('imagen', imagen);
-        formData.append('id_noticia', noticia.id);
-        await createImagen(formData);
+      if (previewSrc.length > 0 && noticia && noticia.id) {
+        await Promise.all(
+          previewSrc.map(async (src) => {
+            const formData = {
+              imagen: src,
+              id_noticia: noticia.id,
+            };
+            await createImagen(formData);
+          })
+        );
       }
       setDataEdit({
         titulo: "",
@@ -111,9 +122,10 @@ export default function GestionNoticias() {
         fecha: "",
         categoria: "",
       });
-      setPreviewSrc(null);
+      setPreviewSrc([]);
       setImagen(null);
       modalRefEdit.current.closeModal();
+      window.location.reload();
     } catch (error) {
       console.error("Error al actualizar la noticia:", error);
     }
@@ -122,6 +134,16 @@ export default function GestionNoticias() {
   const handleDeleteNoticia = async (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar esta noticia?')) {
       await deleteNoticia(id);
+    }
+  };
+
+  const handleRemoveImage = (index, isExisting) => {
+    if (isExisting) {
+      const imageId = existingImages[index].id;
+      deleteImagen(imageId);
+      setExistingImages(existingImages.filter((_, i) => i !== index));
+    } else {
+      setPreviewSrc(previewSrc.filter((_, i) => i !== index));
     }
   };
 
@@ -138,12 +160,8 @@ export default function GestionNoticias() {
       fecha: noticia.fecha,
       categoria: noticia.categoria,
     });
-    if (noticia.imagenes && noticia.imagenes.length > 0) {
-      setPreviewSrc(noticia.imagenes[0].imagen);
-    } else {
-      setPreviewSrc(null);
-    }
-    setImagen(null);
+    setExistingImages(noticia.imagenes || []);
+    setPreviewSrc([]);
     modalRefEdit.current.openModal();
   };
 
@@ -155,7 +173,7 @@ export default function GestionNoticias() {
       fecha: "",
       categoria: "",
     });
-    setPreviewSrc(null);
+    setPreviewSrc([]);
     setImagen(null);
     modalRefCreate.current.openModal();
   };
@@ -218,9 +236,13 @@ export default function GestionNoticias() {
             <p className="text-white">{selectedNoticia.resumen}</p>
             <p className="text-white">{selectedNoticia.contenido}</p>
             {selectedNoticia.imagenes && selectedNoticia.imagenes.length > 0 && (
-              <figure className="flex justify-center py-4">
-                <img src={selectedNoticia.imagenes[0].imagen} className="w-full" />
-              </figure>
+              <div className="grid grid-cols-2 gap-2">
+                {selectedNoticia.imagenes.map((imagen, index) => (
+                  <figure key={index} className="relative flex justify-center py-4">
+                    <img src={imagen.imagen} className="w-full h-auto max-w-xs max-h-40 object-cover rounded-xl" />
+                  </figure>
+                ))}
+              </div>
             )}
           </div>
         )}
@@ -265,18 +287,24 @@ export default function GestionNoticias() {
             </button>
           </div>
           <div className="py-2"></div>
-          {previewSrc ? (
-            <figure className="flex w-full justify-center">
-              <img src={previewSrc} alt="Vista previa" className="w-full" />
-            </figure>
-          ) : (
-            <div className="w-full border border-neutral-500 p-4 rounded-xl flex justify-center items-center">
-              <div>
-                <PhotoSvg />
-                <p className="text-center text-neutral-500">Vista previa</p>
-              </div>
-            </div>
-          )}
+          <div className="grid grid-cols-2 gap-2">
+            {existingImages.map((imagen, index) => (
+              <figure key={index} className="relative flex justify-center py-4">
+                <img src={imagen.imagen} className="w-full h-auto max-w-xs max-h-40 object-cover rounded-xl" />
+                <button type="button" onClick={() => handleRemoveImage(index, true)} className="absolute top-0 right-0 mt-2 mr-2 bg-red-500 rounded-full p-1">
+                  <CloseSvg />
+                </button>
+              </figure>
+            ))}
+            {previewSrc.map((src, index) => (
+              <figure key={index} className="relative flex justify-center py-4">
+                <img src={src} className="w-full h-auto max-w-xs max-h-40 object-cover rounded-xl" />
+                <button type="button" onClick={() => handleRemoveImage(index, false)} className="absolute top-0 right-0 mt-2 mr-2 bg-red-500 rounded-full p-1">
+                  <CloseSvg />
+                </button>
+              </figure>
+            ))}
+          </div>
           <div className="pt-4">
             <BotonPrincipal type={"submit"} text={"Actualizar"} className={"xl:w-full"} />
           </div>
@@ -345,18 +373,16 @@ export default function GestionNoticias() {
             </button>
           </div>
           <div className="py-2"></div>
-          {previewSrc ? (
-            <figure className="flex w-full justify-center">
-              <img src={previewSrc} alt="Vista previa" className="w-full" />
-            </figure>
-          ) : (
-            <div className="w-full border border-neutral-500 p-4 rounded-xl flex justify-center items-center">
-              <div>
-                <PhotoSvg />
-                <p className="text-center text-neutral-500">Vista previa</p>
-              </div>
-            </div>
-          )}
+          <div className="grid grid-cols-2 gap-2">
+            {previewSrc.map((src, index) => (
+              <figure key={index} className="relative flex justify-center py-4">
+                <img src={src} className="w-full h-auto max-w-xs max-h-40 object-cover rounded-xl" />
+                <button type="button" onClick={() => handleRemoveImage(index, false)} className="absolute top-0 right-0 mt-2 mr-2 bg-red-500 rounded-full p-1">
+                  <CloseSvg />
+                </button>
+              </figure>
+            ))}
+          </div>
           <div className="pt-4">
             <BotonPrincipal type={"submit"} text={"Crear"} className={"xl:w-full"} />
           </div>

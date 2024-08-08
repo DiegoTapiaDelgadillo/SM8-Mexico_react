@@ -15,8 +15,15 @@ export const useGestionImagenes = () => {
       throw error;
     }
   };
-    
-  return { createImagen };
+   const deleteImagen = async (id) => {
+    try {
+      await api.delete(`/imagenes/${id}`);
+    } catch (error) {
+      console.error('Error al eliminar la imagen:', error);
+    }
+  };
+
+  return { createImagen, deleteImagen };
 }
 
 export default useGestionImagenes;

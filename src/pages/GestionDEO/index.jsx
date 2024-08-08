@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import NewspaperSvg from "../../components/newspaperSvg";
 import JobSvg from "../../components/jobSvg";
+import { useAuth } from "../../context/AuthContext"; // Importa el contexto de autenticación
 
 export default function GestionDeo() {
+  const { logout } = useAuth(); // Usa la función de logout del contexto de autenticación
+
   const options = [
     {
       title: "Vacantes",
@@ -15,6 +18,7 @@ export default function GestionDeo() {
       icon: <NewspaperSvg />,
     },
   ];
+
   return (
     <div className=" h-screen bg-neutral-800 flex items-center justify-center px-10">
       <div>

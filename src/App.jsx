@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { lazy, Suspense } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
@@ -7,6 +6,8 @@ import "aos/dist/aos.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Loanding from "./components/loandig";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
   useEffect(() => {
@@ -44,8 +45,8 @@ export default function App() {
   const GestionNoticias = lazy(() => import("./pages/gestionNoticias"));
 
   return (
-    <>
-      <HashRouter>
+    <HashRouter>
+      <AuthProvider>
         <Navbar />
         <Suspense fallback={<Loanding />}>
           <Routes>
@@ -71,15 +72,35 @@ export default function App() {
             <Route path="/Noticias" element={<Noticias />} />
             <Route path="/noticia/:id" element={<NoticiaDetalle />} />
             <Route path="/logIn" element={<LogIn />} />
-            <Route path="/change-password/" element={<ChangePassword />} />{" "}
-            {/* Cambiar ruta por "/change-password/:token" para extraer el token de la url */}
-            <Route path="/gestion-deo" element={<GestionDeo />} />
-            <Route path="/gestion-vacantes" element={<GestionVacantes />} />
-            <Route path="/gestion-noticias" element={<GestionNoticias />} />
+            <Route path="/change-password/" element={<ChangePassword />} />
+            <Route
+              path="/gestion-deo"
+              element={
+                <ProtectedRoute>
+                  <GestionDeo />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/gestion-vacantes"
+              element={
+                <ProtectedRoute>
+                  <GestionVacantes />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/gestion-noticias"
+              element={
+                <ProtectedRoute>
+                  <GestionNoticias />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Suspense>
         <Footer></Footer>
-      </HashRouter>
-    </>
+      </AuthProvider>
+    </HashRouter>
   );
 }
