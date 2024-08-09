@@ -1,11 +1,24 @@
 import BotonPrincipal from "../botonPrincipal";
 import { useState } from "react";
+import axios from "axios";
+
 export default function RecoveryPassword() {
   const [email, setEmail] = useState("");
-  const handleSubmmit = (event) => {
+  const handleSubmmit = async(event) => {
     event.preventDefault();
-    console.log(email);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/recovery",
+        { email }
+      );
+      console.log("Respuesta del servidor:", response);
+    } catch (error) {
+      console.error("Error en la recuperación de contraseña:", error);
+    }
   };
+
+  
+
   return (
     <>
       <p className=" text-xl sm:text-3xl text-yellow-300 text-center">
