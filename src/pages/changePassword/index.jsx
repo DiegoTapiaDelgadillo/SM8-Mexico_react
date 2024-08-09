@@ -1,11 +1,19 @@
+import { useSearchParams } from "react-router-dom";
 import BotonPrincipal from "../../components/botonPrincipal";
 import InputPassword from "../../components/inputPassword";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ChangePassword() {
+  
+  const [token, setToken] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [samePassword, setSamePassword] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    setToken(searchParams.get("token"));
+  }, [searchParams, setToken]);
 
   const handleSubmmit = (event) => {
     event.preventDefault();
@@ -13,6 +21,18 @@ export default function ChangePassword() {
       setSamePassword(true);
     } else {
       setSamePassword(false);
+      
+      const changePassword = async () => {
+        try {
+          const response = await axios.post(
+            "http://localhost:3000/api/usuarios/change-password",
+            { token: token , newPassword: password }
+          );
+          console.log("Respuesta del servidor:", response);
+        } catch (error) {
+          console.error("Error en el cambio de contraseña:", error);
+        }
+      }
     }
   };
   return (
