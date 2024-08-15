@@ -8,7 +8,7 @@ export default function RecoveryPassword() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/recovery",
+        "http://sm8-betasoft.ddns.net:3000/api/auth/recovery",
         { email }
       );
       console.log("Respuesta del servidor:", response);
