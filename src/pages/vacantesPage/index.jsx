@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Mural from "../../components/mural";
 import Fondo from "./img/vacantes.jpg";
 import CardVacantes from "../../components/cardVacantes";
@@ -7,6 +9,19 @@ import useScrollTop from "../../hooks/useScrollTop";
 
 export default function VacantesPage() {
   useScrollTop();
+  
+  const [vacantes, setVacantes] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://sm8-betasoft.ddns.net:3000/api/vacantes")
+      .then(response => {
+        setVacantes(response.data);
+      })
+      .catch(error => {
+        console.error("Hubo un error al obtener las vacantes:", error);
+      });
+  }, []);
+
   return (
     <div>
       <Mural
@@ -16,119 +31,19 @@ export default function VacantesPage() {
         }
         buttonText={"Conocer  más"}
         rutaFondo={Fondo}
-      ></Mural>
+      />
 
-      <div className="bg-neutral-800  w-full py-24 px-4 md:px-24">
+      <div className="bg-neutral-800 w-full py-24 px-4 md:px-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <CardVacantes
-            titulo={"Analista de ventas"}
-            ubicacion={"CORPORATIVO, CDMX"}
-            descripcion={
-              "loremp ipsum dolor sit amet, consectetur adipiscing elit. "
-            }
-            delay={50}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"AGUASCALIENTES"}
-            delay={100}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Chofer (Licencia tipo B)"}
-            ubicacion={"AGUASCALIENTES"}
-            delay={150}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Auxiliar de Asesor Técnico"}
-            ubicacion={"CANCÚN"}
-            delay={200}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante general"}
-            ubicacion={"CANCÚN"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Asesor Técnico"}
-            ubicacion={"CANCÚN"}
-          ></CardVacantes>
-          <CardVacantes titulo={"Chofer"} ubicacion={"CANCÚN"}></CardVacantes>
-          <CardVacantes
-            titulo={"Asesor Técnico"}
-            ubicacion={"CUERNVACA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"CUERNVACA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"COATZACOALCOS"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Auxiliar Administrativo"}
-            ubicacion={"GUADALAJARA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Becario"}
-            ubicacion={"GUADALAJARA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Soldador"}
-            ubicacion={"GUADALAJARA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Auxiliar Administrativo de Almacén"}
-            ubicacion={"LOS CABOS"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Chofer"}
-            ubicacion={"LOS CABOS"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"LOS CABOS"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"MAZATLAN"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"MÉRIDA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Auxiliar de Asesor Técnico"}
-            ubicacion={"MONTERREY"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"MONTERREY"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"PUERTO VALLARTA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Chofer"}
-            ubicacion={"PUERTO VALLARTA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Auxiliar Administrativo"}
-            ubicacion={"PUERTO VALLARTA"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Auxiliar de Asesor Técnico"}
-            ubicacion={"QUERETARO"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"QUERETARO"}
-          ></CardVacantes>
-          <CardVacantes
-            titulo={"Ayudante General"}
-            ubicacion={"ZAPOPAN"}
-          ></CardVacantes>
-          <CardVacantes titulo={"Becario"} ubicacion={"TIJUANA"}></CardVacantes>
+          {vacantes.map((vacante, index) => (
+            <CardVacantes
+              key={vacante.id}
+              titulo={vacante.nombre}
+              ubicacion={vacante.sucursal}
+              descripcion={vacante.descripcion}
+              delay={index * 50}
+            />
+          ))}
         </div>
       </div>
       <div className="flex justify-center items-center bg-neutral-800 h-screen px-6">

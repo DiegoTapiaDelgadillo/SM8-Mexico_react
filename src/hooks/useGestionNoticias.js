@@ -20,7 +20,7 @@ const useGestionNoticias = () => {
       return response.data;
     } catch (error) {
       console.error('Error al crear la noticia:', error);
-      throw error;  // Agregar esta línea para propagar el error
+      throw error;  
     }
   };
 

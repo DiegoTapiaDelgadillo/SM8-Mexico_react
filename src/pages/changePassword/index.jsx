@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import BotonPrincipal from "../../components/botonPrincipal";
 import InputPassword from "../../components/inputPassword";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ChangePassword() {
   
@@ -15,26 +16,24 @@ export default function ChangePassword() {
     setToken(searchParams.get("token"));
   }, [searchParams, setToken]);
 
-  const handleSubmmit = (event) => {
+  const handleSubmmit = async (event) => {
     event.preventDefault();
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setSamePassword(true);
     } else {
-      setSamePassword(false);
-      
-      const changePassword = async () => {
-        try {
-          const response = await axios.post(
-            "http://localhost:3000/api/usuarios/change-password",
-            { token: token , newPassword: password }
-          );
-          console.log("Respuesta del servidor:", response);
-        } catch (error) {
-          console.error("Error en el cambio de contraseña:", error);
-        }
+      setSamePassword(false);      
+      try {
+        const response = await axios.post(
+          "http://sm8-betasoft.ddns.net:3000/api/auth/change-password",
+          { token: token , newPassword: password }
+        );
+        console.log("Respuesta del servidor:", response);
+      } catch (error) {
+        console.error("Error en el cambio de contraseña:", error);
       }
     }
   };
+
   return (
     <div className=" h-screen bg-neutral-800 flex items-center justify-center px-4">
       <div className=" md:w-3/4 xl:w-2/4 2xl:w-2/5 border border-black p-8 sm:p-12 rounded-2xl bg-neutral-900">

@@ -125,7 +125,7 @@ export default function GestionVacantes() {
     <>
       <div className="bg-neutral-800 h-screen py-20 sm:py-36 px-10 lg:px-20">
         <div className="pb-4">
-          <AtrasBoton to={"/gestion-deo"} />
+          <AtrasBoton to={"/gestion-do"} />
         </div>
 
         <p className="text-yellow-300 text-xl 2xl:text-6xl">Gestión Vacantes</p>
