@@ -13,7 +13,7 @@ export default function VacantesPage() {
   const [vacantes, setVacantes] = useState([]);
 
   useEffect(() => {
-    axios.get("http://sm8-betasoft.ddns.net:3000/api/vacantes")
+    axios.get("https://api-deo.sm8.com.mx:3000/api/vacantes")
       .then(response => {
         setVacantes(response.data);
       })

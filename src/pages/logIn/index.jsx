@@ -18,7 +18,7 @@ export default function LogIn() {
   const handleSubmmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://sm8-betasoft.ddns.net:3000/api/usuarios/login', { email, password });
+      const response = await axios.post('https://api-deo.sm8.com.mx:3000/api/usuarios/login', { email, password });
       login(response.data.token);
       navigate('/gestion-do');
     } catch (error) {

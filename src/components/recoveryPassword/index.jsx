@@ -4,15 +4,19 @@ import axios from "axios";
 
 export default function RecoveryPassword() {
   const [email, setEmail] = useState("");
+  const [emailStatus, setEmailStatus] = useState("neutral");
   const handleSubmmit = async(event) => {
     event.preventDefault();
+    setEmailStatus("loading");
     try {
       const response = await axios.post(
-        "http://sm8-betasoft.ddns.net:3000/api/auth/recovery",
+        "https://api-deo.sm8.com.mx:3000/api/auth/recovery",
         { email }
       );
+      setEmailStatus("success");
       console.log("Respuesta del servidor:", response);
     } catch (error) {
+      setEmailStatus("error");
       console.error("Error en la recuperación de contraseña:", error);
     }
   };
@@ -21,7 +25,8 @@ export default function RecoveryPassword() {
 
   return (
     <>
-      <p className=" text-xl sm:text-3xl text-yellow-300 text-center">
+    {emailStatus === "loading" && (<p className="text-center text-yellow-500 text-xl">Enviando correo electrónico</p>)}
+    {emailStatus === "neutral" && (<><p className=" text-xl sm:text-3xl text-yellow-300 text-center">
         Recuperación de contraseña
       </p>
       <p className=" text-white text-center py-2 text-xs sm:text-xl">
@@ -44,7 +49,13 @@ export default function RecoveryPassword() {
           className={"xl:w-full"}
           type={"submit"}
         />
-      </form>
+      </form> </>)}
+    {emailStatus === "success" && (<> <p className="text-center text-yellow-500 text-xl">Correo enviado correctamente</p> 
+    <p className="text-center text-white">Se ha enviado un correo a la siguiente dirección: {email} con las instrucciones de recuperación</p>
+    </>)}
+    {emailStatus === "error" && (<><p className="text-center text-red-500 text-xl " >Error al enviar el correo electrónico</p>
+      <p className="text-center text-white">Intente de nuevo con una direccion de correo valida.</p>
+    </>)}      
     </>
   );
 }

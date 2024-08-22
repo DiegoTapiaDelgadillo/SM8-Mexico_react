@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://sm8-betasoft.ddns.net:3000/api', 
+  baseURL: 'https://api-deo.sm8.com.mx:3000/api', 
 });
 
 api.interceptors.request.use((config) => {
