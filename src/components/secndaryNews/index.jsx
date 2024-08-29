@@ -42,7 +42,7 @@ export default function SecondaryNews({
 
   return (
     <>
-      <div className="grid grid-cols-2 xl:grid-cols-1 gap-4 p-4 border rounded-xl border-neutral-950">
+      <div className="grid grid-cols-1 xl:grid-cols-1 gap-4 p-4 border rounded-xl border-neutral-950">
         <figure className="w-full flex justify-center">
           <img
             src={firstImage}
