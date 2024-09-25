@@ -13,7 +13,7 @@ export default function Noticias() {
   
   useEffect(() => {
     axios
-      .get("https://api-deo.sm8.com.mx:3000/api/noticias")
+      .get("https://apis.sm8.com.mx:3000/api/noticias")
       .then((response) => {
         setNoticias(response.data);
         setLoading(false);

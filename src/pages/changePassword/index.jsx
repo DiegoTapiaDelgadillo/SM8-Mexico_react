@@ -33,7 +33,7 @@ export default function ChangePassword() {
       setSamePassword(false);      
       try {
          const response = await axios.post(
-           "https://api-deo.sm8.com.mx:3000/api/auth/change-password",
+           "https://apis.sm8.com.mx:3000/api/auth/change-password",
            { token: token , newPassword: password }
          );
           setErrorMessage("success");

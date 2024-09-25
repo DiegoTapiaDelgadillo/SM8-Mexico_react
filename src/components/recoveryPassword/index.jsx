@@ -10,7 +10,7 @@ export default function RecoveryPassword() {
     setEmailStatus("loading");
     try {
       const response = await axios.post(
-        "https://api-deo.sm8.com.mx:3000/api/auth/recovery",
+        "https://apis.sm8.com.mx:3000/api/auth/recovery",
         { email }
       );
       setEmailStatus("success");
