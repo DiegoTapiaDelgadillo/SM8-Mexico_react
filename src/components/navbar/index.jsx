@@ -76,6 +76,7 @@ export default function Navbar() {
                   <a
                     href="https://publuu.com/flip-book/177837/438154"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Catálogo
                   </a>
@@ -85,39 +86,50 @@ export default function Navbar() {
                   <a
                     href="https://www.facebook.com/sm8demexico"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <img src={Facebook} alt="" className="w-6" />
+                    <img src={Facebook} alt="Facebook" className="w-6" />
                   </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
                   <a
                     href="https://www.instagram.com/sm8demexico/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <img src={Instagram} alt="" className="w-6" />
+                    <img src={Instagram} alt="Instagram" className="w-6" />
                   </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
                   <a
                     href="https://www.linkedin.com/company/sm8/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <img src={Linkedin} alt="" className="w-6" />
+                    <img src={Linkedin} alt="LinkedIn" className="w-6" />
                   </a>
                 </li>
                 <li className="px-2 py-4 cursor-pointer hover:brightness-50 ease-in-out duration-300">
-                  <a href=" https://wa.me/5215514231881" target="_blank">
-                    <img src={Whastapp} alt="" className="w-6" />
+                  <a href=" https://wa.me/5215514231881" target="_blank" rel="noopener noreferrer">
+                    <img src={Whastapp} alt="WhatsApp" className="w-6" />
                   </a>
                 </li>
               </ul>
               {token && (
-                <button
-                  onClick={logout}
-                  className="ml-4 text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded"
-                >
-                  Cerrar Sesión
-                </button>
+                <div className="flex items-center">
+                  <Link
+                    to="/gestion-do"
+                    className="ml-4 text-yellow-300 hover:text-yellow-500 font-bold py-2 px-4 rounded"
+                  >
+                    DO
+                  </Link>
+                  <button
+                    onClick={logout}
+                    className="ml-4 text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded"
+                  >
+                    Cerrar Sesión
+                  </button>                  
+                </div>
               )}
             </div>
           </div>
@@ -125,7 +137,7 @@ export default function Navbar() {
         <div className="block xl:hidden">
           <div className="flex justify-between pt-4 pb-4 pr-10 pl-10">
             <div>
-              <img src={SM8Icono} alt="" className="w-6" />
+              <img src={SM8Icono} alt="SM8 Icono" className="w-6" />
             </div>
             <div>
               <div
@@ -215,6 +227,7 @@ export default function Navbar() {
                   <a
                     href="https://publuu.com/flip-book/177837/438154"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Catálogo
                   </a>
@@ -225,10 +238,11 @@ export default function Navbar() {
                       <a
                         href="https://www.facebook.com/sm8demexico"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <img
                           src={Facebook}
-                          alt=""
+                          alt="Facebook"
                           className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
                         />
                       </a>
@@ -237,10 +251,11 @@ export default function Navbar() {
                       <a
                         href="https://www.instagram.com/sm8demexico/"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <img
                           src={Instagram}
-                          alt=""
+                          alt="Instagram"
                           className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
                         />
                       </a>
@@ -249,19 +264,20 @@ export default function Navbar() {
                       <a
                         href="https://www.linkedin.com/company/sm8/"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <img
                           src={Linkedin}
-                          alt=""
+                          alt="LinkedIn"
                           className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
                         />
                       </a>
                     </div>
                     <div className="px-2">
-                      <a href=" https://wa.me/5215514231881" target="_blank">
+                      <a href=" https://wa.me/5215514231881" target="_blank" rel="noopener noreferrer">
                         <img
                           src={Whastapp}
-                          alt=""
+                          alt="WhatsApp"
                           className="w-8 cursor-pointer hover:brightness-50 ease-in-out duration-300"
                         />
                       </a>
@@ -270,14 +286,22 @@ export default function Navbar() {
                 </li>
               </ul>
               {token && (
-                <button
-                  onClick={logout}
-                  className="w-full mt-4 text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded"
-                >
-                  Cerrar Sesión
-                </button>
+                <div className="flex items-center">
+                  <Link
+                    to="/gestion-do"
+                    className="ml-4 text-yellow-300 hover:text-yellow-500 font-bold py-2 px-4 rounded"
+                  >
+                    DO
+                  </Link>
+                  <button
+                    onClick={logout}
+                    className="ml-4 text-red-500 hover:text-red-700 font-bold py-2 px-4 rounded"
+                  >
+                    Cerrar Sesión
+                  </button>                  
+                </div>
               )}
-            </div>
+            </div>  
           </div>
         </div>
       </div>

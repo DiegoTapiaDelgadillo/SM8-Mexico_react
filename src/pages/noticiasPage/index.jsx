@@ -1,27 +1,78 @@
-// pages/Noticias.js
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import useScrollTop from "../../hooks/useScrollTop";
 import Carrusel from "../../components/carrusel";
-import { noticias } from "../../data/noticias";
 import MainNews from "../../components/mainNews";
 import SecondaryNews from "../../components/secndaryNews";
 
 export default function Noticias() {
   const [showAllNews, setShowAllNews] = useState(false);
-  //useScrollTop();
+  const [noticias, setNoticias] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useScrollTop();
+  
+  useEffect(() => {
+    axios
+      .get("https://apis.sm8.com.mx:3000/api/noticias")
+      .then((response) => {
+        setNoticias(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error al obtener las noticias:", error);
+        setLoading(false);
+      });
+  }, []);
 
-  const mainNewsIndex = noticias.length - 1;
-  const mainNews = noticias[mainNewsIndex];
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-neutral-800 text-yellow-300 text-4xl">
+        <span>Cargando</span>
+        <svg
+          className="ml-4 animate-spin h-10 w-10 text-yellow-300"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+          ></path>
+        </svg>
+      </div>
+    );
+  }
+
+  const formatDate = (dateString) => {
+    return new Intl.DateTimeFormat('es-ES', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    }).format(new Date(dateString));
+  };
+  
+  const mainNewsIndex = noticias.length > 0 ? noticias.length - 1 : 0;
+  const mainNews = noticias[mainNewsIndex] || {};
   const secondaryNews = noticias.slice(0, mainNewsIndex);
 
-  // Invertir el arreglo de imágenes
-  const imagenes = noticias
+  const carrusel = noticias
     .map((noticia) => ({
       id: noticia.id,
-      src: noticia.image,
-      title: noticia.title,
-      text: noticia.summary,
-      buttonUrl: `/noticia/${noticia.id}`,
+      images: noticia.imagenes || [],
+      title: noticia.titulo || "",
+      text: noticia.resumen || "",
+      description: noticia.contenido || "", 
+      category: noticia.categoria || "", 
+      date: formatDate(noticia.fecha) || "",
     }))
     .reverse();
 
@@ -31,7 +82,7 @@ export default function Noticias() {
 
   return (
     <>
-      <Carrusel images={imagenes} />
+      <Carrusel noticias={carrusel} />
       <div className="bg-neutral-900">
         <div className="p-10 sm:p-20">
           <div className="bg-neutral-800 w-full p-4 rounded-xl">
@@ -45,25 +96,29 @@ export default function Noticias() {
               Explora las noticias más recientes y relevantes de SM8
             </p>
           </div>
-          <MainNews
-            img={mainNews.image}
-            category={mainNews.section}
-            title={mainNews.title}
-            sumary={mainNews.summary}
-            date={mainNews.date}
-            description={mainNews.content}
-          />
+          {mainNews && mainNews.imagenes ? (
+            <MainNews
+              images={mainNews.imagenes || []}
+              category={mainNews.categoria || ""}
+              title={mainNews.titulo || ""}
+              sumary={mainNews.resumen || ""}
+              date={formatDate(mainNews.fecha)}
+              description={mainNews.contenido || ""}
+            />
+          ) : (
+            <div className="text-white">No hay noticias disponibles.</div>
+          )}
           <p className="pt-8 text-yellow-300 text-4xl">Últimas Noticias</p>
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 pt-8">
             {secondaryNews.map((news, index) => (
               <SecondaryNews
                 key={index}
-                img={news.image}
-                category={news.section}
-                title={news.title}
-                sumary={news.summary}
-                date={news.date}
-                description={news.content}
+                images={news.imagenes || []}
+                category={news.categoria || ""}
+                title={news.titulo || ""}
+                sumary={news.resumen || ""}
+                date={formatDate(news.fecha)}
+                description={news.contenido || ""}
               />
             ))}
           </div>
@@ -85,12 +140,12 @@ export default function Noticias() {
                   {secondaryNews.map((news, index) => (
                     <SecondaryNews
                       key={index}
-                      img={news.image}
-                      category={news.section}
-                      title={news.title}
-                      sumary={news.summary}
-                      date={news.date}
-                      description={news.content}
+                      images={news.imagenes || []}
+                      category={news.categoria || ""}
+                      title={news.titulo || ""}
+                      sumary={news.resumen || ""}
+                      date={formatDate(news.fecha)}
+                      description={news.contenido || ""}
                     />
                   ))}
                 </div>

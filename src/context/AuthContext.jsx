@@ -10,6 +10,11 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       localStorage.setItem('token', token);
+      const timeoutId = setTimeout(() => {
+        logout(); 
+      }, 3600000); 
+
+      return () => clearTimeout(timeoutId); 
     } else {
       localStorage.removeItem('token');
     }
@@ -18,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const login = (newToken) => {
     setToken(newToken);
     localStorage.setItem('token', newToken);
-    navigate('/gestion-deo'); 
+    navigate('/gestion-do');
   };
 
   const logout = () => {

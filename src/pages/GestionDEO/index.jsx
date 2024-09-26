@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import NewspaperSvg from "../../components/newspaperSvg";
 import JobSvg from "../../components/jobSvg";
-import { useAuth } from "../../context/AuthContext"; // Importa el contexto de autenticación
+import { useAuth } from "../../context/AuthContext";
+import useScrollTop from "../../hooks/useScrollTop";
 
 export default function GestionDeo() {
-  const { logout } = useAuth(); // Usa la función de logout del contexto de autenticación
+  useScrollTop();
+  const { logout } = useAuth();
 
   const options = [
     {
@@ -23,7 +25,7 @@ export default function GestionDeo() {
     <div className=" h-screen bg-neutral-800 flex items-center justify-center px-10">
       <div>
         <p className=" text-yellow-300 text-2xl 2xl:text-6xl text-center">
-          Hola, bienvenido a tu sección equipo DEO
+          Hola, bienvenido a tu sección equipo DO
         </p>
         <p className=" text-center text-white 2xl:text-3xl 2xl:py-2">
           Selecciona una opción

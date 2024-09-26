@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api', // Asegúrate de que esta URL sea correcta
+  baseURL: 'https://apis.sm8.com.mx:3000/api', 
 });
 
 api.interceptors.request.use((config) => {

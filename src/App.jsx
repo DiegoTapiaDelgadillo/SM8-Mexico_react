@@ -74,7 +74,7 @@ export default function App() {
             <Route path="/logIn" element={<LogIn />} />
             <Route path="/change-password/" element={<ChangePassword />} />
             <Route
-              path="/gestion-deo"
+              path="/gestion-do"
               element={
                 <ProtectedRoute>
                   <GestionDeo />

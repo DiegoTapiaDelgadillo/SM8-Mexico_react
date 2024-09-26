@@ -23,7 +23,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "react-transition-group": "^4.4.5",
-    "swiper": "^11.1.5",
+    "swiper": "^8.4.5",
     "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {

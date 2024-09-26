@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import api from "../services/api"; // Importa la configuración de Axios
+import api from "../services/api";
 
 const useGestionVacantes = () => {
   const [vacantes, setVacantes] = useState([]);
@@ -20,7 +20,7 @@ const useGestionVacantes = () => {
           'Content-Type': 'application/json',
         },
       });
-      fetchVacantes(); // Recargar las vacantes
+      fetchVacantes(); 
     } catch (error) {
       console.error('Error al crear la vacante:', error);
     }
@@ -33,7 +33,7 @@ const useGestionVacantes = () => {
           'Content-Type': 'application/json',
         },
       });
-      fetchVacantes(); // Recargar las vacantes
+      fetchVacantes();
     } catch (error) {
       console.error('Error al actualizar la vacante:', error);
     }

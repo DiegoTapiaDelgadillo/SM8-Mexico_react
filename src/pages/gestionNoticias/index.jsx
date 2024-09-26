@@ -8,7 +8,7 @@ import AtrasBoton from "../../components/atrasButton";
 import EyeSvg from "../../components/eyeSvg";
 import useGestionNoticias from "../../hooks/useGestionNoticias";
 import useGestionImagenes from "../../hooks/useGestionImagenes";
-import CloseSvg from "../../components/closeSvg"; // Asegúrate de tener este componente o ícono
+import CloseSvg from "../../components/closeSvg"; 
 
 export default function GestionNoticias() {
   const [statusPetitionCreate, setStatusPetitionCreate] = useState("neutral");
@@ -43,7 +43,7 @@ export default function GestionNoticias() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+    if (file && (file.type === "image/jpeg" || file.type === "image/png" || file.type === "image/jpg" || file.type === "image/webp")) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewSrc([...previewSrc, reader.result]);
@@ -188,7 +188,7 @@ export default function GestionNoticias() {
     <>
       <div className="bg-neutral-800 h-screen py-20 sm:py-36 px-10 lg:px-20">
         <div className="pb-4">
-          <AtrasBoton to={"/gestion-deo"} />
+          <AtrasBoton to={"/gestion-do"} />
         </div>
 
         <p className="text-yellow-300 text-xl 2xl:text-6xl">Gestión Noticias</p>
