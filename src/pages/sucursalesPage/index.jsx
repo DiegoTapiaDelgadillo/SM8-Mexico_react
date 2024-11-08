@@ -10,7 +10,7 @@ import Cuerna from "./img/cuerna.jpg";
 import Culiacan from "./img/culiacan.jpg";
 import Cdmx from "./img/cdmx.jpg";
 import Guadalajara from "./img/gdl.jpg";
-import LaPaz from "./img/la_paz.jpg";
+import LaPaz from "./img/la_paz.webp";
 import Leon from "./img/LEON.webp";
 import LosCabos from "./img/los_cabos.jpg";
 import Mazatlan from "./img/mazatlan.jpg";
@@ -124,11 +124,11 @@ export default function SucursalesPage() {
           ></CardSucursales>
           <CardSucursales
             titulo={"La paz, B.C.S"}
-            direccion={" C. Sonora 467, Pueblo Nuevo, 23060 La Paz, B.C.S."}
-            telefono={" 612 124 2420"}
+            direccion={"Nueva Bodega #3, Puesta del Sol, 23090 La Paz, B.C.S."}
+            telefono={"612 124 2421"}
             rutaImagen={LaPaz}
             maps={
-              "https://www.google.com/maps/place/SM8+de+M%C3%A9xico/@24.1462611,-110.3253769,17z/data=!3m1!4b1!4m6!3m5!1s0x86afd34ed2c235bb:0xd83a79a9273b21a1!8m2!3d24.1462611!4d-110.322802!16s%2Fg%2F11bwkh769g"
+              "https://www.google.com/maps/place/SM8+de+M%C3%A9xico/@24.1463789,-110.3231477,18.58z/data=!4m6!3m5!1s0x86afd34ed2c235bb:0xd83a79a9273b21a1!8m2!3d24.1335157!4d-110.3381019!16s%2Fg%2F11bwkh769g?entry=ttu&g_ep=EgoyMDI0MTEwNS4wIKXMDSoASAFQAw%3D%3D"
             }
             delay={60}
           ></CardSucursales>
