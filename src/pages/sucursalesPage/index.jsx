@@ -19,7 +19,7 @@ import Monterrey from "./img/monterrey.jpg";
 import Puebla from "./img/puebla.jpg";
 import Vallarta from "./img/vallarta.jpg";
 import Queretaro from "./img/qro.jpg";
-import Tijuana from "./img/tijuana.jpg";
+import Tijuana from "./img/tijuana.webp";
 import Toluca from "./img/toluca.jpg";
 import Tuxcla from "./img/tuxtla.jpg";
 import Zapopan from "./img/zapopan.jpg";
@@ -134,7 +134,9 @@ export default function SucursalesPage() {
           ></CardSucursales>
           <CardSucursales
             titulo={"León, Gto"}
-            direccion={"C. Gamma 102-A, Industrial Delta, 37545 León de los Aldama, Gto."}
+            direccion={
+              "C. Gamma 102-A, Industrial Delta, 37545 León de los Aldama, Gto."
+            }
             telefono={"477 944 8411"}
             rutaImagen={Leon}
             maps={
@@ -222,13 +224,11 @@ export default function SucursalesPage() {
           ></CardSucursales>
           <CardSucursales
             titulo={"Tijuana, B.C"}
-            direccion={
-              "Blvr. Lázaro Cárdenas 10, Los Santos, 22104 Tijuana, B.C."
-            }
+            direccion={"226664 Calle, Vieja a Tecate, 22664 Tijuana, B.C."}
             telefono={"664 622 2160"}
             rutaImagen={Tijuana}
             maps={
-              "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Tijuana/@32.5049967,-116.9653844,17z/data=!3m1!4b1!4m6!3m5!1s0x80d94805c119245f:0xe4f6f2835fd3849!8m2!3d32.5049967!4d-116.9628095!16s%2Fg%2F1vg_7l7p"
+              "https://www.google.com.mx/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Tijuana/@32.5042626,-116.9632102,16.65z/data=!4m6!3m5!1s0x80d94805c119245f:0xe4f6f2835fd3849!8m2!3d32.4693387!4d-116.9225597!16s%2Fg%2F1vg_7l7p?entry=ttu&g_ep=EgoyMDI1MDEwNi4xIKXMDSoASAFQAw%3D%3D"
             }
             delay={60}
           ></CardSucursales>
