@@ -68,7 +68,7 @@ export default function HomePage() {
             <CardText
               titulo={"COBERTURA NACIONAL"}
               cuerpo={
-                "Contamos con cobertura nacional, 19 sucursales distribuidas en todo el país."
+                "Contamos con cobertura nacional, 20 sucursales distribuidas en todo el país."
               }
               delay={150}
             ></CardText>

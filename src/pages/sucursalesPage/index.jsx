@@ -33,7 +33,7 @@ export default function SucursalesPage() {
       <Mural
         title={"Nuestras Sucursales"}
         body={
-          "SM8 cuenta con 19 sucursales al rededor del país, conoce cada una de ellas."
+          "SM8 cuenta con 20 sucursales al rededor del país, conoce cada una de ellas."
         }
         buttonText={"Conocer más"}
         rutaFondo={Fondo}
