@@ -29,7 +29,26 @@ export default function HomePage() {
         }
         rutaFondo={Fondo}
       ></Mural>
-
+      <div className=" grid grid-cols-1 md:grid-cols-2 items-center gap-4 md:gap-12 bg-neutral-900 md:bg-neutral-800 xl:p-36 p-12">
+        <div>
+          <Title text={"Nueva sucursal Chiuahua"} />
+          <h2 className=" text-white pb-8 text-justify">
+            SM8, la empresa líder en renta y venta de andamios, se complace en
+            anunciar la apertura de su nueva sucursal en Chihuahua. Con esta
+            nueva sucursal, SM8 busca fortalecer su presencia en el norte del
+            país y brindar un mejor servicio a sus clientes en la región.
+          </h2>
+        </div>
+        <div>
+          <figure className="">
+            <img
+              src="/CHIHUAHUA.webp"
+              alt=""
+              className=" rounded-xl w-full h-full"
+            />
+          </figure>
+        </div>
+      </div>
       <div className=" flex justify-center items-center xl:grid xl:grid-cols-1 2xl:grid-cols-2 xl:gap-4 bg-neutral-900 xl:p-36 md:py-12">
         <div className="hidden xl:block">
           <h1 className=" text-yellow-500"></h1>
