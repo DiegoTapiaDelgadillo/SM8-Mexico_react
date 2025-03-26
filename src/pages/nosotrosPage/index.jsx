@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react';
 import Mural from "../../components/mural";
 import Fondo from "./img/nosotros.jpg";
 import Rosetin from "./img/5.png";
 import BotonPrincipal from "../../components/botonPrincipal";
-import Certificado from "./img/sm8-home-certificado.jpg";
+import Certificado from "./img/certificado.png";
 import Andamio from "./img/1.png";
 import Calidad from "./img/calidad.jpg";
 import CardCodigos from "../../components/cardCodigos";
 import Contacto from "../../components/contacto";
 import Rose from "./img/Character_Render_02.png";
-import Certi from "./pdf/certificado-sm8.pdf";
+import Certi from "./pdf/certificado.pdf";
 import conducta from "./pdf/Código de Conducta_Rev.00.pdf";
 import privacidad from "./pdf/AVISO DE PRIVACIDAD 2023.pdf";
 import etica from "./pdf/Código de Ética_Rev.00.pdf";
 import calidad from "./pdf/POLITICA DE CALIDAD.pdf";
 import useScrollTop from "../../hooks/useScrollTop";
+import Iso from "./pdf/ISO.pdf";
+import IsoImage from "./img/ISOIMAGE.png";
 
 export default function NosotrosPage() {
   useScrollTop();
@@ -29,7 +30,10 @@ export default function NosotrosPage() {
       ></Mural>
       <div className=" bg-neutral-800 flex justify-center items-center py-24 px-12 xl:p-24">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="w-full flex justify-center items-center" data-aos="zoom-in-out">
+          <div
+            className="w-full flex justify-center items-center"
+            data-aos="zoom-in-out"
+          >
             <div>
               <h1 className="text-yellow-300 text-3xl xl:text-5xl">
                 ¿Quiénes somos?
@@ -45,15 +49,21 @@ export default function NosotrosPage() {
               </h1>
             </div>
           </div>
-          <div className="flex justify-center items-center w-full" data-aos="zoom-in-left">
+          <div
+            className="flex justify-center items-center w-full"
+            data-aos="zoom-in-left"
+          >
             <img src={Rosetin} alt="" className="w-5/6" />
           </div>
         </div>
       </div>
       <div className=" bg-neutral-800 flex justify-center items-center py-24 px-4 xl:p-24">
         <div className="bg-neutral-900 p-8 xl:p-24 rounded-3xl shadow-2xl w-full border-4 border-neutral-900 hover:border-yellow-300 ease-in-out duration-300 grid grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="flex justify-center items-center w-full" data-aos="fade-up">
-            <div className="w-full p-0" >
+          <div
+            className="flex justify-center items-center w-full"
+            data-aos="fade-up"
+          >
+            <div className="w-full p-0">
               <h1 className="text-yellow-300 text-2xl xl:text-5xl">
                 Conoce nuestras certificaciones
               </h1>
@@ -74,21 +84,75 @@ export default function NosotrosPage() {
           </div>
         </div>
       </div>
+      <div className=" bg-neutral-800 flex justify-center items-center py-24 px-4 xl:p-24">
+        <div className="bg-neutral-900 p-8 xl:p-24 rounded-3xl shadow-2xl w-full border-4 border-neutral-900 hover:border-yellow-300 ease-in-out duration-300 grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <div
+            className="flex justify-center items-center w-full"
+            data-aos="fade-up"
+          >
+            <div className="w-full p-0">
+              <h1 className="text-yellow-300 text-2xl xl:text-5xl">
+                Certificado ISO 9001:2015
+              </h1>
+              <h2 className="text-white pt-8 text-md xl:text-xl text-justify">
+                En SM8 estamos comprometidos con cumplir las necesidades y
+                expectativas de nuestros clientes, por ello operamos bajo un
+                SGC, el cual nos ha en caminado a buscar diariamente la mejora
+                continua en todos nuestros procesos, con la finalidad de
+                asegurar que nuestros servicios de renta y venta cumplan con los
+                estándares de calidad necesarios. Contamos con diversos
+                certificados de cumplimiento, uno de ellos bajo la NORMA ISO
+                9001:2015 en ocho de nuestras sucursales:
+              </h2>
+              <ul className=" list-disc text-white pl-4 py-8">
+                <li>Vallejo</li>
+                <li>Mérida</li>
+                <li>Querétaro</li>
+                <li>Tuxtla Gutiérrez</li>
+                <li>Cuernavaca</li>
+                <li>Coatzacoalcos</li>
+                <li>Puebla</li>
+                <li>Guadalajara</li>
+              </ul>
+              <a href={Iso} target="_blank" rel="noopener noreferrer">
+                <BotonPrincipal text={"Visitar"}></BotonPrincipal>
+              </a>
+            </div>
+          </div>
+          <div className="flex justify-center items-center pt-16 xl:p-0">
+            <img src={IsoImage} alt="" className="w-full xl:w-3/6" />
+          </div>
+        </div>
+      </div>
       <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 w-full">
           <div className="flex items-center w-full">
             <div>
-              <h1 className="text-yellow-300 text-3xl xl:text-5xl" data-aos="fade-right">Misión</h1>
-              <h1 className="text-white text-md xl:text-xl py-8 text-justify" data-aos="fade-right">
+              <h1
+                className="text-yellow-300 text-3xl xl:text-5xl"
+                data-aos="fade-right"
+              >
+                Misión
+              </h1>
+              <h1
+                className="text-white text-md xl:text-xl py-8 text-justify"
+                data-aos="fade-right"
+              >
                 Ofrecer y apoyar a nuestros clientes con soluciones de
                 ingeniería para la construcción, mantenimiento de instalaciones
                 e infraestructura de eventos, a través de la renta y venta de
                 estructuras metálicas.
               </h1>
-              <h1 className="text-yellow-300 text-3xl xl:text-5xl pt-8" data-aos="fade-right">
+              <h1
+                className="text-yellow-300 text-3xl xl:text-5xl pt-8"
+                data-aos="fade-right"
+              >
                 Visión
               </h1>
-              <h1 className="text-white text-md xl:text-xl py-8 text-justify" data-aos="fade-right">
+              <h1
+                className="text-white text-md xl:text-xl py-8 text-justify"
+                data-aos="fade-right"
+              >
                 Ser una empresa de clase mundial, líder nacional en el sector de
                 andamios, destacandonos por la satisfacción de nuestros
                 clientes, el desarrollo de nuestros colaboradores y las
@@ -96,7 +160,10 @@ export default function NosotrosPage() {
               </h1>
             </div>
           </div>
-          <div className="flex justify-center xl:justify-end items-center" data-aos="fade-right">  
+          <div
+            className="flex justify-center xl:justify-end items-center"
+            data-aos="fade-right"
+          >
             <img src={Andamio} alt="" className="w-5/6" />
           </div>
         </div>
@@ -104,7 +171,8 @@ export default function NosotrosPage() {
       <div className=" bg-neutral-800 flex justify-center items-center w-full ">
         <div
           className="flex bg-cover bg-center h-auto p-12 xl:p-24 justify-center items-center "
-          style={{ backgroundImage: `url(${Calidad})` }}        >
+          style={{ backgroundImage: `url(${Calidad})` }}
+        >
           <div data-aos="zoom-in">
             <h1 className="text-yellow-300 text-2xl xl:text-6xl text-center">
               LA CALIDAD ES PRIMERO
@@ -123,8 +191,8 @@ export default function NosotrosPage() {
           </div>
         </div>
       </div>
-      <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24" >
-        <div className="w-full" data-aos="zoom-in-down"> 
+      <div className=" bg-neutral-800 flex justify-center items-center w-full py-24 px-12 xl:p-24">
+        <div className="w-full" data-aos="zoom-in-down">
           <h1 className="text-yellow-300 text-3xl xl:text-5xl pb-2">
             Transparencia que nos define
           </h1>
