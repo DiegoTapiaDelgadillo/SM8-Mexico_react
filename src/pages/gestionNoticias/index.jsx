@@ -488,8 +488,8 @@ export default function GestionNoticias() {
                     }
                   >
                     <option value="">Selecciona una categoría</option>
-                    <option value="Empresa socialmente responsable">
-                      Empresa socialmente responsable
+                    <option value="Empresa Socialmente Responsable">
+                      Empresa Socialmente Responsable
                     </option>
                     <option value="Proyectos">Proyectos</option>
                     <option value="Empresa">Empresa</option>
