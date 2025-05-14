@@ -24,6 +24,7 @@ import Toluca from "./img/toluca.jpg";
 import Tuxcla from "./img/tuxtla.jpg";
 import Zapopan from "./img/zapopan.jpg";
 import Corporativo from "./img/corpo.jpg";
+import Chihuahua from "./img/Chihuahua.webp";
 import useScrollTop from "../../hooks/useScrollTop";
 
 export default function SucursalesPage() {
@@ -64,6 +65,18 @@ export default function SucursalesPage() {
             }
             delay={60}
           ></CardSucursales>
+          <CardSucursales
+            titulo={"Chihuahua"}
+            direccion={
+              "Av. de las Industrias #5114, Nombre de Dios, C.P. 31105 Chihuahua, Chih."
+            }
+            telefono={"614 419 7867"}
+            rutaImagen={Chihuahua}
+            maps={
+              "https://www.google.com/maps/place/Av.+de+las+Industrias+5114,+Nombre+de+Dios,+31105+Chihuahua,+Chih./@28.673798,-106.0893061,17z/data=!3m1!4b1!4m6!3m5!1s0x86ea4375259bd23b:0x475bffee414506c8!8m2!3d28.673798!4d-106.0867312!16s%2Fg%2F11kq4m3ngk?entry=ttu&g_ep=EgoyMDI1MDUxMi4wIKXMDSoASAFQAw%3D%3D"
+            }
+            delay={60}
+          />
           <CardSucursales
             titulo={"Coatzacoalcos, Ver"}
             direccion={
