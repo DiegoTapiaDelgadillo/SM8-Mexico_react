@@ -150,7 +150,7 @@ export default function SucursalesPage() {
             direccion={
               "C. Gamma 102-A, Industrial Delta, 37545 León de los Aldama, Gto."
             }
-            telefono={"477 944 8411"}
+            telefono={"442 392 1328"}
             rutaImagen={Leon}
             maps={
               "https://www.google.com.mx/maps/place/Andamios+SM8+de+M%C3%A9xico+-+Suc.+Le%C3%B3n/@21.0894836,-101.626063,17z/data=!3m1!4b1!4m6!3m5!1s0x842bbfc69c12bd9d:0x1fc635e631219cee!8m2!3d21.0894786!4d-101.6234881!16s%2Fg%2F11w1rvfzdd?entry=ttu"
@@ -228,7 +228,7 @@ export default function SucursalesPage() {
             direccion={
               "C. Roberto Barrios 2, Casa Blanca, 76030 Santiago de Querétaro, Qro."
             }
-            telefono={"442 242 8625"}
+            telefono={"442 392 1328"}
             rutaImagen={Queretaro}
             maps={
               "https://www.google.com/maps/place/SM8+de+M%C3%A9xico+-+Suc.+Quer%C3%A9taro/@20.5790424,-100.4020271,17z/data=!3m1!4b1!4m6!3m5!1s0x85d34528db4fabdb:0x70eeb421df9c1f27!8m2!3d20.5790424!4d-100.3994522!16s%2Fg%2F11b806dbc4"
