@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import Modal from "../modal";
+import PropTypes from "prop-types";
 
 export default function SecondaryNews({
   images = [],
-  title, 
+  title,
   date,
   sumary,
   category,
@@ -29,16 +30,21 @@ export default function SecondaryNews({
   };
 
   const formatDescription = (text) => {
-    return text.split('.').map((sentence, index) => (
-      <span key={index}>
-        {sentence.trim()}{sentence && '.'}
-        <br />
-        <br />
-      </span>
-    ));
+    if (!text) return null;
+    return String(text)
+      .split(".")
+      .map((sentence, index) => (
+        <span key={index}>
+          {sentence.trim()}
+          {sentence && "."}
+          <br />
+          <br />
+        </span>
+      ));
   };
 
-  const firstImage = images.length > 0 ? images[0].imagen : '';
+  const firstImage =
+    images && images.length > 0 ? images[0]?.imagen || images[0] || "" : "";
 
   return (
     <>
@@ -77,7 +83,11 @@ export default function SecondaryNews({
           <p className="text-white py-4">{sumary}</p>
           <figure className="relative">
             <img
-              src={images[currentImageIndex].imagen}
+              src={
+                images?.[currentImageIndex]?.imagen ??
+                images?.[currentImageIndex] ??
+                ""
+              }
               alt=""
               className="rounded-xl max-w-full h-auto"
             />
@@ -87,16 +97,38 @@ export default function SecondaryNews({
                   onClick={handlePrevImage}
                   className="absolute top-1/2 left-0 transform -translate-y-1/2 p-2 text-white bg-black bg-opacity-50 rounded-full hover:bg-opacity-75 transition duration-300 ease-in-out"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
                 <button
                   onClick={handleNextImage}
                   className="absolute top-1/2 right-0 transform -translate-y-1/2 p-2 text-white bg-black bg-opacity-50 rounded-full hover:bg-opacity-75 transition duration-300 ease-in-out"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
               </>
@@ -108,3 +140,26 @@ export default function SecondaryNews({
     </>
   );
 }
+
+SecondaryNews.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({ imagen: PropTypes.string }),
+    ])
+  ),
+  title: PropTypes.string,
+  date: PropTypes.string,
+  sumary: PropTypes.string,
+  description: PropTypes.string,
+  category: PropTypes.string,
+};
+
+SecondaryNews.defaultProps = {
+  images: [],
+  title: "",
+  date: "",
+  sumary: "",
+  description: "",
+  category: "",
+};

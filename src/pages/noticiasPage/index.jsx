@@ -10,7 +10,7 @@ export default function Noticias() {
   const [noticias, setNoticias] = useState([]);
   const [loading, setLoading] = useState(true);
   useScrollTop();
-  
+
   useEffect(() => {
     axios
       .get("https://api.timbrela.com:13003/api/noticias")
@@ -53,14 +53,14 @@ export default function Noticias() {
   }
 
   const formatDate = (dateString) => {
-    return new Intl.DateTimeFormat('es-ES', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
+    return new Intl.DateTimeFormat("es-ES", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
     }).format(new Date(dateString));
   };
-  
-  const mainNewsIndex = noticias.length > 0 ? noticias.length - 1 : 0;
+
+  const mainNewsIndex = noticias?.length > 0 ? noticias.length - 1 : 0;
   const mainNews = noticias[mainNewsIndex] || {};
   const secondaryNews = noticias.slice(0, mainNewsIndex);
 
@@ -70,8 +70,8 @@ export default function Noticias() {
       images: noticia.imagenes || [],
       title: noticia.titulo || "",
       text: noticia.resumen || "",
-      description: noticia.contenido || "", 
-      category: noticia.categoria || "", 
+      description: noticia.contenido || "",
+      category: noticia.categoria || "",
       date: formatDate(noticia.fecha) || "",
     }))
     .reverse();
@@ -110,7 +110,7 @@ export default function Noticias() {
           )}
           <p className="pt-8 text-yellow-300 text-4xl">Últimas Noticias</p>
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 pt-8">
-            {secondaryNews.map((news, index) => (
+            {secondaryNews?.map((news, index) => (
               <SecondaryNews
                 key={index}
                 images={news.imagenes || []}

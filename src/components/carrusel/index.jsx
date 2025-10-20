@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Modal from "../modal";
+import PropTypes from "prop-types";
 
 export default function Carrusel({ noticias }) {
   const [currentNew, setCurrentNew] = useState(0);
@@ -8,13 +9,14 @@ export default function Carrusel({ noticias }) {
   const modalRef = useRef();
   const intervalRef = useRef();
 
-  const nextNews = () => {
+  const nextNews = useCallback(() => {
+    if (!noticias || noticias.length === 0) return;
     setCurrentNew((prev) => (prev === noticias.length - 1 ? 0 : prev + 1));
-  };
+  }, [noticias]);
 
   const goToNews = (index) => {
     setCurrentNew(index);
-    setCurrentImageIndex(0); 
+    setCurrentImageIndex(0);
   };
 
   const prevNews = () => {
@@ -34,7 +36,7 @@ export default function Carrusel({ noticias }) {
   };
 
   const handleOpenModal = () => {
-    setCurrentImageIndex(0); 
+    setCurrentImageIndex(0);
     modalRef.current.openModal();
     setIsModalOpen(true);
   };
@@ -42,34 +44,49 @@ export default function Carrusel({ noticias }) {
   const handleCloseModal = () => {
     modalRef.current.closeModal();
     setIsModalOpen(false);
-    setCurrentImageIndex(0); 
+    setCurrentImageIndex(0);
   };
 
   const formatDescription = (text) => {
-    return text.split('.').map((sentence, index) => (
-      <span key={index}>
-        {sentence.trim()}{sentence && '.'}
-        <br />
-        <br />
-      </span>
-    ));
+    if (!text) return null;
+    return String(text)
+      .split(".")
+      .map((sentence, index) => (
+        <span key={index}>
+          {sentence.trim()}
+          {sentence && "."}
+          <br />
+          <br />
+        </span>
+      ));
   };
+
+  // mantener la referencia a la función nextNews para usar en setInterval sin
+  // tener que listarla como dependencia del useEffect
+  const nextNewsRef = useRef(nextNews);
+  useEffect(() => {
+    nextNewsRef.current = nextNews;
+  }, [nextNews]);
 
   useEffect(() => {
     if (!isModalOpen) {
-      intervalRef.current = setInterval(nextNews, 10000);
+      intervalRef.current = setInterval(() => nextNewsRef.current(), 10000);
     } else {
       clearInterval(intervalRef.current);
     }
 
     return () => clearInterval(intervalRef.current);
-  }, [isModalOpen, currentNew]);
+  }, [isModalOpen]);
 
   return (
     <div className="relative h-screen overflow-hidden flex items-center justify-center">
-      <img 
-        src={noticias[currentNew].images[0]?.imagen || ""}
-        alt={noticias[currentNew].text}
+      <img
+        src={
+          noticias?.[currentNew]?.images?.[0]?.imagen ??
+          noticias?.[currentNew]?.images?.[0] ??
+          ""
+        }
+        alt={noticias?.[currentNew]?.text || ""}
         className="absolute top-0 left-0 w-full h-full object-cover brightness-50"
         data-aos="fade-in"
         data-aos-duration="1000"
@@ -133,42 +150,91 @@ export default function Carrusel({ noticias }) {
 
       <Modal ref={modalRef} onClose={handleCloseModal}>
         <div className="max-w-screen-md max-h-[80vh] h-auto overflow-y-auto p-6 pt-1 mx-auto bg-neutral-800 rounded-lg">
-          <p className="text-neutral-500 text-xs pb-1">{noticias[currentNew].category}</p>
-          <p className="text-yellow-300 text-2xl xl:text-3xl">{noticias[currentNew].title}</p>
+          <p className="text-neutral-500 text-xs pb-1">
+            {noticias[currentNew].category}
+          </p>
+          <p className="text-yellow-300 text-2xl xl:text-3xl">
+            {noticias[currentNew].title}
+          </p>
           <p className="pt-4 my-2 w-full border-t text-neutral-500 text-xs border-neutral-500">
             {noticias[currentNew].date}
           </p>
           <p className="text-white py-4">{noticias[currentNew].text}</p>
           <figure className="relative">
             <img
-              src={noticias[currentNew].images[currentImageIndex]?.imagen || ""}
+              src={
+                noticias?.[currentNew]?.images?.[currentImageIndex]?.imagen ??
+                noticias?.[currentNew]?.images?.[currentImageIndex] ??
+                ""
+              }
               alt=""
               className="rounded-xl max-w-full h-auto"
             />
-            {noticias[currentNew].images.length > 1 && (
+            {noticias?.[currentNew]?.images?.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
                   className="absolute top-1/2 left-0 transform -translate-y-1/2 p-2 text-white bg-black bg-opacity-50 rounded-full hover:bg-opacity-75 transition duration-300 ease-in-out"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 </button>
                 <button
                   onClick={nextImage}
                   className="absolute top-1/2 right-0 transform -translate-y-1/2 p-2 text-white bg-black bg-opacity-50 rounded-full hover:bg-opacity-75 transition duration-300 ease-in-out"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </button>
               </>
             )}
           </figure>
-          <p className="pt-4 text-white">{formatDescription(noticias[currentNew].description)}</p>
+          <p className="pt-4 text-white">
+            {formatDescription(noticias[currentNew].description)}
+          </p>
         </div>
       </Modal>
     </div>
   );
 }
+
+Carrusel.propTypes = {
+  noticias: PropTypes.arrayOf(
+    PropTypes.shape({
+      images: PropTypes.array,
+      title: PropTypes.string,
+      text: PropTypes.string,
+      category: PropTypes.string,
+      date: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ),
+};
+
+Carrusel.defaultProps = {
+  noticias: [],
+};
